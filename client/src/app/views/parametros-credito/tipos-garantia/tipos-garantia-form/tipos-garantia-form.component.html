@@ -1,0 +1,116 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_tiposGarantiaForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_tiposGarantiaForm.get('id').hasError('required')">
+              El campo ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Clave Tipo Garantia</mat-label>
+            <input matInput formControlName="claveTipoGarantia">
+            <mat-icon matSuffix>receipt</mat-icon>
+            <mat-error *ngIf="_tiposGarantiaForm.get('claveTipoGarantia').hasError('required')">
+              El campo Clave Tipo Garantia es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Descripcion</mat-label>
+            <input matInput formControlName="descripcion">
+            <mat-icon matSuffix>receipt</mat-icon>
+            <mat-error *ngIf="_tiposGarantiaForm.get('descripcion').hasError('required')">
+              El campo Descripcion es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Contabiliza</mat-label>
+            <mat-select formControlName="contabiliza">
+              <mat-option value=true>SI</mat-option>
+              <mat-option value=false>NO</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_tiposGarantiaForm.get('contabiliza').hasError('required')">
+              Contabiliza es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>FEGA</mat-label>
+            <input matInput formControlName="fega">
+            <mat-icon matSuffix>receipt</mat-icon>
+            <mat-error *ngIf="_tiposGarantiaForm.get('fega').hasError('required')">
+              El campo FEGA es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>FONAGA</mat-label>
+            <mat-select formControlName="fonaga">
+              <mat-option value=true>SI</mat-option>
+              <mat-option value=false>NO</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_tiposGarantiaForm.get('fonaga').hasError('required')">
+              FONAGA es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Deudor</mat-label>
+            <input matInput formControlName="deudor">
+            <mat-icon matSuffix>receipt</mat-icon>
+            <mat-error *ngIf="_tiposGarantiaForm.get('deudor').hasError('required')">
+              El campo Deudor es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_tiposGarantiaForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,312 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_notariosForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('id').hasError('required')">
+              ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Numero Notario</mat-label>
+            <input matInput formControlName="numeroNotario">
+            <mat-icon matSuffix>domain</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('numeroNotario').hasError('required')">
+              Numero Notario es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Paterno Notario Titular</mat-label>
+            <input matInput formControlName="apellidoPaternoNotarioTitular">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('apellidoPaternoNotarioTitular').hasError('required')">
+              Apellido Paterno Notario Titular es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Materno Notario Titular</mat-label>
+            <input matInput formControlName="apellidoMaternoNotarioTitular">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('apellidoMaternoNotarioTitular').hasError('required')">
+              Apellido Materno Notario Titular es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Primer Nombre Notario Titular</mat-label>
+            <input matInput formControlName="primerNombreNotarioTitular">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('primerNombreNotarioTitular').hasError('required')">
+              Primer Nombre Notario Titular es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Segundo Nombre Notario Titular</mat-label>
+            <input matInput formControlName="segundoNombreNotarioTitular">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('segundoNombreNotarioTitular').hasError('required')">
+              Segundo Nombre Notario Titular es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Paterno Notario Suplente</mat-label>
+            <input matInput formControlName="apellidoPaternoNotarioSuplente">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('apellidoPaternoNotarioSuplente').hasError('required')">
+              Apellido Paterno Notario Suplente es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Materno Notario Suplente</mat-label>
+            <input matInput formControlName="apellidoMaternoNotarioSuplente">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('apellidoMaternoNotarioSuplente').hasError('required')">
+              Apellido Materno Notario Suplente es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Primer Nombre Notario Suplente</mat-label>
+            <input matInput formControlName="primerNombreNotarioSuplente">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('primerNombreNotarioSuplente').hasError('required')">
+              Primer Nombre Notario Suplente es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Segundo Nombre Notario Suplente</mat-label>
+            <input matInput formControlName="segundoNombreNotarioSuplente">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('segundoNombreNotarioSuplente').hasError('required')">
+              Segundo Nombre Notario Suplente es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Codigo Postal Notario</mat-label>
+            <input matInput formControlName="codigoPostalNotario">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('codigoPostalNotario').hasError('required')">
+              Codigo Postal Notario es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Calle Domicilio Notario</mat-label>
+            <input matInput formControlName="calleDomicilioNotario">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('calleDomicilioNotario').hasError('required')">
+              Calle Domicilio Notario es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Numero Exterior Notario</mat-label>
+            <input matInput formControlName="noExteriorNotario">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('noExteriorNotario').hasError('required')">
+              Numero Exterior Notario es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Numero Interior Notario</mat-label>
+            <input matInput formControlName="noInteriorNotario">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('noInteriorNotario').hasError('required')">
+              Numero Interior Notario es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Entre Calle</mat-label>
+            <input matInput formControlName="entreCalle">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('entreCalle').hasError('required')">
+              Entre Calle es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Y Calle</mat-label>
+            <input matInput formControlName="yCalle">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('yCalle').hasError('required')">
+              Y Calle es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Clave Colonia</mat-label>
+            <input matInput formControlName="claveColonia">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('claveColonia').hasError('required')">
+              Clave Colonia es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Otra Colonia</mat-label>
+            <input matInput formControlName="otraColonia">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('otraColonia').hasError('required')">
+              Otra Colonia es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tipo Asentamiento</mat-label>
+            <input matInput formControlName="tipoAsentamiento">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('tipoAsentamiento').hasError('required')">
+              Tipo Asentamiento es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Referencia Domicilio</mat-label>
+            <input matInput formControlName="referenciaDomicilio">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('referenciaDomicilio').hasError('required')">
+              Referencia Domicilio es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Clave Lada Telefono 1</mat-label>
+            <input matInput formControlName="claveLadaTelefono1">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('claveLadaTelefono1').hasError('required')">
+              Clave Lada Telefono 1 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Telefono 1</mat-label>
+            <input matInput formControlName="telefono1">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('telefono1').hasError('required')">
+              Telefono 1 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Extension Telefono 1</mat-label>
+            <input matInput formControlName="extensionTelefono1">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('extensionTelefono1').hasError('required')">
+              Extension Telefono 1 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Clave Lada Telefono 2</mat-label>
+            <input matInput formControlName="claveLadaTelefono2">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('claveLadaTelefono2').hasError('required')">
+              Clave Lada Telefono 2 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Telefono 2</mat-label>
+            <input matInput formControlName="telefono2">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('telefono2').hasError('required')">
+              Telefono 2 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Extension Telefono 2</mat-label>
+            <input matInput formControlName="extensionTelefono2">
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+            <mat-error *ngIf="_notariosForm.get('extensionTelefono2').hasError('required')">
+              Extension Telefono 2 es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_notariosForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
