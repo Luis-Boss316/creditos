@@ -28,10 +28,13 @@ import {UsuarioFormComponent} from "./usuario/usuario-form/usuario-form.componen
 import {UsuarioDeleteComponent} from "./usuario/usuario-delete/usuario-delete.component";
 import {KycFormComponent} from "./usuario/kyc-form/kyc-form.component";
 import { ArchivosComponent } from './archivos/archivos.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
+import { ClientesDeleteComponent } from './clientes/clientes-delete/clientes-delete.component';
 
 
 @NgModule({
-  declarations: [UsuarioComponent, UsuarioFormComponent, UsuarioDeleteComponent, KycFormComponent, ArchivosComponent],
+  declarations: [UsuarioComponent, UsuarioFormComponent, UsuarioDeleteComponent, KycFormComponent, ArchivosComponent, ClientesComponent, ClientesFormComponent, ClientesDeleteComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,

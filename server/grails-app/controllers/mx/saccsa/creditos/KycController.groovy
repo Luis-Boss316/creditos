@@ -32,7 +32,7 @@ class KycController extends RestfulController<Kyc> {
         request.multipartFiles
         if (request.multipartFiles) {
             def file = request.multipartFiles.file[0]
-            def ruta = "http:\\localhost:8080\\Archivos\\" + params.tipoArchivo + "\\"
+            def ruta = "C:\\Archivos\\" + params.tipoArchivo + "\\"
             if (!file) {
                 response.status = 400
                 respond mensaje: "El archivo es incorrecto o nulo."

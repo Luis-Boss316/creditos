@@ -427,9 +427,19 @@ export class _circuloCredito {
   domicilioDevolucion: string;
 }
 
-export class Kyc{
+export class Kyc {
   ruta: string;
   tipoArchivo: string;
   nombre: _usuario;
   fecha: Date;
+}
+
+export class _clientes {
+  id: number;
+  titularNombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  promotor: string;
+  grupoFamilia: string;
+  estatus: string;
 }

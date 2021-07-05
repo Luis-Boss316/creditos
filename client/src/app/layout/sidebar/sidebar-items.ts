@@ -493,6 +493,15 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: 'Usuario/Clientes',
+        title: 'Clientes',
+        moduleName: 'Usuario',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
         path: 'Usuario/Archivos',
         title: 'Archivos',
         moduleName: 'Usuario',
