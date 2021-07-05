@@ -443,3 +443,8 @@ export class _clientes {
   grupoFamilia: string;
   estatus: string;
 }
+
+export class _grupoFamilia {
+  id: number;
+  grupoFamilia: string;
+}

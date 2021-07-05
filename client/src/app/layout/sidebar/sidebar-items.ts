@@ -288,6 +288,15 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         submenu: []
       },
+      {
+        path: 'Catalogos/GrupoFamilia',
+        title: 'GrupoFamilia',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
     ]
   },
 

@@ -14,7 +14,7 @@ class ComboController {
         def data = c.list().collect {
             [
                     id         : it.ident(),
-                    descripcion: it.ident() + ' - ' + it.descLabel
+                    descripcion: it.descLabel
             ]
         }
         respond data
