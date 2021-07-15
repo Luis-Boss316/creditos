@@ -8,12 +8,10 @@ import grails.gorm.transactions.ReadOnly
 class GrupoFamiliaController extends RestfulController<GrupoFamilia>{
     GrupoFamiliaController() {super (GrupoFamilia)}
 
-    def index() {
-        respond GrupoFamilia.list().collect{
-            [
-                    id: it?.id,
-                    grupoFamilia: it?.grupoFamilia,
-            ]
-        }
+    def combo(){
+        respond data : GrupoFamilia.list().collect{ [class:GrupoFamilia.class.name, id: it.id, descLabel: it.descLabel]}
+    }
+    def getDefault(){
+        respond data : GrupoFamilia.findByLdefault(true)
     }
 }

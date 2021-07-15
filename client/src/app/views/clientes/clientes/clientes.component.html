@@ -75,11 +75,42 @@
                     {{row.id}}</mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="titularNombre">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Titular Nombre</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.titularNombre}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="apellidoPaterno">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Apellido Paterno</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.apellidoPaterno}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="apellidoMaterno">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Apellido Materno</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.apellidoMaterno}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="promotor">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Promotor</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.promotor}}</mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="grupoFamilia">
                   <mat-header-cell *matHeaderCellDef mat-sort-header >Grupo/Familia</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
                     {{row.grupoFamilia}}</mat-cell>
                 </ng-container>
+
+<!--                <ng-container matColumnDef="estatus">-->
+<!--                  <mat-header-cell *matHeaderCellDef mat-sort-header >Estatus</mat-header-cell>-->
+<!--                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">-->
+<!--                    {{row.estatus}}</mat-cell>-->
+<!--                </ng-container>-->
+
 
 
                 <!-- actions -->

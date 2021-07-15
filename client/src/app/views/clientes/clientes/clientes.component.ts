@@ -1,38 +1,43 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {_grupoFamilia} from "../../../shared/interfaces/Creditos.interface";
+import {_clientes} from "../../../shared/interfaces/Creditos.interface";
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
 import {HttpClient} from "@angular/common/http";
 import {GlobalService} from "../../../shared/services/global.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {FormBuilder} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
+import {FormBuilder} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatMenuTrigger} from "@angular/material/menu";
-import {GrupoFamiliaFormComponent} from "./grupo-familia-form/grupo-familia-form.component";
-import {GrupoFamiliaDeleteComponent} from "./grupo-familia-delete/grupo-familia-delete.component";
+import {ClientesFormComponent} from "./clientes-form/clientes-form.component";
+import {ClientesDeleteComponent} from "./clientes-delete/clientes-delete.component";
 import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'app-grupo-familia',
-  templateUrl: './grupo-familia.component.html',
-  styleUrls: ['./grupo-familia.component.sass']
+  selector: 'app-clientes',
+  templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.sass']
 })
-export class GrupoFamiliaComponent implements OnInit {
-  public _datos = { _title: 'GrupoFamilia', _modulo: 'Catalogos', _icono: 'fas fa-folder-open', _dominio: 'GrupoFamilia', _componente: 'GrupoFamilia'}
+export class ClientesComponent implements OnInit {
+  public _datos = { _title: 'Clientes', _modulo: 'Clientes', _icono: 'fas fa-folder-open', _dominio: 'Clientes', _componente: 'Clientes'}
   displayedColumns = [ 'select',
+    'titularNombre',
+    'apellidoPaterno',
+    'apellidoMaterno',
+    'promotor',
     'grupoFamilia',
+    // 'estatus',
     'actions' ];
 
-  selection = new SelectionModel<_grupoFamilia>(true, []);
-  advanceTable: _grupoFamilia | null;
+  selection = new SelectionModel<_clientes>(true, []);
+  advanceTable: _clientes | null;
 
   id: number;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
-  dataSource: GrupoFamiliaDataSource | null;
+  dataSource: ClientesDataSource | null;
 
   constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog,
               public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
@@ -53,10 +58,10 @@ export class GrupoFamiliaComponent implements OnInit {
 
   addNew() {
     let data: any;
-    this.advanceTableService.create<_grupoFamilia>().subscribe(result => {
+    this.advanceTableService.create<_clientes>().subscribe(result => {
       data = result;
       console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(GrupoFamiliaFormComponent, {
+      const dialogRef = this.dialog.open(ClientesFormComponent, {
         data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
@@ -79,10 +84,10 @@ export class GrupoFamiliaComponent implements OnInit {
   editCall(row) {
     this.id = row.id;
     let data: any;
-    this.advanceTableService.edit<_grupoFamilia>(this.id).subscribe(result => {
+    this.advanceTableService.edit<_clientes>(this.id).subscribe(result => {
       data = result;
       console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(GrupoFamiliaFormComponent, {
+      const dialogRef = this.dialog.open(ClientesFormComponent, {
         data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
@@ -103,7 +108,7 @@ export class GrupoFamiliaComponent implements OnInit {
 
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(GrupoFamiliaDeleteComponent, { data: row });
+    const dialogRef = this.dialog.open(ClientesDeleteComponent, { data: row });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.advanceTableService.delete<string>(row.id)
@@ -132,7 +137,7 @@ export class GrupoFamiliaComponent implements OnInit {
     const totalSelect = this.selection.selected.length;
     this.selection.selected.forEach((item) => {
       this.advanceTableService.delete<string>(item.id).subscribe()
-      this.selection = new SelectionModel<_grupoFamilia>(true, []);
+      this.selection = new SelectionModel<_clientes>(true, []);
     });
     this.loadData();
     this.showNotification( 'snackbar-danger', totalSelect + '¡¡Registros Eliminados!!', 'bottom', 'center'  );
@@ -140,7 +145,7 @@ export class GrupoFamiliaComponent implements OnInit {
 
   public loadData() {
     this.db = new AdvanceRestService(this.httpClient, this.globalService, this.fBuilder);
-    this.dataSource = new GrupoFamiliaDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
+    this.dataSource = new ClientesDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
     fromEvent(this.filter.nativeElement, 'keyup').subscribe(() => {
       if (!this.dataSource) { return; }
       this.dataSource.filter = this.filter.nativeElement.value;
@@ -151,7 +156,7 @@ export class GrupoFamiliaComponent implements OnInit {
     this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom, horizontalPosition: placementAlign, panelClass: colorName });
   }
 
-  onContextMenu(event: MouseEvent, item: _grupoFamilia) {
+  onContextMenu(event: MouseEvent, item: _clientes) {
     event.preventDefault();
     this.contextMenuPosition.x = event.clientX + 'px';
     this.contextMenuPosition.y = event.clientY + 'px';
@@ -161,24 +166,24 @@ export class GrupoFamiliaComponent implements OnInit {
   }
 }
 
-export class GrupoFamiliaDataSource extends DataSource<_grupoFamilia> {
+export class ClientesDataSource extends DataSource<_clientes> {
   _filterChange = new BehaviorSubject('');
   get filter(): string { return this._filterChange.value; }
   set filter(filter: string) { this._filterChange.next(filter); }
-  filteredData: _grupoFamilia[] = [];
-  renderedData: _grupoFamilia[] = [];
+  filteredData: _clientes[] = [];
+  renderedData: _clientes[] = [];
 
   constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort, private _dominio: string ) {
     super();
     this._filterChange.subscribe(() => (this._paginator.pageIndex = 0));
   }
 
-  connect(): Observable<_grupoFamilia[]> {
+  connect(): Observable<_clientes[]> {
     const displayDataChanges = [ this._dataSource.dataChange, this._sort.sortChange, this._filterChange, this._paginator.page ];
     this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
     return merge(...displayDataChanges).pipe( map(() => {
-        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _grupoFamilia) => {
-          const searchStr = ( advanceTable.id + advanceTable.grupoFamilia  ).toLowerCase();
+        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _clientes) => {
+          const searchStr = ( advanceTable.id + advanceTable.titularNombre + advanceTable.apellidoPaterno + advanceTable.apellidoMaterno ).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());
@@ -191,7 +196,7 @@ export class GrupoFamiliaDataSource extends DataSource<_grupoFamilia> {
 
   disconnect() {}
 
-  sortData(data: _grupoFamilia[]): _grupoFamilia[] {
+  sortData(data: _clientes[]): _clientes[] {
     if (!this._sort.active || this._sort.direction === '') { return data; }
     return data.sort((a, b) => {
       let propertyA: number | string = '';
@@ -200,8 +205,14 @@ export class GrupoFamiliaDataSource extends DataSource<_grupoFamilia> {
         case 'id':
           [propertyA, propertyB] = [a.id, b.id];
           break;
-        case 'grupoFamilia':
-          [propertyA, propertyB] = [a.grupoFamilia, b.grupoFamilia];
+        case 'titularNombre':
+          [propertyA, propertyB] = [a.titularNombre, b.titularNombre];
+          break;
+        case 'apellidoPaterno':
+          [propertyA, propertyB] = [a.apellidoPaterno, b.apellidoPaterno];
+          break;
+        case 'apellidoMaterno':
+          [propertyA, propertyB] = [a.apellidoMaterno, b.apellidoMaterno];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

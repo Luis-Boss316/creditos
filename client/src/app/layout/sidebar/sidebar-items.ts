@@ -288,15 +288,6 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         submenu: []
       },
-      {
-        path: 'Catalogos/GrupoFamilia',
-        title: 'GrupoFamilia',
-        moduleName: 'Catalogos',
-        icon: '',
-        class: 'ml-menu',
-        groupTitle: false,
-        submenu: []
-      },
     ]
   },
 
@@ -486,6 +477,26 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
+    title: 'Clientes',
+    moduleName: 'Clientes',
+    icon: 'fas fa-address-card',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Clientes/Clientes',
+        title: 'Clientes',
+        moduleName: 'Clientes',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+  },
+
+  {
+    path: '',
     title: 'Usuarios',
     moduleName: 'Usuario',
     icon: 'fas fa-address-card',
@@ -495,15 +506,6 @@ export const ROUTES: RouteInfo[] = [
       {
         path: 'Usuario/Usuario',
         title: 'Usuario',
-        moduleName: 'Usuario',
-        icon: '',
-        class: 'ml-menu',
-        groupTitle: false,
-        submenu: []
-      },
-      {
-        path: 'Usuario/Clientes',
-        title: 'Clientes',
         moduleName: 'Usuario',
         icon: '',
         class: 'ml-menu',
@@ -521,6 +523,8 @@ export const ROUTES: RouteInfo[] = [
       },
     ]
   },
+
+
 ];
 
 

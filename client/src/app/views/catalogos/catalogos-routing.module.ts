@@ -31,7 +31,6 @@ import {TiposReferenciasComponent} from "./tipos-referencias/tipos-referencias.c
 import {TiposRelacionesComponent} from "./tipos-relaciones/tipos-relaciones.component";
 import {TiposSociedadComponent} from "./tipos-sociedad/tipos-sociedad.component";
 import {TitulosComponent} from "./titulos/titulos.component";
-import {GrupoFamiliaComponent} from "./grupo-familia/grupo-familia.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'Aseguradoras', pathMatch: 'full' },
@@ -66,7 +65,6 @@ const routes: Routes = [
   { path: 'Tipos-Relaciones', component: TiposRelacionesComponent},
   { path: 'Tipos-Sociedad', component: TiposSociedadComponent},
   { path: 'Titulos', component: TitulosComponent},
-  { path: 'GrupoFamilia', component: GrupoFamiliaComponent},
 ];
 
 @NgModule({

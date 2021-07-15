@@ -434,17 +434,132 @@ export class Kyc {
   fecha: Date;
 }
 
+export class _grupoFamilia {
+  id: string;
+  clave: string;
+  nombre: string;
+  descripcion: string;
+  ldefault: boolean;
+}
+
+export class _promotor {
+  id: string;
+  cvePromotor: string;
+  ciudad: string;
+  colonia: string;
+  direccion: string;
+  nombre: string;
+}
+
+export class _tipoInversionista {
+  id: string;
+  cveTipoInversionista: string;
+  descripcion: string;
+  prioridad: number;
+  institucional: boolean;
+  sector: string;
+  cambioTasa: string;
+  pJuridica: boolean;
+}
+
+export class _actVulnerable {
+  id: string;
+  cveActVulnerable: string;
+  descripcion: string;
+  vulnerable: boolean;
+}
+
 export class _clientes {
   id: number;
   titularNombre: string;
   apellidoPaterno: string;
   apellidoMaterno: string;
-  promotor: string;
-  grupoFamilia: string;
-  estatus: string;
+  grupoFamilia: _grupoFamilia;
+  promotor: _promotor;
+  tipoInversionista: _tipoInversionista;
+  excentoIsr: boolean;
+  excentoIva: boolean;
+  fechaNacimiento: Date;
+  entidadFederativaNacimiento: _estados;
+  fechaInicioOperaciones: Date;
+  estadoCivil: string;
+  profesion: _profesiones;
+  nombreEmpresaPrestaServicios: string;
+  nombrePuesto: string;
+  funcionesGeneralesDirectivas: string;
+  nivelJerarquico: string;
+  antiguedadEmpleo: string;
+  sectorEmpresa: string;
+  giroEmpresa: string;
+  tipoIngreso: string;
+  ingresoAdicional: string;
+  sectorPrestaServicio: string;
+  giroEspecificoServicios: _actVulnerable;
+  sectorEmpresa2: string;
+  razonSocialEmpresa: string;
+  actividadEmpresa: string;
+  ingresoAdicional2: string;
+  ocupacionActual: string;
+  fuenteIngresos: string;
+  sociedadesAsociacionesRFCEmpresa: string;
+  nacionalidadEmpresa: _nacionalidades;
+  telefonoEmpresa: string;
+  sectorEmpresa3: string;
+  actividadGiroEspecificoEmpresa: string;
+  porcentajeCapitalSocial: string;
+  consejeroEmpresaRFCEmpresa: string;
+  nacionalidadEmpresa2: _nacionalidades;
+  telefonoEmpresa2: string;
+  sectorEmpresa4: string;
+  actividadGiroEmpresa3: string;
+  vinculoPatrimonial: string;
+  consejeroEmpresa: string;
+  cargoDesempeno: string;
+  nombreInstitucion: string;
+  institucionCargoExtranjero: string;
+  pais: _paises;
+  cargo: string;
+  relacionPersonaNacionalExtranjera: string;
+  cargo2: string;
+  institucionDesempenaCargo: string;
+
+  // cotitular
+  nombreCotitular: string;
+  apellidoPaternoC: string;
+  apellidoMaternoC: string;
+  estadoCivilC: string;
+  lugarPrestaServicios: string;
+  nombrePuestoC: string;
+  funcionesGeneralesDirectivasC: string;
+  nivelJerarquicoC: string;
+  antiguedadEmpleoC: string;
+  sectorEmpresaC: string;
+  tipoIngresoC: string;
+  ingresoAdicionalC: string;
+  formasProporcionaServicios: string;
+  sectorPrestaServicios: string;
+  actividadGiroEEmpresaC: string;
+  rfcEmpresa: string;
+  sectorDEmpresaC: string;
+  actividadGiroEmpresaC: string;
+  cingresoAdicionalC: string;
+  ocupacionActualC: string;
+  fuenteIngresoC: string;
+  razonSocialEmpresaC: string;
+  rfc: string;
+  nacionalidadEmpresaC: _nacionalidades;
+  telefonoEmpresaC: string;
+  sectorDeEmpresaC: string;
+  actividadDeEmpresaC: string;
+  porcentajeEmpresaC: string;
+  esConsejero: string;
+  razonSocialC: string;
+  rfcC: string;
+  nacionalidadDEmpresaC: _nacionalidades;
+  telefonoDEmpresaC: string;
+  sectorDLEmpresaC: string;
+  actividadDEEmpresaC: string;
+  porcentajeEmpresaPertenece: string;
+  consejeroEmpresaC: string;
 }
 
-export class _grupoFamilia {
-  id: number;
-  grupoFamilia: string;
-}

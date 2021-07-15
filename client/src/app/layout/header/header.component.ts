@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   isNavbarCollapsed = true;
   avatar: string;
   isNavbarShow: boolean;
+  logoName = 'CREDITOS';
   constructor(
     // tslint:disable-next-line:no-shadowed-variable
     @Inject(DOCUMENT) private document: Document,
