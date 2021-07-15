@@ -12,7 +12,7 @@ class Nacionalidades {
     }
 
     static mapping = {
-        table "NACIONALIDADES"
+        table "nacionalidades"
         version false
         id generator: "identity"
         claveNacionalidad name:"claveNacionalidad", column:"claveNacionalidad", size: 0..3

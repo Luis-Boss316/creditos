@@ -106,120 +106,120 @@ class Clientes {
     String consejeroEmpresaC
 
 //    Instituciones o cargos publicos con los que tiene relacion o vinculos:
-//    String institucionesCargosPublicosRelacion
-//    String institucionDesempeñaCargoC
-//    String relacionPersonaNacionalExtranjeraC
+    String institucionesCargosPublicosRelacion
+    String institucionDesempeñaCargoC
+    String relacionPersonaNacionalExtranjeraC
 
 //Procedencia de recursos
-//    String procedenciaRecurso
-//    String detalleRecurso
+    String procedenciaRecurso
+    String detalleRecurso
 
 //Proveedor de recursos
-//    String proveedorrecursoNombre
-//    String apellidoPaternoP
-//    String apellidoMaternoP
-//    String nacionalidadP
-//    Date fechaNacimientoP
-//    String curp
-//    String rfcP
-//    String firmaElectronica
-//    String tipoVialidad
-//    String nombreVialidad
-//    String noExterior
-//    String noInterior
-//    String colonia
-//    String municipio
-//    String ciudad
-//    String estado
-//    String cp
-//    String paisP
-//    String personaMoralRazonSocial
-//    String nacionalidad
-//    String rfcPR
-//    String firmaElectronicaP
-//    String domicilio
-//    String tipoVialidadP
-//    String nombreVialidadP
-//    String noExteriorP
-//    String noInteriorP
-//    String coloniaP
-//    String delegacion
-//    String ciudadP
-//    String estadoP
-//    String codigoPostal
-//    String paisPR
+    String proveedorrecursoNombre
+    String apellidoPaternoP
+    String apellidoMaternoP
+    String nacionalidadP
+    Date fechaNacimientoP
+    String curp
+    String rfcP
+    String firmaElectronica
+    String tipoVialidad
+    String nombreVialidad
+    String noExterior
+    String noInterior
+    String colonia
+    String municipio
+    String ciudad
+    String estado
+    String cp
+    String paisP
+    String personaMoralRazonSocial
+    String nacionalidad
+    String rfcPR
+    String firmaElectronicaP
+    String domicilio
+    String tipoVialidadP
+    String nombreVialidadP
+    String noExteriorP
+    String noInteriorP
+    String coloniaP
+    String delegacion
+    String ciudadP
+    String estadoP
+    String codigoPostal
+    String paisPR
 
 //Propietario Real
-//    String propietarioRealNombre
-//    String apellidoPaternoPRE
-//    String apellidoMaternoPRE
-//    Boolean genero
-//    Date fechaNacimientoPRE
-//    String curpPRE
-//    String paisNacimiento
-//    String estadoNacimiento
-//    String nacionalidadPRE
-//    String calidadMigratoria
-//    String paisResidencia
-//    String regimenFiscal
-//    String rfcPRE
-//    String firmaElectronicaAvanzada
-//    String telefonoParticular
-//    String telefonoCelular
-//    String correoElectronico
-//    String domicilioPropietario
-//    String tipoVialidadPRE
-//    String nombreVialidadPRE
-//    String noExteriorPRE
-//    String noInteriorPRE
-//    String coloniaPRE
-//    String delegacionPRE
-//    String ciudadPRE
-//    String estadoPRE
-//    String paisPRE
-//    String codigo
+    String propietarioRealNombre
+    String apellidoPaternoPRE
+    String apellidoMaternoPRE
+    Boolean genero
+    Date fechaNacimientoPRE
+    String curpPRE
+    String paisNacimiento
+    String estadoNacimiento
+    String nacionalidadPRE
+    String calidadMigratoria
+    String paisResidencia
+    String regimenFiscal
+    String rfcPRE
+    String firmaElectronicaAvanzada
+    String telefonoParticular
+    String telefonoCelular
+    String correoElectronico
+    String domicilioPropietario
+    String tipoVialidadPRE
+    String nombreVialidadPRE
+    String noExteriorPRE
+    String noInteriorPRE
+    String coloniaPRE
+    String delegacionPRE
+    String ciudadPRE
+    String estadoPRE
+    String paisPRE
+    String codigo
 
 //Uso y movimientos de la cuenta
-//    String tipoCliente
-//    Boolean uso
-//    BigDecimal montoDepositoInicial
-//    BigDecimal numeroAproxDepoMensuales
-//    BigDecimal porccentajePromedioMensualDepositos
-//    BigDecimal numeroAproxRetirosMensuales
-//    BigDecimal montoAproxMensualRetiros
-//    Date fechaBaja
-//    String liqVSsaldo
-//    Boolean manejaCust
-//    Boolean cortoEfectivo
+    String tipoCliente
+    Boolean uso
+    BigDecimal montoDepositoInicial
+    BigDecimal numeroAproxDepoMensuales
+    BigDecimal porccentajePromedioMensualDepositos
+    BigDecimal numeroAproxRetirosMensuales
+    BigDecimal montoAproxMensualRetiros
+    Date fechaBaja
+    String liqVSsaldo
+    Boolean manejaCust
+    Boolean cortoEfectivo
 
 //Generales
-//    String nacionalidadG
-//    String paisG
-//    String calleG
-//    String noExteriorG
-//    String noInteriorG
-//    String coloniaG
-//    String alcaldia
-//    String ciudadG
-//    String estadosG
-//    String cpG
-//    String telefonoParticularG
-//    String telefonoCelularG
-//    String email
-//    String rfcG
-//    String curpG
-//    String fiel
+    String nacionalidadG
+    String paisG
+    String calleG
+    String noExteriorG
+    String noInteriorG
+    String coloniaG
+    String alcaldia
+    String ciudadG
+    String estadosG
+    String cpG
+    String telefonoParticularG
+    String telefonoCelularG
+    String email
+    String rfcG
+    String curpG
+    String fiel
 
 //Chequeras
-//    String institucion
-//    String cuenta
-//    String titular
-//    String clabe
-//    String broker
+    String institucion
+    String cuenta
+    String titular
+    String clabe
+    String broker
 
 //PPE
-//    Boolean personaPoliticamenteExpuesta
-//    String ambito
+    Boolean personaPoliticamenteExpuesta
+    String ambito
 
 
     static constraints = {
@@ -320,10 +320,125 @@ class Clientes {
         actividadDEEmpresaC nullable: true
         porcentajeEmpresaPertenece nullable: true
         consejeroEmpresaC nullable: true
+
+        institucionesCargosPublicosRelacion nullable: true
+        institucionDesempeñaCargoC nullable: true
+        relacionPersonaNacionalExtranjeraC nullable: true
+
+//        Procedencia de resursos
+        procedenciaRecurso nullable: true
+        detalleRecurso nullable: true
+
+//        Proveedor de recursos
+        proveedorrecursoNombre nullable: true
+        apellidoPaternoP nullable: true
+        apellidoMaternoP nullable: true
+        nacionalidadP nullable: true
+        fechaNacimientoP nullable: true
+        curp nullable: true
+        rfcP nullable: true
+        firmaElectronica nullable: true
+        tipoVialidad nullable: true
+        nombreVialidad nullable: true
+        noExterior nullable: true
+        noInterior nullable: true
+        colonia nullable: true
+        municipio nullable: true
+        ciudad nullable: true
+        estado nullable: true
+        cp nullable: true
+        paisP nullable: true
+        personaMoralRazonSocial nullable: true
+        nacionalidad nullable: true
+        rfcPR nullable: true
+        firmaElectronicaP nullable: true
+        domicilio nullable: true
+        tipoVialidadP nullable: true
+        nombreVialidadP nullable: true
+        noExteriorP nullable: true
+        noInteriorP nullable: true
+        coloniaP nullable: true
+        delegacion nullable: true
+        ciudadP nullable: true
+        estadoP nullable: true
+        codigoPostal nullable: true
+        paisPR nullable: true
+
+//        Propietario real
+        propietarioRealNombre nullable: true
+        apellidoPaternoPRE nullable: true
+        apellidoMaternoPRE nullable: true
+        genero nullable: true
+        fechaNacimientoPRE nullable: true
+        curpPRE nullable: true
+        paisNacimiento nullable: true
+        estadoNacimiento nullable: true
+        nacionalidadPRE nullable: true
+        calidadMigratoria nullable: true
+        paisResidencia nullable: true
+        regimenFiscal nullable: true
+        rfcPRE nullable: true
+        firmaElectronicaAvanzada nullable: true
+        telefonoParticular nullable: true
+        telefonoCelular nullable: true
+        correoElectronico nullable: true
+        domicilioPropietario nullable: true
+        tipoVialidadPRE nullable: true
+        nombreVialidadPRE nullable: true
+        noExteriorPRE nullable: true
+        noInteriorPRE nullable: true
+        coloniaPRE nullable: true
+        delegacionPRE nullable: true
+        ciudadPRE nullable: true
+        estadoPRE nullable: true
+        paisPRE nullable: true
+        codigo nullable: true
+
+//        Usos y movimientos de la cuenta
+        tipoCliente nullable: true
+        uso nullable: true
+        montoDepositoInicial nullable: true
+        numeroAproxDepoMensuales nullable: true
+        porccentajePromedioMensualDepositos nullable: true
+        numeroAproxRetirosMensuales nullable: true
+        montoAproxMensualRetiros nullable: true
+        fechaBaja nullable: true
+        liqVSsaldo nullable: true
+        manejaCust nullable: true
+        cortoEfectivo nullable: true
+
+//        Generales
+        nacionalidadG nullable: true
+        paisG nullable: true
+        calleG nullable: true
+        noExteriorG nullable: true
+        noInteriorG nullable: true
+        coloniaG nullable: true
+        alcaldia nullable: true
+        ciudadG nullable: true
+        estadosG nullable: true
+        cpG nullable: true
+        telefonoParticularG nullable: true
+        telefonoCelularG nullable: true
+        email nullable: true
+        rfcG nullable: true
+        curpG nullable: true
+        fiel nullable: true
+
+//        Chequeras
+        institucion nullable: true
+        cuenta nullable: true
+        titular nullable: true
+        clabe nullable: true
+        broker nullable: true
+
+//        PPE
+        personaPoliticamenteExpuesta nullable: true
+        ambito nullable: true
     }
 
     static mapping = {
-        table "CLIENTES"
+        table("Cliente")
         version false
         id generator: "identity"
         titularNombre name:"titularNombre", column:"titularNombre"
@@ -416,6 +531,120 @@ class Clientes {
         actividadDEEmpresaC name:"actividadDEEmpresaC", column:"actividadDEEmpresaC"
         porcentajeEmpresaPertenece name:"porcentajeEmpresaPertenece", column:"porcentajeEmpresaPertenece"
         consejeroEmpresaC name:"consejeroEmpresaC", column:"consejeroEmpresaC"
+        institucionesCargosPublicosRelacion name:"institucionesCargosPublicosRelacion", column:"institucionesCargosPublicosRelacion"
+        institucionDesempeñaCargoC name:"institucionDesempeñaCargoC", column:"institucionDesempeñaCargoC"
+        relacionPersonaNacionalExtranjeraC name:"relacionPersonaNacionalExtranjeraC", column:"relacionPersonaNacionalExtranjeraC"
+
+//        Procedencia de recursos
+        procedenciaRecurso name: "procedenciaRecurso", column:"procedenciaRecurso"
+        detalleRecurso name: "detalleRecurso", column:"detalleRecurso"
+
+//        Proveedor de recursos
+        proveedorrecursoNombre name:"proveedorrecursoNombre", column:"proveedorrecursoNombre"
+        apellidoPaternoP name:"apellidoPaternoP", column:"apellidoPaternoP"
+        apellidoMaternoP name:"apellidoMaternoP", column:"apellidoMaternoP"
+        nacionalidadP name:"nacionalidadP", column:"nacionalidadP"
+        fechaNacimientoP name:"fechaNacimientoP", column:"fechaNacimientoP"
+        curp name:"curp", column:"curp"
+        rfcP name:"rfcP", column:"rfcP"
+        firmaElectronica name:"firmaElectronica", column:"firmaElectronica"
+        tipoVialidad name:"tipoVialidad", column:"tipoVialidad"
+        nombreVialidad name:"nombreVialidad", column:"nombreVialidad"
+        noExterior name:"noExterior", column:"noExterior"
+        noInterior name:"noInterior", column:"noInterior"
+        colonia name:"colonia", column:"colonia"
+        municipio name:"municipio", column:"municipio"
+        ciudad name:"ciudad", column:"ciudad"
+        estado name:"estado", column:"estado"
+        cp name:"cp", column:"cp"
+        paisP name:"paisP", column:"paisP"
+        personaMoralRazonSocial name:"personaMoralRazonSocial", column:"personaMoralRazonSocial"
+        nacionalidad name:"nacionalidad", column:"nacionalidad"
+        rfcPR name:"rfcPR", column:"rfcPR"
+        firmaElectronicaP name:"firmaElectronicaP", column:"firmaElectronicaP"
+        domicilio name:"domicilio", column:"domicilio"
+        tipoVialidadP name:"tipoVialidadP", column:"tipoVialidadP"
+        nombreVialidadP name:"nombreVialidadP", column:"nombreVialidadP"
+        noExteriorP name:"noExteriorP", column:"noExteriorP"
+        noInteriorP name:"noInteriorP", column:"noInteriorP"
+        coloniaP name:"coloniaP", column:"coloniaP"
+        delegacion name:"delegacion", column:"delegacion"
+        ciudadP name:"ciudadP", column:"ciudadP"
+        estadoP name:"estadoP", column:"estadoP"
+        codigoPostal name:"codigoPostal", column:"codigoPostal"
+        paisPR name:"paisPR", column:"paisPR"
+
+//        Propietario real
+        propietarioRealNombre name:"propietarioRealNombre", column:"propietarioRealNombre"
+        apellidoPaternoPRE name:"apellidoPaternoPRE", column:"apellidoPaternoPRE"
+        apellidoMaternoPRE name:"apellidoMaternoPRE", column:"apellidoMaternoPRE"
+        genero name:"genero", column:"genero"
+        fechaNacimientoPRE name:"fechaNacimientoPRE", column:"fechaNacimientoPRE"
+        curpPRE name:"curpPRE", column:"curpPRE"
+        paisNacimiento name:"paisNacimiento", column:"paisNacimiento"
+        estadoNacimiento name:"estadoNacimiento", column:"estadoNacimiento"
+        nacionalidadPRE name:"nacionalidadPRE", column:"nacionalidadPRE"
+        calidadMigratoria name:"calidadMigratoria", column:"calidadMigratoria"
+        paisResidencia name:"paisResidencia", column:"paisResidencia"
+        regimenFiscal name:"regimenFiscal", column:"regimenFiscal"
+        rfcPRE name:"rfcPRE", column:"rfcPRE"
+        firmaElectronicaAvanzada name:"firmaElectronicaAvanzada", column:"firmaElectronicaAvanzada"
+        telefonoParticular name:"telefonoParticular", column:"telefonoParticular"
+        telefonoCelular name:"telefonoCelular", column:"telefonoCelular"
+        correoElectronico name:"correoElectronico", column:"correoElectronico"
+        domicilioPropietario name:"domicilioPropietario", column:"domicilioPropietario"
+        tipoVialidadPRE name:"tipoVialidadPRE", column:"tipoVialidadPRE"
+        nombreVialidadPRE name:"nombreVialidadPRE", column:"nombreVialidadPRE"
+        noExteriorPRE name:"noExteriorPRE", column:"noExteriorPRE"
+        noInteriorPRE name:"noInteriorPRE", column:"noInteriorPRE"
+        coloniaPRE name:"coloniaPRE", column:"coloniaPRE"
+        delegacionPRE name:"delegacionPRE", column:"delegacionPRE"
+        ciudadPRE name:"ciudadPRE", column:"ciudadPRE"
+        estadoPRE name:"estadoPRE", column:"estadoPRE"
+        paisPRE name:"paisPRE", column:"paisPRE"
+        codigo name:"codigo", column:"codigo"
+
+//        Uso y movimiento de la cuenta
+        tipoCliente name:"tipoCliente", column:"tipoCliente"
+        uso name:"uso", column:"uso"
+        montoDepositoInicial name:"montoDepositoInicial", column:"montoDepositoInicial"
+        numeroAproxDepoMensuales name:"numeroAproxDepoMensuales", column:"numeroAproxDepoMensuales"
+        porccentajePromedioMensualDepositos name:"porccentajePromedioMensualDepositos", column:"porccentajePromedioMensualDepositos"
+        numeroAproxRetirosMensuales name:"numeroAproxRetirosMensuales", column:"numeroAproxRetirosMensuales"
+        montoAproxMensualRetiros name:"montoAproxMensualRetiros", column:"montoAproxMensualRetiros"
+        fechaBaja name:"fechaBaja", column:"fechaBaja"
+        liqVSsaldo name:"liqVSsaldo", column:"liqVSsaldo"
+        manejaCust name:"manejaCust", column:"manejaCust"
+        cortoEfectivo name:"cortoEfectivo", column:"cortoEfectivo"
+
+//        Generales
+        nacionalidadG name:"nacionalidadG", column:"nacionalidadG"
+        paisG name:"paisG", column:"paisG"
+        calleG name:"calleG", column:"calleG"
+        noExteriorG name:"noExteriorG", column:"noExteriorG"
+        noInteriorG name:"noInteriorG", column:"noInteriorG"
+        coloniaG name:"coloniaG", column:"coloniaG"
+        alcaldia name:"alcaldia", column:"alcaldia"
+        ciudadG name:"ciudadG", column:"ciudadG"
+        estadosG name:"estadosG", column:"estadosG"
+        cpG name:"cpG", column:"cpG"
+        telefonoParticularG name:"telefonoParticularG", column:"telefonoParticularG"
+        telefonoCelularG name:"telefonoCelularG", column:"telefonoCelularG"
+        email name:"email", column:"email"
+        rfcG name:"rfcG", column:"rfcG"
+        curpG name:"curpG", column:"curpG"
+        fiel name:"fiel", column:"fiel"
+
+//        Chequeas
+        institucion name:"institucion", column:"institucion"
+        cuenta name:"cuenta", column:"cuenta"
+        titular name:"titular", column:"titular"
+        clabe name:"clabe", column:"clabe"
+        broker name:"broker", column:"broker"
+
+//        PPE
+        personaPoliticamenteExpuesta name:"personaPoliticamenteExpuesta", column:"personaPoliticamenteExpuesta"
+        ambito name:"ambito", column:"ambito"
     }
 
     static transients = ['descLabel']
