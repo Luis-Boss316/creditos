@@ -561,5 +561,78 @@ export class _clientes {
   actividadDEEmpresaC: string;
   porcentajeEmpresaPertenece: string;
   consejeroEmpresaC: string;
+  institucionesCargosPublicosRelacion: string;
+  institucionDesempenaCargoC: string;
+  relacionPersonaNacionalExtranjeraC: string;
+
+  // procedencia de recursos
+  procedenciaRecurso: string;
+  detalleRecurso: string;
+
+  // proveedor de recursos
+  proveedorrecursoNombre: string;
+  apellidoPaternoP: string;
+  apellidoMaternoP: string;
+  nacionalidadP: _nacionalidades;
+  fechaNacimientoP: Date;
+  curp: string;
+  rfcP: string;
+  firmaElectronica: string;
+  tipoVialidad: string;
+  nombreVialidad: string;
+  noExterior: string;
+  noInterior: string;
+  colonia: string;
+  municipio: _municipios;
+  ciudad: _ciudades;
+  estado: _estados;
+  cp: string;
+  paisP: _paises;
+  personaMoralRazonSocial: string;
+  nacionalidad: _nacionalidades;
+  rfcPR: string;
+  firmaElectronicaP: string;
+  domicilio: string;
+  tipoVialidadP: string;
+  nombreVialidadP: string;
+  noExteriorP: string;
+  noInteriorP: string;
+  coloniaP: string;
+  delegacion: _municipios;
+  ciudadP: _ciudades;
+  estadoP: _estados;
+  codigoPostal: string;
+  paisPR: _paises;
+
+  // propietario real
+  propietarioRealNombre: string;
+  apellidoPaternoPRE: string;
+  apellidoMaternoPRE: string;
+  genero: string;
+  fechaNacimientoPRE: Date;
+  curpPRE: string;
+  paisNacimiento: _paises;
+  estadoNacimiento: _estados;
+  nacionalidadPRE: _nacionalidades
+  calidadMigratoria: string;
+  paisResidencia: _paises;
+  regimenFiscal: string;
+  rfcPRE: string;
+  firmaElectronicaAvanzada: string;
+  telefonoParticular: string;
+  telefonoCelular: string;
+  correoElectronico: string;
+  domicilioPropietario: string;
+  tipoVialidadPRE: string;
+  nombreVialidadPRE: string;
+  noExteriorPRE: string;
+  noInteriorPRE: string;
+  coloniaPRE: string;
+  delegacionPRE: _municipios;
+  ciudadPRE: _ciudades;
+  estadoPRE: _estados;
+  paisPRE: _paises;
+  codigo: string;
+
 }
 

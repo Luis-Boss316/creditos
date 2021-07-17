@@ -14,6 +14,9 @@ export class ClientesFormComponent implements OnInit {
   action: string;
   _titularForm: FormGroup;
   _cotitularForm: FormGroup;
+  _procedenciaForm: FormGroup;
+  _proveedorRecursosForm: FormGroup;
+  _propietarioForm: FormGroup;
   dialogTitle: string;
   advanceTable: _clientes;
   public grupoFamiliaCombo: _combo[];
@@ -27,6 +30,27 @@ export class ClientesFormComponent implements OnInit {
   public paisesCombo: _combo[];
   public nacionalidades3Combo: _combo[];
   public nacionalidades4Combo: _combo[];
+
+  public nacionalidades5Combo: _combo[];
+  public municipiosCombo: _combo[];
+  public ciudadesCombo: _combo[];
+  public estados2Combo: _combo[];
+  public paises2Combo: _combo[];
+  public nacionalidades6Combo: _combo[];
+  public municipios2Combo: _combo[];
+  public ciudades2Combo: _combo[];
+  public estados3Combo: _combo[];
+  public paises3Combo: _combo[];
+
+  public paises4Combo: _combo[];
+  public estados4Combo: _combo[];
+  public nacionalidades7Combo: _combo[];
+  public paises5Combo: _combo[];
+  public municipios3Combo: _combo[];
+  public ciudades3Combo: _combo[];
+  public estados5Combo: _combo[];
+  public paises6Combo: _combo[];
+
 
   constructor(public dialogRef: MatDialogRef<ClientesFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -68,6 +92,43 @@ export class ClientesFormComponent implements OnInit {
       this.nacionalidades3Combo = result);
     this.advanceTableService.combo<_combo[]>({id: 'Nacionalidades'}, 'comboController').subscribe(result =>
       this.nacionalidades4Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Nacionalidades'}, 'comboController').subscribe(result =>
+      this.nacionalidades5Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Municipios'}, 'comboController').subscribe(result =>
+      this.municipiosCombo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Ciudades'}, 'comboController').subscribe(result =>
+      this.ciudadesCombo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Estados'}, 'comboController').subscribe(result =>
+      this.estados2Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Paises'}, 'comboController').subscribe(result =>
+      this.paises2Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Nacionalidades'}, 'comboController').subscribe(result =>
+      this.nacionalidades6Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Municipios'}, 'comboController').subscribe(result =>
+      this.municipios2Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Ciudades'}, 'comboController').subscribe(result =>
+      this.ciudades2Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Estados'}, 'comboController').subscribe(result =>
+      this.estados3Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Paises'}, 'comboController').subscribe(result =>
+      this.paises3Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Paises'}, 'comboController').subscribe(result =>
+      this.paises4Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Estados'}, 'comboController').subscribe(result =>
+      this.estados4Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Nacionalidades'}, 'comboController').subscribe(result =>
+      this.nacionalidades7Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Paises'}, 'comboController').subscribe(result =>
+      this.paises5Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Municipios'}, 'comboController').subscribe(result =>
+      this.municipios3Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Ciudades'}, 'comboController').subscribe(result =>
+      this.ciudades3Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Estados'}, 'comboController').subscribe(result =>
+      this.estados5Combo = result);
+    this.advanceTableService.combo<_combo[]>({id: 'Paises'}, 'comboController').subscribe(result =>
+      this.paises6Combo = result);
+
 
 
     this.dialogTitle = this.data.data.alias;
@@ -165,7 +226,82 @@ export class ClientesFormComponent implements OnInit {
       actividadDEEmpresaC: [this.data.data.actividadDEEmpresaC ? this.data.data.actividadDEEmpresaC: ''],
       porcentajeEmpresaPertenece: [this.data.data.porcentajeEmpresaPertenece ? this.data.data.porcentajeEmpresaPertenece: ''],
       consejeroEmpresaC: [this.data.data.consejeroEmpresaC ? this.data.data.consejeroEmpresaC: ''],
+      institucionesCargosPublicosRelacion: [this.data.data.institucionesCargosPublicosRelacion ? this.data.data.institucionesCargosPublicosRelacion: ''],
+      institucionDesempenaCargoC: [this.data.data.institucionDesempenaCargoC ? this.data.data.institucionDesempenaCargoC: ''],
+      relacionPersonaNacionalExtranjeraC: [this.data.data.relacionPersonaNacionalExtranjeraC ? this.data.data.relacionPersonaNacionalExtranjeraC: ''],
     });
+
+    this._procedenciaForm = this.advanceTableService.buildForm({
+      procedenciaRecurso: [this.data.data.procedenciaRecurso ? this.data.data.procedenciaRecurso: ''],
+      detalleRecurso: [this.data.data.detalleRecurso ? this.data.data.detalleRecurso: ''],
+    });
+
+    this._proveedorRecursosForm = this .advanceTableService.buildForm({
+      proveedorrecursoNombre: [this.data.data.proveedorrecursoNombre ? this.data.data.proveedorrecursoNombre: ''],
+      apellidoPaternoP: [this.data.data.apellidoPaternoP ? this.data.data.apellidoPaternoP: ''],
+      apellidoMaternoP: [this.data.data.apellidoMaternoP ? this.data.data.apellidoMaternoP: ''],
+      nacionalidadP: [this.data.data.nacionalidadP ? this.data.data.nacionalidadP: ''],
+      fechaNacimientoP: [this.data.data.fechaNacimientoP ? this.data.data.fechaNacimientoP: ''],
+      curp: [this.data.data.curp ? this.data.data.curp: ''],
+      rfcP: [this.data.data.rfcP ? this.data.data.rfcP: ''],
+      firmaElectronica: [this.data.data.firmaElectronica ? this.data.data.firmaElectronica: ''],
+      tipoVialidad: [this.data.data.tipoVialidad ? this.data.data.tipoVialidad: ''],
+      nombreVialidad: [this.data.data.nombreVialidad ? this.data.data.nombreVialidad: ''],
+      noExterior: [this.data.data.noExterior ? this.data.data.noExterior: ''],
+      noInterior: [this.data.data.noInterior ? this.data.data.noInterior: ''],
+      colonia: [this.data.data.colonia ? this.data.data.colonia: ''],
+      municipio: [this.data.data.municipio ? this.data.data.municipio: ''],
+      ciudad: [this.data.data.ciudad ? this.data.data.ciudad: ''],
+      estado: [this.data.data.estado ? this.data.data.estado: ''],
+      cp: [this.data.data.cp ? this.data.data.cp: ''],
+      paisP: [this.data.data.paisP ? this.data.data.paisP: ''],
+      personaMoralRazonSocial: [this.data.data.personaMoralRazonSocial ? this.data.data.personaMoralRazonSocial: ''],
+      nacionalidad: [this.data.data.nacionalidad ? this.data.data.nacionalidad: ''],
+      rfcPR: [this.data.data.rfcPR ? this.data.data.rfcPR: ''],
+      firmaElectronicaP: [this.data.data.firmaElectronicaP ? this.data.data.firmaElectronicaP: ''],
+      domicilio: [this.data.data.domicilio ? this.data.data.domicilio: ''],
+      tipoVialidadP: [this.data.data.tipoVialidadP ? this.data.data.tipoVialidadP: ''],
+      nombreVialidadP: [this.data.data.nombreVialidadP ? this.data.data.nombreVialidadP: ''],
+      noExteriorP: [this.data.data.noExteriorP ? this.data.data.noExteriorP: ''],
+      noInteriorP: [this.data.data.noInteriorP ? this.data.data.noInteriorP: ''],
+      coloniaP: [this.data.data.coloniaP ? this.data.data.coloniaP: ''],
+      delegacion: [this.data.data.delegacion ? this.data.data.delegacion: ''],
+      ciudadP: [this.data.data.ciudadP ? this.data.data.ciudadP: ''],
+      estadoP: [this.data.data.estadoP ? this.data.data.estadoP: ''],
+      codigoPostal: [this.data.data.codigoPostal ? this.data.data.codigoPostal: ''],
+      paisPR: [this.data.data.paisPR ? this.data.data.paisPR: ''],
+    })
+
+    this._propietarioForm = this .advanceTableService.buildForm({
+      propietarioRealNombre: [this.data.data.propietarioRealNombre ? this.data.data.propietarioRealNombre: ''],
+      apellidoPaternoPRE: [this.data.data.apellidoPaternoPRE ? this.data.data.apellidoPaternoPRE: ''],
+      apellidoMaternoPRE: [this.data.data.apellidoMaternoPRE ? this.data.data.apellidoMaternoPRE: ''],
+      genero: [this.data.data.genero ? this.data.data.genero: ''],
+      fechaNacimientoPRE: [this.data.data.fechaNacimientoPRE ? this.data.data.fechaNacimientoPRE: ''],
+      curpPRE: [this.data.data.curpPRE ? this.data.data.curpPRE: ''],
+      paisNacimiento: [this.data.data.paisNacimiento ? this.data.data.paisNacimiento: ''],
+      estadoNacimiento: [this.data.data.estadoNacimiento ? this.data.data.estadoNacimiento: ''],
+      nacionalidadPRE: [this.data.data.nacionalidadPRE ? this.data.data.nacionalidadPRE: ''],
+      calidadMigratoria: [this.data.data.calidadMigratoria ? this.data.data.calidadMigratoria: ''],
+      paisResidencia: [this.data.data.paisResidencia ? this.data.data.paisResidencia: ''],
+      regimenFiscal: [this.data.data.regimenFiscal ? this.data.data.regimenFiscal: ''],
+      rfcPRE: [this.data.data.rfcPRE ? this.data.data.rfcPRE: ''],
+      firmaElectronicaAvanzada: [this.data.data.firmaElectronicaAvanzada ? this.data.data.firmaElectronicaAvanzada: ''],
+      telefonoParticular: [this.data.data.telefonoParticular ? this.data.data.telefonoParticular: ''],
+      telefonoCelular: [this.data.data.telefonoCelular ? this.data.data.telefonoCelular: ''],
+      correoElectronico: [this.data.data.correoElectronico ? this.data.data.correoElectronico: ''],
+      domicilioPropietario: [this.data.data.domicilioPropietario ? this.data.data.domicilioPropietario: ''],
+      tipoVialidadPRE: [this.data.data.tipoVialidadPRE ? this.data.data.tipoVialidadPRE: ''],
+      nombreVialidadPRE: [this.data.data.nombreVialidadPRE ? this.data.data.nombreVialidadPRE: ''],
+      noExteriorPRE: [this.data.data.noExteriorPRE ? this.data.data.noExteriorPRE: ''],
+      noInteriorPRE: [this.data.data.noInteriorPRE ? this.data.data.noInteriorPRE: ''],
+      coloniaPRE: [this.data.data.coloniaPRE ? this.data.data.coloniaPRE: ''],
+      delegacionPRE: [this.data.data.delegacionPRE ? this.data.data.delegacionPRE: ''],
+      ciudadPRE: [this.data.data.ciudadPRE ? this.data.data.ciudadPRE: ''],
+      estadoPRE: [this.data.data.estadoPRE ? this.data.data.estadoPRE: ''],
+      paisPRE: [this.data.data.paisPRE ? this.data.data.paisPRE: ''],
+      codigo: [this.data.data.codigo ? this.data.data.codigo: ''],
+    })
     }
   }
 

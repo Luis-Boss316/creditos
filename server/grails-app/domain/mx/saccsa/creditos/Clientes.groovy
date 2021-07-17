@@ -92,7 +92,7 @@ class Clientes {
     String rfc
     Nacionalidades nacionalidadEmpresaC
     String telefonoEmpresaC
-    String sectorDeEmpresaC
+    String sector1EmpresaC
     String actividadDeEmpresaC
     String porcentajeEmpresaC
     String esConsejero
@@ -107,7 +107,7 @@ class Clientes {
 
 //    Instituciones o cargos publicos con los que tiene relacion o vinculos:
     String institucionesCargosPublicosRelacion
-    String institucionDesempeñaCargoC
+    String institucionDesempenaCargoC
     String relacionPersonaNacionalExtranjeraC
 
 //Procedencia de recursos
@@ -118,7 +118,7 @@ class Clientes {
     String proveedorrecursoNombre
     String apellidoPaternoP
     String apellidoMaternoP
-    String nacionalidadP
+    Nacionalidades nacionalidadP
     Date fechaNacimientoP
     String curp
     String rfcP
@@ -128,13 +128,13 @@ class Clientes {
     String noExterior
     String noInterior
     String colonia
-    String municipio
-    String ciudad
-    String estado
+    Municipios municipio
+    Ciudades ciudad
+    Estados estado
     String cp
-    String paisP
+    Paises paisP
     String personaMoralRazonSocial
-    String nacionalidad
+    Nacionalidades nacionalidad
     String rfcPR
     String firmaElectronicaP
     String domicilio
@@ -143,24 +143,24 @@ class Clientes {
     String noExteriorP
     String noInteriorP
     String coloniaP
-    String delegacion
-    String ciudadP
-    String estadoP
+    Municipios delegacion
+    Ciudades ciudadP
+    Estados estadoP
     String codigoPostal
-    String paisPR
+    Paises paisPR
 
 //Propietario Real
     String propietarioRealNombre
     String apellidoPaternoPRE
     String apellidoMaternoPRE
-    Boolean genero
+    String genero
     Date fechaNacimientoPRE
     String curpPRE
-    String paisNacimiento
-    String estadoNacimiento
-    String nacionalidadPRE
+    Paises paisNacimiento
+    Estados estadoNacimiento
+    Nacionalidades nacionalidadPRE
     String calidadMigratoria
-    String paisResidencia
+    Paises paisResidencia
     String regimenFiscal
     String rfcPRE
     String firmaElectronicaAvanzada
@@ -173,53 +173,53 @@ class Clientes {
     String noExteriorPRE
     String noInteriorPRE
     String coloniaPRE
-    String delegacionPRE
-    String ciudadPRE
-    String estadoPRE
-    String paisPRE
+    Municipios delegacionPRE
+    Ciudades ciudadPRE
+    Estados estadoPRE
+    Paises paisPRE
     String codigo
 
 //Uso y movimientos de la cuenta
-    String tipoCliente
-    Boolean uso
-    BigDecimal montoDepositoInicial
-    BigDecimal numeroAproxDepoMensuales
-    BigDecimal porccentajePromedioMensualDepositos
-    BigDecimal numeroAproxRetirosMensuales
-    BigDecimal montoAproxMensualRetiros
-    Date fechaBaja
-    String liqVSsaldo
-    Boolean manejaCust
-    Boolean cortoEfectivo
+//    String tipoCliente
+//    Boolean uso
+//    BigDecimal montoDepositoInicial
+//    BigDecimal numeroAproxDepoMensuales
+//    BigDecimal porccentajePromedioMensualDepositos
+//    BigDecimal numeroAproxRetirosMensuales
+//    BigDecimal montoAproxMensualRetiros
+//    Date fechaBaja
+//    String liqVSsaldo
+//    Boolean manejaCust
+//    Boolean cortoEfectivo
 
 //Generales
-    String nacionalidadG
-    String paisG
-    String calleG
-    String noExteriorG
-    String noInteriorG
-    String coloniaG
-    String alcaldia
-    String ciudadG
-    String estadosG
-    String cpG
-    String telefonoParticularG
-    String telefonoCelularG
-    String email
-    String rfcG
-    String curpG
-    String fiel
+//    String nacionalidadG
+//    String paisG
+//    String calleG
+//    String noExteriorG
+//    String noInteriorG
+//    String coloniaG
+//    String alcaldia
+//    String ciudadG
+//    String estadosG
+//    String cpG
+//    String telefonoParticularG
+//    String telefonoCelularG
+//    String email
+//    String rfcG
+//    String curpG
+//    String fiel
 
 //Chequeras
-    String institucion
-    String cuenta
-    String titular
-    String clabe
-    String broker
+//    String institucion
+//    String cuenta
+//    String titular
+//    String clabe
+//    String broker
 
 //PPE
-    Boolean personaPoliticamenteExpuesta
-    String ambito
+//    Boolean personaPoliticamenteExpuesta
+//    String ambito
 
 
     static constraints = {
@@ -308,7 +308,7 @@ class Clientes {
         rfc nullable: true
         nacionalidadEmpresaC nullable: true
         telefonoEmpresaC nullable: true
-        sectorDeEmpresaC nullable: true
+        sector1EmpresaC nullable: true
         actividadDeEmpresaC nullable: true
         porcentajeEmpresaC nullable: true
         esConsejero nullable: true
@@ -322,7 +322,7 @@ class Clientes {
         consejeroEmpresaC nullable: true
 
         institucionesCargosPublicosRelacion nullable: true
-        institucionDesempeñaCargoC nullable: true
+        institucionDesempenaCargoC nullable: true
         relacionPersonaNacionalExtranjeraC nullable: true
 
 //        Procedencia de resursos
@@ -395,46 +395,46 @@ class Clientes {
         codigo nullable: true
 
 //        Usos y movimientos de la cuenta
-        tipoCliente nullable: true
-        uso nullable: true
-        montoDepositoInicial nullable: true
-        numeroAproxDepoMensuales nullable: true
-        porccentajePromedioMensualDepositos nullable: true
-        numeroAproxRetirosMensuales nullable: true
-        montoAproxMensualRetiros nullable: true
-        fechaBaja nullable: true
-        liqVSsaldo nullable: true
-        manejaCust nullable: true
-        cortoEfectivo nullable: true
+//        tipoCliente nullable: true
+//        uso nullable: true
+//        montoDepositoInicial nullable: true
+//        numeroAproxDepoMensuales nullable: true
+//        porccentajePromedioMensualDepositos nullable: true
+//        numeroAproxRetirosMensuales nullable: true
+//        montoAproxMensualRetiros nullable: true
+//        fechaBaja nullable: true
+//        liqVSsaldo nullable: true
+//        manejaCust nullable: true
+//        cortoEfectivo nullable: true
 
 //        Generales
-        nacionalidadG nullable: true
-        paisG nullable: true
-        calleG nullable: true
-        noExteriorG nullable: true
-        noInteriorG nullable: true
-        coloniaG nullable: true
-        alcaldia nullable: true
-        ciudadG nullable: true
-        estadosG nullable: true
-        cpG nullable: true
-        telefonoParticularG nullable: true
-        telefonoCelularG nullable: true
-        email nullable: true
-        rfcG nullable: true
-        curpG nullable: true
-        fiel nullable: true
+//        nacionalidadG nullable: true
+//        paisG nullable: true
+//        calleG nullable: true
+//        noExteriorG nullable: true
+//        noInteriorG nullable: true
+//        coloniaG nullable: true
+//        alcaldia nullable: true
+//        ciudadG nullable: true
+//        estadosG nullable: true
+//        cpG nullable: true
+//        telefonoParticularG nullable: true
+//        telefonoCelularG nullable: true
+//        email nullable: true
+//        rfcG nullable: true
+//        curpG nullable: true
+//        fiel nullable: true
 
 //        Chequeras
-        institucion nullable: true
-        cuenta nullable: true
-        titular nullable: true
-        clabe nullable: true
-        broker nullable: true
+//        institucion nullable: true
+//        cuenta nullable: true
+//        titular nullable: true
+//        clabe nullable: true
+//        broker nullable: true
 
 //        PPE
-        personaPoliticamenteExpuesta nullable: true
-        ambito nullable: true
+//        personaPoliticamenteExpuesta nullable: true
+//        ambito nullable: true
     }
 
     static mapping = {
@@ -519,10 +519,9 @@ class Clientes {
         rfc name:"rfc", column:"rfc"
         nacionalidadEmpresaC name:"nacionalidadEmpresaC", column:"nacionalidadEmpresaC"
         telefonoEmpresaC name:"telefonoEmpresaC", column:"telefonoEmpresaC"
-        sectorDeEmpresaC name:"sectorDeEmpresaC", column:"sectorDeEmpresaC"
+        sector1EmpresaC name:"sector1EmpresaC", column:"sector1EmpresaC"
         actividadDeEmpresaC name:"actividadDeEmpresaC", column:"actividadDeEmpresaC"
         porcentajeEmpresaC name:"porcentajeEmpresaC", column:"porcentajeEmpresaC"
-        esConsejero name:"esConsejero", column:"esConsejero"
         razonSocialC name:"razonSocialC", column:"razonSocialC"
         rfcC name:"rfcC", column:"rfcC"
         nacionalidadDEmpresaC name:"nacionalidadDEmpresaC", column:"nacionalidadDEmpresaC"
@@ -532,7 +531,7 @@ class Clientes {
         porcentajeEmpresaPertenece name:"porcentajeEmpresaPertenece", column:"porcentajeEmpresaPertenece"
         consejeroEmpresaC name:"consejeroEmpresaC", column:"consejeroEmpresaC"
         institucionesCargosPublicosRelacion name:"institucionesCargosPublicosRelacion", column:"institucionesCargosPublicosRelacion"
-        institucionDesempeñaCargoC name:"institucionDesempeñaCargoC", column:"institucionDesempeñaCargoC"
+        institucionDesempenaCargoC name:"institucionDesempeñaCargoC", column:"institucionDesempeñaCargoC"
         relacionPersonaNacionalExtranjeraC name:"relacionPersonaNacionalExtranjeraC", column:"relacionPersonaNacionalExtranjeraC"
 
 //        Procedencia de recursos
@@ -605,46 +604,46 @@ class Clientes {
         codigo name:"codigo", column:"codigo"
 
 //        Uso y movimiento de la cuenta
-        tipoCliente name:"tipoCliente", column:"tipoCliente"
-        uso name:"uso", column:"uso"
-        montoDepositoInicial name:"montoDepositoInicial", column:"montoDepositoInicial"
-        numeroAproxDepoMensuales name:"numeroAproxDepoMensuales", column:"numeroAproxDepoMensuales"
-        porccentajePromedioMensualDepositos name:"porccentajePromedioMensualDepositos", column:"porccentajePromedioMensualDepositos"
-        numeroAproxRetirosMensuales name:"numeroAproxRetirosMensuales", column:"numeroAproxRetirosMensuales"
-        montoAproxMensualRetiros name:"montoAproxMensualRetiros", column:"montoAproxMensualRetiros"
-        fechaBaja name:"fechaBaja", column:"fechaBaja"
-        liqVSsaldo name:"liqVSsaldo", column:"liqVSsaldo"
-        manejaCust name:"manejaCust", column:"manejaCust"
-        cortoEfectivo name:"cortoEfectivo", column:"cortoEfectivo"
+//        tipoCliente name:"tipoCliente", column:"tipoCliente"
+//        uso name:"uso", column:"uso"
+//        montoDepositoInicial name:"montoDepositoInicial", column:"montoDepositoInicial"
+//        numeroAproxDepoMensuales name:"numeroAproxDepoMensuales", column:"numeroAproxDepoMensuales"
+//        porccentajePromedioMensualDepositos name:"porccentajePromedioMensualDepositos", column:"porccentajePromedioMensualDepositos"
+//        numeroAproxRetirosMensuales name:"numeroAproxRetirosMensuales", column:"numeroAproxRetirosMensuales"
+//        montoAproxMensualRetiros name:"montoAproxMensualRetiros", column:"montoAproxMensualRetiros"
+//        fechaBaja name:"fechaBaja", column:"fechaBaja"
+//        liqVSsaldo name:"liqVSsaldo", column:"liqVSsaldo"
+//        manejaCust name:"manejaCust", column:"manejaCust"
+//        cortoEfectivo name:"cortoEfectivo", column:"cortoEfectivo"
 
 //        Generales
-        nacionalidadG name:"nacionalidadG", column:"nacionalidadG"
-        paisG name:"paisG", column:"paisG"
-        calleG name:"calleG", column:"calleG"
-        noExteriorG name:"noExteriorG", column:"noExteriorG"
-        noInteriorG name:"noInteriorG", column:"noInteriorG"
-        coloniaG name:"coloniaG", column:"coloniaG"
-        alcaldia name:"alcaldia", column:"alcaldia"
-        ciudadG name:"ciudadG", column:"ciudadG"
-        estadosG name:"estadosG", column:"estadosG"
-        cpG name:"cpG", column:"cpG"
-        telefonoParticularG name:"telefonoParticularG", column:"telefonoParticularG"
-        telefonoCelularG name:"telefonoCelularG", column:"telefonoCelularG"
-        email name:"email", column:"email"
-        rfcG name:"rfcG", column:"rfcG"
-        curpG name:"curpG", column:"curpG"
-        fiel name:"fiel", column:"fiel"
+//        nacionalidadG name:"nacionalidadG", column:"nacionalidadG"
+//        paisG name:"paisG", column:"paisG"
+//        calleG name:"calleG", column:"calleG"
+//        noExteriorG name:"noExteriorG", column:"noExteriorG"
+//        noInteriorG name:"noInteriorG", column:"noInteriorG"
+//        coloniaG name:"coloniaG", column:"coloniaG"
+//        alcaldia name:"alcaldia", column:"alcaldia"
+//        ciudadG name:"ciudadG", column:"ciudadG"
+//        estadosG name:"estadosG", column:"estadosG"
+//        cpG name:"cpG", column:"cpG"
+//        telefonoParticularG name:"telefonoParticularG", column:"telefonoParticularG"
+//        telefonoCelularG name:"telefonoCelularG", column:"telefonoCelularG"
+//        email name:"email", column:"email"
+//        rfcG name:"rfcG", column:"rfcG"
+//        curpG name:"curpG", column:"curpG"
+//        fiel name:"fiel", column:"fiel"
 
 //        Chequeas
-        institucion name:"institucion", column:"institucion"
-        cuenta name:"cuenta", column:"cuenta"
-        titular name:"titular", column:"titular"
-        clabe name:"clabe", column:"clabe"
-        broker name:"broker", column:"broker"
+//        institucion name:"institucion", column:"institucion"
+//        cuenta name:"cuenta", column:"cuenta"
+//        titular name:"titular", column:"titular"
+//        clabe name:"clabe", column:"clabe"
+//        broker name:"broker", column:"broker"
 
 //        PPE
-        personaPoliticamenteExpuesta name:"personaPoliticamenteExpuesta", column:"personaPoliticamenteExpuesta"
-        ambito name:"ambito", column:"ambito"
+//        personaPoliticamenteExpuesta name:"personaPoliticamenteExpuesta", column:"personaPoliticamenteExpuesta"
+//        ambito name:"ambito", column:"ambito"
     }
 
     static transients = ['descLabel']

@@ -777,8 +777,812 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Sector de la Empresa</mat-label>
+                    <input matInput formControlName="sectorDeEmpresaC">
+                    <mat-error *ngIf="_cotitularForm.get('sectorDeEmpresaC').hasError('required')">
+                      Sector de la Empresa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Activida / Giro de la Empresa</mat-label>
+                    <input matInput formControlName="actividadDeEmpresaC">
+                    <mat-error *ngIf="_cotitularForm.get('actividadDeEmpresaC').hasError('required')">
+                      Activida / Giro de la Empresa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Porcentaje de la Empresa</mat-label>
+                  <input matInput formControlName="porcentajeEmpresaC">
+                  <mat-error *ngIf="_cotitularForm.get('porcentajeEmpresaC').hasError('required')">
+                    Porcentaje de la Empresa es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Es consejero de la empresa</mat-label>
+                    <input matInput formControlName="esConsejero">
+                    <mat-error *ngIf="_cotitularForm.get('esConsejero').hasError('required')">
+                      Es consejero de la empresa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Razon Social</mat-label>
+                    <input matInput formControlName="razonSocialC">
+                    <mat-error *ngIf="_cotitularForm.get('razonSocialC').hasError('required')">
+                      Razon Social es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>RFC</mat-label>
+                      <input matInput formControlName="rfcC">
+                      <mat-error *ngIf="_cotitularForm.get('rfcC').hasError('required')">
+                        RFC es requerido
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Nacionalidad de la Empresa</mat-label>
+                      <mat-select formControlName="nacionalidadDEmpresaC">
+                        <mat-option *ngFor="let item of nacionalidades4Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="_cotitularForm.get('nacionalidadDEmpresaC').hasError('required')">
+                        Nacionalidad de la Empresa es requerida
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Telefono de la Empresa</mat-label>
+                      <input matInput formControlName="telefonoDEmpresaC">
+                      <mat-error *ngIf="_cotitularForm.get('telefonoDEmpresaC').hasError('required')">
+                        Telefono de la Empresa es requerido
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Sector de la Empresa</mat-label>
+                      <input matInput formControlName="sectorDLEmpresaC">
+                      <mat-error *ngIf="_cotitularForm.get('sectorDLEmpresaC').hasError('required')">
+                        Sector de la Empresa es requerido
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Sector de la Empresa</mat-label>
+                      <input matInput formControlName="sectorDLEmpresaC">
+                      <mat-error *ngIf="_cotitularForm.get('sectorDLEmpresaC').hasError('required')">
+                        Sector de la Empresa es requerido
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Actividad / Giro de la Empresa</mat-label>
+                    <input matInput formControlName="actividadDEEmpresaC">
+                    <mat-error *ngIf="_cotitularForm.get('actividadDEEmpresaC').hasError('required')">
+                      Actividad / Giro de la Empresa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Porcentaje de la Empresa le pertenece</mat-label>
+                    <input matInput formControlName="porcentajeEmpresaPertenece">
+                    <mat-error *ngIf="_cotitularForm.get('porcentajeEmpresaPertenece').hasError('required')">
+                      Porcentaje de la Empresa le pertenece es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Es consejero de la empresa</mat-label>
+                    <input matInput formControlName="consejeroEmpresaC">
+                    <mat-error *ngIf="_cotitularForm.get('consejeroEmpresaC').hasError('required')">
+                      Es consejero de la empresa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
               </div>
 
+              <span class="mat-form-field">Instituciones o cargos publicos con los que tiene relacion o vinculos:</span>
+
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Instituciones o Cargos publicos con los que tienen relacion</mat-label>
+                    <input matInput formControlName="institucionesCargosPublicosRelacion">
+                    <mat-error *ngIf="_cotitularForm.get('institucionesCargosPublicosRelacion').hasError('required')">
+                      Instituciones o Cargos publicos con los que tienen relacion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Institucion donde desempeña el cargo</mat-label>
+                    <input matInput formControlName="institucionDesempenaCargoC">
+                    <mat-error *ngIf="_cotitularForm.get('institucionDesempenaCargoC').hasError('required')">
+                      Institucion donde desempeña el cargo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tiene relacion con una persona nacional o extranjera</mat-label>
+                    <input matInput formControlName="relacionPersonaNacionalExtranjeraC">
+                    <mat-error *ngIf="_cotitularForm.get('relacionPersonaNacionalExtranjeraC').hasError('required')">
+                      Tiene relacion con una persona nacional o extranjera es requerido
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="row">
+                    <div class="p-10">
+                      <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_procedenciaForm">
+            <form [formGroup]="_procedenciaForm">
+              <ng-template matStepLabel>PROCEDENCIA DE RECURSOS</ng-template>
+              <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Procedencia del Recurso</mat-label>
+                  <input matInput formControlName="procedenciaRecurso">
+                  <mat-error *ngIf="_procedenciaForm.get('procedenciaRecurso').hasError('required')">
+                    Procedencia del Recurso es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Detalle de recursos</mat-label>
+                    <input matInput formControlName="detalleRecurso">
+                    <mat-error *ngIf="_procedenciaForm.get('detalleRecurso').hasError('required')">
+                      Detalle de recursos es requerido
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="row">
+                    <div class="p-10">
+                      <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_proveedorRecursosForm">
+            <form [formGroup]="_proveedorRecursosForm">
+              <ng-template matStepLabel>PROVEEDOR DE RECURSOS</ng-template>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Proveedor de Recurso Nombre</mat-label>
+                    <input matInput formControlName="proveedorrecursoNombre">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('proveedorrecursoNombre').hasError('required')">
+                      Proveedor de Recurso Nombre es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Apellido Paterno</mat-label>
+                    <input matInput formControlName="apellidoPaternoP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('apellidoPaternoP').hasError('required')">
+                      Apellido Paterno es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Apellido Materno</mat-label>
+                    <input matInput formControlName="apellidoMaternoP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('apellidoMaternoP').hasError('required')">
+                      Apellido Materno es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nacionalidad</mat-label>
+                    <mat-select formControlName="nacionalidadP">
+                      <mat-option *ngFor="let item of nacionalidades5Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('nacionalidadP').hasError('required')">
+                      Nacionalidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="DatepickerOtro" name = "fechaNacimientoP" formControlName="fechaNacimientoP" >
+                    <mat-datepicker-toggle matSuffix [for]="DatepickerOtro"></mat-datepicker-toggle>
+                    <mat-datepicker #DatepickerOtro></mat-datepicker>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('fechaNacimientoP').hasError('required')">
+                      Fecha de Nacimiento es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>CURP</mat-label>
+                    <input matInput formControlName="curp">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('curp').hasError('required')">
+                      CURP es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>RFC</mat-label>
+                    <input matInput formControlName="rfcP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('rfcP').hasError('required')">
+                      RFC es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Firma Electronica</mat-label>
+                    <input matInput formControlName="firmaElectronica">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('firmaElectronica').hasError('required')">
+                      Firma Electronica es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo de Vialidad</mat-label>
+                    <input matInput formControlName="tipoVialidad">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('tipoVialidad').hasError('required')">
+                      Tipo de Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nombre de Vialidad</mat-label>
+                    <input matInput formControlName="nombreVialidad">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('nombreVialidad').hasError('required')">
+                      Nombre de Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No Exterior</mat-label>
+                    <input matInput formControlName="noExterior">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('noExterior').hasError('required')">
+                      No Exterior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No Interior</mat-label>
+                    <input matInput formControlName="noInterior">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('noInterior').hasError('required')">
+                      No Interior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="colonia">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('colonia').hasError('required')">
+                      Colonia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Delegacion/Municipio</mat-label>
+                    <mat-select formControlName="municipio">
+                      <mat-option *ngFor="let item of municipiosCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('municipio').hasError('required')">
+                      Delegacion/Municipio es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select formControlName="ciudad">
+                      <mat-option *ngFor="let item of ciudadesCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('ciudad').hasError('required')">
+                      Ciudad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado/Entidad</mat-label>
+                    <mat-select formControlName="estado">
+                      <mat-option *ngFor="let item of estados2Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('estado').hasError('required')">
+                      Estado/Entidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Codigo Postal</mat-label>
+                    <input matInput formControlName="cp">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('cp').hasError('required')">
+                      Codigo Postal es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais</mat-label>
+                    <mat-select formControlName="paisP">
+                      <mat-option *ngFor="let item of paises2Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('paisP').hasError('required')">
+                      Pais es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Persona Moral Razon Social</mat-label>
+                    <input matInput formControlName="personaMoralRazonSocial">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('personaMoralRazonSocial').hasError('required')">
+                      Persona Moral Razon Social es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nacionalidad</mat-label>
+                    <mat-select formControlName="nacionalidad">
+                      <mat-option *ngFor="let item of nacionalidades6Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('nacionalidad').hasError('required')">
+                      Nacionalidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>RFC</mat-label>
+                    <input matInput formControlName="rfcPR">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('rfcPR').hasError('required')">
+                      RFC es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Firma Electronica</mat-label>
+                    <input matInput formControlName="firmaElectronicaP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('firmaElectronicaP').hasError('required')">
+                      Firma Electronica es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Docimicilio</mat-label>
+                    <input matInput formControlName="domicilio">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('domicilio').hasError('required')">
+                      Docimicilio es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo de Vialidad</mat-label>
+                    <input matInput formControlName="tipoVialidadP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('tipoVialidadP').hasError('required')">
+                      Tipo de Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nombre de Vialidad</mat-label>
+                    <input matInput formControlName="nombreVialidadP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('nombreVialidadP').hasError('required')">
+                      Nombre de Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Exterior</mat-label>
+                    <input matInput formControlName="noExteriorP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('noExteriorP').hasError('required')">
+                      No. Exterior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Interior</mat-label>
+                    <input matInput formControlName="noInteriorP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('noInteriorP').hasError('required')">
+                      No. Interior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="coloniaP">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('coloniaP').hasError('required')">
+                      Colonia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Delegacion</mat-label>
+                    <mat-select formControlName="delegacion">
+                      <mat-option *ngFor="let item of municipios2Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('delegacion').hasError('required')">
+                      Delegacion es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select formControlName="ciudadP">
+                      <mat-option *ngFor="let item of ciudades2Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('ciudadP').hasError('required')">
+                      Ciudad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado / Entidad</mat-label>
+                    <mat-select formControlName="estadoP">
+                      <mat-option *ngFor="let item of estados3Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('estadoP').hasError('required')">
+                      Estado / Entidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Codigo Postal</mat-label>
+                    <input matInput formControlName="codigoPostal">
+                    <mat-error *ngIf="_proveedorRecursosForm.get('codigoPostal').hasError('required')">
+                      Codigo Postal es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais</mat-label>
+                    <mat-select formControlName="paisPR">
+                      <mat-option *ngFor="let item of paises3Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_proveedorRecursosForm.get('paisPR').hasError('required')">
+                      Pais es requerida
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="row">
+                    <div class="p-10">
+                      <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_propietarioForm">
+            <form [formGroup]="_propietarioForm">
+              <ng-template matStepLabel>PROPIETARIO REAL</ng-template>
+              <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Propietario Real Nombre</mat-label>
+                  <input matInput formControlName="propietarioRealNombre">
+                  <mat-error *ngIf="_propietarioForm.get('propietarioRealNombre').hasError('required')">
+                    Propietario Real Nombre es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Apellido Paterno</mat-label>
+                    <input matInput formControlName="apellidoPaternoPRE">
+                    <mat-error *ngIf="_propietarioForm.get('apellidoPaternoPRE').hasError('required')">
+                      Apellido Paterno es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Apellido Materno</mat-label>
+                    <input matInput formControlName="apellidoMaternoPRE">
+                    <mat-error *ngIf="_propietarioForm.get('apellidoMaternoPRE').hasError('required')">
+                      Apellido Materno es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Genero</mat-label>
+                    <mat-select formControlName="genero">
+                      <mat-option value="Masculino">Masculino</mat-option>
+                      <mat-option value="Femenino">Femenino</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('genero').hasError('required')">
+                      Genero es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="DatepickerFecha" name = "fechaNacimientoPRE" formControlName="fechaNacimientoPRE" >
+                    <mat-datepicker-toggle matSuffix [for]="DatepickerFecha"></mat-datepicker-toggle>
+                    <mat-datepicker #DatepickerFecha></mat-datepicker>
+                    <mat-error *ngIf="_propietarioForm.get('fechaNacimientoPRE').hasError('required')">
+                      Fecha de Nacimiento es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Curp</mat-label>
+                    <input matInput formControlName="curpPRE">
+                    <mat-error *ngIf="_propietarioForm.get('curpPRE').hasError('required')">
+                      Curp es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais de Nacimiento</mat-label>
+                    <mat-select formControlName="paisNacimiento">
+                      <mat-option *ngFor="let item of paises4Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('paisNacimiento').hasError('required')">
+                      Pais de Nacimiento es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado de Nacimiento</mat-label>
+                    <mat-select formControlName="estadoNacimiento">
+                      <mat-option *ngFor="let item of estados4Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('estadoNacimiento').hasError('required')">
+                      Estado de Nacimiento es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nacionalidad</mat-label>
+                    <mat-select formControlName="nacionalidadPRE">
+                      <mat-option *ngFor="let item of nacionalidades7Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('nacionalidadPRE').hasError('required')">
+                      Nacionalidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Calidad Migratoria</mat-label>
+                    <input matInput formControlName="calidadMigratoria">
+                    <mat-error *ngIf="_propietarioForm.get('calidadMigratoria').hasError('required')">
+                      Calidad Migratoria es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais de Residencia</mat-label>
+                    <mat-select formControlName="paisResidencia">
+                      <mat-option *ngFor="let item of paises5Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('paisResidencia').hasError('required')">
+                      Pais de Residencia es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Regimen Fiscal</mat-label>
+                    <input matInput formControlName="regimenFiscal">
+                    <mat-error *ngIf="_propietarioForm.get('regimenFiscal').hasError('required')">
+                      Regimen Fiscal es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>RFC</mat-label>
+                    <input matInput formControlName="rfcPRE">
+                    <mat-error *ngIf="_propietarioForm.get('rfcPRE').hasError('required')">
+                      RFC es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Firma Electronica Avanzada</mat-label>
+                    <input matInput formControlName="firmaElectronicaAvanzada">
+                    <mat-error *ngIf="_propietarioForm.get('firmaElectronicaAvanzada').hasError('required')">
+                      Firma Electronica Avanzada es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Telefono Particular</mat-label>
+                  <input matInput formControlName="telefonoParticular">
+                  <mat-error *ngIf="_propietarioForm.get('telefonoParticular').hasError('required')">
+                    Telefono Particular es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Telefono Celular</mat-label>
+                    <input matInput formControlName="telefonoCelular">
+                    <mat-error *ngIf="_propietarioForm.get('telefonoCelular').hasError('required')">
+                      Telefono Celular es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input matInput formControlName="correoElectronico">
+                    <mat-error *ngIf="_propietarioForm.get('correoElectronico').hasError('required')">
+                      Correo Electronico es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Domicilio el Propietario</mat-label>
+                    <input matInput formControlName="domicilioPropietario">
+                    <mat-error *ngIf="_propietarioForm.get('domicilioPropietario').hasError('required')">
+                      Domicilio el Propietario es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo de Vialidad</mat-label>
+                    <input matInput formControlName="tipoVialidadPRE">
+                    <mat-error *ngIf="_propietarioForm.get('tipoVialidadPRE').hasError('required')">
+                      Tipo de Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nombre de la Vialidad</mat-label>
+                    <input matInput formControlName="nombreVialidadPRE">
+                    <mat-error *ngIf="_propietarioForm.get('nombreVialidadPRE').hasError('required')">
+                      Nombre de la Vialidad es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Exterior</mat-label>
+                    <input matInput formControlName="noExteriorPRE">
+                    <mat-error *ngIf="_propietarioForm.get('noExteriorPRE').hasError('required')">
+                      No. Exterior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Interior</mat-label>
+                    <input matInput formControlName="noInteriorPRE">
+                    <mat-error *ngIf="_propietarioForm.get('noInteriorPRE').hasError('required')">
+                      No. Interior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="coloniaPRE">
+                    <mat-error *ngIf="_propietarioForm.get('coloniaPRE').hasError('required')">
+                      Colonia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Delegacion</mat-label>
+                    <mat-select formControlName="delegacionPRE">
+                      <mat-option *ngFor="let item of municipios3Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('delegacionPRE').hasError('required')">
+                      Delegacion es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select formControlName="ciudadPRE">
+                      <mat-option *ngFor="let item of ciudades3Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('ciudadPRE').hasError('required')">
+                      Ciudad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estadoPRE">
+                      <mat-option *ngFor="let item of estados5Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('estadoPRE').hasError('required')">
+                      Estado es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais</mat-label>
+                    <mat-select formControlName="paisPRE">
+                      <mat-option *ngFor="let item of paises6Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_propietarioForm.get('paisPRE').hasError('required')">
+                      Pais es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Codigo</mat-label>
+                    <input matInput formControlName="codigo">
+                    <mat-error *ngIf="_propietarioForm.get('codigo').hasError('required')">
+                      Codigo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="row">
+                    <div class="p-10">
+                      <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
           </mat-step>
         </mat-horizontal-stepper>
