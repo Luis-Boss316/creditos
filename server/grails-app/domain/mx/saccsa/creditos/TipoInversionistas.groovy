@@ -24,7 +24,6 @@ class TipoInversionistas {
         table "TIPOINVERSIONISTAS"
         version false
         id column: 'cveTipoInversionista', name:'cveTipoInversionista', generator:'assigned'
-        cveTipoInversionista	name: 'cveTipoInversionista', column: 'cveTipoInversionista'
         descripcion name:"descripcion", column:"descripcion"
         prioridad name:"prioridad", column:"prioridad"
         institucional name:"institucional", column:"institucional"

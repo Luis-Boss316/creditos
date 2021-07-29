@@ -81,4 +81,12 @@ class KycController extends RestfulController<Kyc> {
         respond instance
     }
 
+    def imagen() {
+        String ruta = 'C:/Archivos/ComprobanteDomicilio/' + params.tipoArchivo + '.png'
+        String fileContents = new File(ruta).encodeAsBase64()
+
+        log.error(fileContents)
+
+        respond(fileContents)
+    }
 }

@@ -1,5 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {_clientes} from "../../../shared/interfaces/Creditos.interface";
+import {
+  _cliente,
+  _clientes,
+  _cotitular, _generales,
+  _procedenciaRecursos, _propietarioReal, _proveedorRecursos,
+  _titular, _usoCuenta
+} from "../../../shared/interfaces/Creditos.interface";
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
@@ -21,40 +27,51 @@ import {map} from "rxjs/operators";
   styleUrls: ['./clientes.component.sass']
 })
 export class ClientesComponent implements OnInit {
-  public _datos = { _title: 'Clientes', _modulo: 'Clientes', _icono: 'fas fa-folder-open', _dominio: 'Clientes', _componente: 'Clientes'}
-  displayedColumns = [ 'select',
+  public _datos = {
+    _title: 'Clientes',
+    _modulo: 'Clientes',
+    _icono: 'fas fa-folder-open',
+    _dominio: 'Clientes',
+    _componente: 'Clientes'
+  }
+  displayedColumns = ['select',
     'titularNombre',
     'apellidoPaterno',
     'apellidoMaterno',
     'promotor',
     'grupoFamilia',
     // 'estatus',
-    'actions' ];
+    'actions'];
 
   selection = new SelectionModel<_clientes>(true, []);
   advanceTable: _clientes | null;
 
   id: number;
+  resultadoo: _cliente;
+  data: _clientes;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
   dataSource: ClientesDataSource | null;
 
   constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog,
-              public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
+              public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) {
+  }
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild('filter', { static: true }) filter: ElementRef;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild('filter', {static: true}) filter: ElementRef;
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
-  contextMenuPosition = { x: '0px', y: '0px' };
+  contextMenuPosition = {x: '0px', y: '0px'};
 
   ngOnInit(): void {
     this.advanceTableService.initService(this._datos._dominio);
     this.loadData();
   }
 
-  refresh() { this.loadData(); }
+  refresh() {
+    this.loadData();
+  }
 
   addNew() {
     let data: any;
@@ -62,18 +79,21 @@ export class ClientesComponent implements OnInit {
       data = result;
       console.log(this.advanceTable)
       const dialogRef = this.dialog.open(ClientesFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+        data: {title: this._datos._title, disableClose: true, data: data, action: 'Agregar'}
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
+        if (!result) {
+          return
+        }
 
         this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success', this._datos._title + 'Agregada!!', 'bottom', 'center' );
+          this.showNotification('snackbar-success', this._datos._title + 'Agregada!!', 'bottom', 'center');
           this.refresh();
         }, error => {
           if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+            this.showNotification('snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center');
+            Object.entries(error._embedded.errors).forEach(([key, value]) => {
+            });
           }
         })
         this.refreshTable();
@@ -83,47 +103,54 @@ export class ClientesComponent implements OnInit {
 
   editCall(row) {
     this.id = row.id;
-    let data: any;
     this.advanceTableService.edit<_clientes>(this.id).subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(ClientesFormComponent, {
-        data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.update<string>(this.id, result)
-          .subscribe(data => {
-            this.showNotification( 'snackbar-success','¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center' );
-            this.refresh();
-          }, error => {
-            if (error._embedded !== undefined) {
-              this.showNotification( 'snackbar-danger', 'Error al guardar', 'bottom', 'center' );
-              Object.entries(error._embedded.errors).forEach(([key, value]) => {});
-            }})
-        this.refreshTable();
-      });
+      this.data = result
+
+    const dialogRef = this.dialog.open(ClientesFormComponent, {
+      data: {title: row.descripcionCorta, disableClose: true, data: this.data, action: 'Editar'}
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        return
+      }
+      this.advanceTableService.update<string>(this.id, result)
+        .subscribe(d => {
+          this.showNotification('snackbar-success', '¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center');
+          this.refresh();
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification('snackbar-danger', 'Error al guardar', 'bottom', 'center');
+            Object.entries(error._embedded.errors).forEach(([key, value]) => {
+            });
+          }
+        })
+      this.refreshTable();
+    });
+
     });
   }
 
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(ClientesDeleteComponent, { data: row });
+    const dialogRef = this.dialog.open(ClientesDeleteComponent, {data: row});
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.advanceTableService.delete<string>(row.id)
           .subscribe(data => {
-            this.showNotification( 'snackbar-danger', '¡¡ ' + this._datos._title + ' Eliminada!!', 'bottom', 'center' );
+            this.showNotification('snackbar-danger', '¡¡ ' + this._datos._title + ' Eliminada!!', 'bottom', 'center');
             this.refresh();
           }, error => {
-            this.showNotification( 'snackbar-danger', '¡Error al eliminar! Este registro esta siendo utilizado', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+            this.showNotification('snackbar-danger', '¡Error al eliminar! Este registro esta siendo utilizado', 'bottom', 'center');
+            Object.entries(error._embedded.errors).forEach(([key, value]) => {
+            });
           });
       }
     });
   }
 
-  private refreshTable() { this.paginator._changePageSize(this.paginator.pageSize) }
+  private refreshTable() {
+    this.paginator._changePageSize(this.paginator.pageSize)
+  }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -131,7 +158,9 @@ export class ClientesComponent implements OnInit {
     return numSelected === numRows;
   }
 
-  masterToggle() { this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) => this.selection.select(row))}
+  masterToggle() {
+    this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) => this.selection.select(row))
+  }
 
   removeSelectedRows() {
     const totalSelect = this.selection.selected.length;
@@ -140,27 +169,34 @@ export class ClientesComponent implements OnInit {
       this.selection = new SelectionModel<_clientes>(true, []);
     });
     this.loadData();
-    this.showNotification( 'snackbar-danger', totalSelect + '¡¡Registros Eliminados!!', 'bottom', 'center'  );
+    this.showNotification('snackbar-danger', totalSelect + '¡¡Registros Eliminados!!', 'bottom', 'center');
   }
 
   public loadData() {
     this.db = new AdvanceRestService(this.httpClient, this.globalService, this.fBuilder);
-    this.dataSource = new ClientesDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
+    this.dataSource = new ClientesDataSource(this.db, this.paginator, this.sort, this._datos._dominio);
     fromEvent(this.filter.nativeElement, 'keyup').subscribe(() => {
-      if (!this.dataSource) { return; }
+      if (!this.dataSource) {
+        return;
+      }
       this.dataSource.filter = this.filter.nativeElement.value;
     });
   }
 
   showNotification(colorName, text, placementFrom, placementAlign) {
-    this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom, horizontalPosition: placementAlign, panelClass: colorName });
+    this.snackBar.open(text, '', {
+      duration: 2000,
+      verticalPosition: placementFrom,
+      horizontalPosition: placementAlign,
+      panelClass: colorName
+    });
   }
 
   onContextMenu(event: MouseEvent, item: _clientes) {
     event.preventDefault();
     this.contextMenuPosition.x = event.clientX + 'px';
     this.contextMenuPosition.y = event.clientY + 'px';
-    this.contextMenu.menuData = { item: item };
+    this.contextMenu.menuData = {item: item};
     this.contextMenu.menu.focusFirstItem('mouse');
     this.contextMenu.openMenu();
   }
@@ -168,36 +204,46 @@ export class ClientesComponent implements OnInit {
 
 export class ClientesDataSource extends DataSource<_clientes> {
   _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
+
+  get filter(): string {
+    return this._filterChange.value;
+  }
+
+  set filter(filter: string) {
+    this._filterChange.next(filter);
+  }
+
   filteredData: _clientes[] = [];
   renderedData: _clientes[] = [];
 
-  constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort, private _dominio: string ) {
+  constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort, private _dominio: string) {
     super();
     this._filterChange.subscribe(() => (this._paginator.pageIndex = 0));
   }
 
   connect(): Observable<_clientes[]> {
-    const displayDataChanges = [ this._dataSource.dataChange, this._sort.sortChange, this._filterChange, this._paginator.page ];
-    this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
-    return merge(...displayDataChanges).pipe( map(() => {
+    const displayDataChanges = [this._dataSource.dataChange, this._sort.sortChange, this._filterChange, this._paginator.page];
+    this._dataSource.getAdvancedTable<any>(this._dominio, {'max': 100});
+    return merge(...displayDataChanges).pipe(map(() => {
         this.filteredData = this._dataSource.data.slice().filter((advanceTable: _clientes) => {
-          const searchStr = ( advanceTable.id + advanceTable.titularNombre + advanceTable.apellidoPaterno + advanceTable.apellidoMaterno ).toLowerCase();
+          const searchStr = (advanceTable.id + advanceTable.titularNombre + advanceTable.apellidoPaterno + advanceTable.apellidoMaterno).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());
         const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-        this.renderedData = sortedData.splice( startIndex, this._paginator.pageSize );
+        this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize);
         return this.renderedData;
       })
     );
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 
   sortData(data: _clientes[]): _clientes[] {
-    if (!this._sort.active || this._sort.direction === '') { return data; }
+    if (!this._sort.active || this._sort.direction === '') {
+      return data;
+    }
     return data.sort((a, b) => {
       let propertyA: number | string = '';
       let propertyB: number | string = '';

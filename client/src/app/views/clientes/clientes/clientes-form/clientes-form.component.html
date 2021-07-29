@@ -13,7 +13,7 @@
     </button>
   </div>
   <div mat-dialog-content>
-    <form class="register-form m-4" [formGroup]="_titularForm" (ngSubmit)="submit">
+    <form class="register-form m-4" [formGroup]="_formulario" (ngSubmit)="submit">
       <div class="body">
         <mat-horizontal-stepper [linear]="!isLinear" #stepper>
           <mat-step [stepControl]="_titularForm">
@@ -522,12 +522,12 @@
               Institucion donde se desempeña el cargo es requerido
             </mat-error>
           </mat-form-field>
+        </div>
           <div class="row">
             <div class="p-10">
               <button mat-raised-button matStepperNext color="primary">Siguiente</button>
             </div>
           </div>
-        </div>
         </div>
             </form>
           </mat-step>
@@ -789,8 +789,8 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                   <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Activida / Giro de la Empresa</mat-label>
-                    <input matInput formControlName="actividadDeEmpresaC">
-                    <mat-error *ngIf="_cotitularForm.get('actividadDeEmpresaC').hasError('required')">
+                    <input matInput formControlName="actividadEmpresaC1">
+                    <mat-error *ngIf="_cotitularForm.get('actividadEmpresaC1').hasError('required')">
                       Activida / Giro de la Empresa es requerido
                     </mat-error>
                   </mat-form-field>
@@ -872,8 +872,8 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                   <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Actividad / Giro de la Empresa</mat-label>
-                    <input matInput formControlName="actividadDEEmpresaC">
-                    <mat-error *ngIf="_cotitularForm.get('actividadDEEmpresaC').hasError('required')">
+                    <input matInput formControlName="actividadEmpresaC2">
+                    <mat-error *ngIf="_cotitularForm.get('actividadEmpresaC2').hasError('required')">
                       Actividad / Giro de la Empresa es requerido
                     </mat-error>
                   </mat-form-field>
@@ -1576,9 +1576,314 @@
                       Codigo es requerido
                     </mat-error>
                   </mat-form-field>
-                  <div class="row">
-                    <div class="p-10">
-                      <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                </div>
+                <div class="row">
+                  <div class="p-10">
+                    <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_usoCuentaForm">
+            <form [formGroup]="_usoCuentaForm">
+              <ng-template matStepLabel>USO Y MOVIMIENTOS DE LA CUENTA</ng-template>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo De Cliente</mat-label>
+                    <mat-select formControlName="tipoCliente">
+                      <mat-option *ngFor="let item of tipoClienteCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_usoCuentaForm.get('tipoCliente').hasError('required')">
+                      Tipo De Cliente es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Uso que le pretende dar a la Cuenta</mat-label>
+                    <input matInput formControlName="uso">
+                    <mat-error *ngIf="_usoCuentaForm.get('uso').hasError('required')">
+                      Uso que le pretende dar a la Cuenta es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Monto del Deposito inicial</mat-label>
+                    <input matInput formControlName="montoDepositoInicial">
+                    <mat-error *ngIf="_usoCuentaForm.get('montoDepositoInicial').hasError('required')">
+                      Monto del Deposito inicial es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero aproximado de depositos mensuales (De:)</mat-label>
+                    <input matInput formControlName="numeroAproxDepoMensualesMin">
+                    <mat-error *ngIf="_usoCuentaForm.get('numeroAproxDepoMensualesMin').hasError('required')">
+                      Numero aproximado de depositos mensuales (De:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero aproximado de depositos mensuales (A:)</mat-label>
+                    <input matInput formControlName="numeroAproxDepoMensualesMax">
+                    <mat-error *ngIf="_usoCuentaForm.get('numeroAproxDepoMensualesMax').hasError('required')">
+                      Numero aproximado de depositos mensuales (A:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Porcentaje Promedio mensual de los Depositos (De:)</mat-label>
+                    <input matInput formControlName="porccentajePromedioMensualDepositosMin">
+                    <mat-error *ngIf="_usoCuentaForm.get('porccentajePromedioMensualDepositosMin').hasError('required')">
+                      Porcentaje Promedio mensual de los Depositos (De:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Porcentaje Promedio mensual de los Depositos (A:)</mat-label>
+                    <input matInput formControlName="porccentajePromedioMensualDepositosMax">
+                    <mat-error *ngIf="_usoCuentaForm.get('porccentajePromedioMensualDepositosMax').hasError('required')">
+                      Porcentaje Promedio mensual de los Depositos (A:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero Aproximado Retiros Mensuales (De:)</mat-label>
+                    <input matInput formControlName="numeroAproxRetirosMensualesMin">
+                    <mat-error *ngIf="_usoCuentaForm.get('numeroAproxRetirosMensualesMin').hasError('required')">
+                      Numero Aproximado Retiros Mensuales (De:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero Aproximado Retiros Mensuales (A:)</mat-label>
+                    <input matInput formControlName="numeroAproxRetirosMensualesMax">
+                    <mat-error *ngIf="_usoCuentaForm.get('numeroAproxRetirosMensualesMax').hasError('required')">
+                      Numero Aproximado Retiros Mensuales (A:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Monto Promedio Mensual de los Retiros (De:)</mat-label>
+                    <input matInput formControlName="montoAproxMensualRetirosMin">
+                    <mat-error *ngIf="_usoCuentaForm.get('montoAproxMensualRetirosMin').hasError('required')">
+                      Monto Promedio Mensual de los Retiros (De:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Monto Promedio Mensual de los Retiros (A:)</mat-label>
+                    <input matInput formControlName="montoAproxMensualRetirosMax">
+                    <mat-error *ngIf="_usoCuentaForm.get('montoAproxMensualRetirosMax').hasError('required')">
+                      Monto Promedio Mensual de los Retiros (A:) es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha Baja</mat-label>
+                    <input matInput [matDatepicker]="DatepickerBaja" name = "fechaBaja" formControlName="fechaBaja" >
+                    <mat-datepicker-toggle matSuffix [for]="DatepickerBaja"></mat-datepicker-toggle>
+                    <mat-datepicker #DatepickerBaja></mat-datepicker>
+                    <mat-error *ngIf="_usoCuentaForm.get('fechaBaja').hasError('required')">
+                      Fecha Baja es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-2">
+                  <mat-slide-toggle formControlName="liqVSsaldo">Liq. vs Saldo</mat-slide-toggle>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-2">
+                  <mat-slide-toggle formControlName="manejaCust">¿Maneja Cust.?</mat-slide-toggle>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-2">
+                  <mat-slide-toggle formControlName="cortoEfectivo">¿Corto Efectivo?</mat-slide-toggle>
+                </div>
+                <div class="row">
+                  <div class="p-10">
+                    <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_generalesForm">
+            <form [formGroup]="_generalesForm">
+              <ng-template matStepLabel>GENERALES</ng-template>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nacionalidad</mat-label>
+                    <mat-select formControlName="nacionalidadG">
+                      <mat-option *ngFor="let item of nacionalidades8Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_generalesForm.get('nacionalidadG').hasError('required')">
+                      Nacionalidad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pais</mat-label>
+                    <mat-select formControlName="paisG">
+                      <mat-option *ngFor="let item of paises7Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_generalesForm.get('paisG').hasError('required')">
+                      Pais es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Calle</mat-label>
+                    <input matInput formControlName="calleG">
+                    <mat-error *ngIf="_generalesForm.get('calleG').hasError('required')">
+                      Calle es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Exterior</mat-label>
+                    <input matInput formControlName="noExteriorG">
+                    <mat-error *ngIf="_generalesForm.get('noExteriorG').hasError('required')">
+                      No. Exterior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>No. Interior</mat-label>
+                    <input matInput formControlName="noInteriorG">
+                    <mat-error *ngIf="_generalesForm.get('noInteriorG').hasError('required')">
+                      No. Interior es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="coloniaG">
+                    <mat-error *ngIf="_generalesForm.get('coloniaG').hasError('required')">
+                      Colonia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Alcaldia</mat-label>
+                    <mat-select formControlName="alcaldia">
+                      <mat-option *ngFor="let item of municipios4Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_generalesForm.get('alcaldia').hasError('required')">
+                      Alcaldia es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select formControlName="ciudadG">
+                      <mat-option *ngFor="let item of ciudades4Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_generalesForm.get('ciudadG').hasError('required')">
+                      Ciudad es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estadosG">
+                      <mat-option *ngFor="let item of estados6Combo" [value]="item.id">{{item.descripcion}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_generalesForm.get('estadosG').hasError('required')">
+                      Estado es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>C.P.</mat-label>
+                    <input matInput formControlName="cpG">
+                    <mat-error *ngIf="_generalesForm.get('cpG').hasError('required')">
+                      C.P. es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Telefono Particular</mat-label>
+                    <input matInput formControlName="telefonoParticularG">
+                    <mat-error *ngIf="_generalesForm.get('telefonoParticularG').hasError('required')">
+                      Telefono Particular es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Telefono Celular</mat-label>
+                    <input matInput formControlName="telefonoCelularG">
+                    <mat-error *ngIf="_generalesForm.get('telefonoCelularG').hasError('required')">
+                      Telefono Celular es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="_generalesForm.get('email').hasError('required')">
+                      E-mail es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>RFC</mat-label>
+                    <input matInput formControlName="rfcG">
+                    <mat-error *ngIf="_generalesForm.get('rfcG').hasError('required')">
+                      RFC es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Curp</mat-label>
+                    <input matInput formControlName="curpG">
+                    <mat-error *ngIf="_generalesForm.get('curpG').hasError('required')">
+                      Curp es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fiel</mat-label>
+                    <input matInput formControlName="fiel">
+                    <mat-error *ngIf="_generalesForm.get('fiel').hasError('required')">
+                      Fiel es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <div class="example-button-row">
+                      <button mat-raised-button color="primary" [type]="submit" [disabled]="!_formulario.valid"
+                              [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+                      <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
                     </div>
                   </div>
                 </div>
@@ -1587,16 +1892,6 @@
           </mat-step>
         </mat-horizontal-stepper>
       </div>
-
-<!--      <div class="row">-->
-<!--        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">-->
-<!--          <div class="example-button-row">-->
-<!--            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_titularForm.valid"-->
-<!--                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>-->
-<!--            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
     </form>
   </div>
 </div>

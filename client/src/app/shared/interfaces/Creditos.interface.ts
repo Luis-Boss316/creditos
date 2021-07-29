@@ -452,7 +452,6 @@ export class _promotor {
 }
 
 export class _tipoInversionista {
-  id: string;
   cveTipoInversionista: string;
   descripcion: string;
   prioridad: number;
@@ -471,6 +470,7 @@ export class _actVulnerable {
 
 export class _clientes {
   id: number;
+  idTitular: number;
   titularNombre: string;
   apellidoPaterno: string;
   apellidoMaterno: string;
@@ -524,6 +524,7 @@ export class _clientes {
   institucionDesempenaCargo: string;
 
   // cotitular
+  idCotitular: number;
   nombreCotitular: string;
   apellidoPaternoC: string;
   apellidoMaternoC: string;
@@ -550,7 +551,7 @@ export class _clientes {
   nacionalidadEmpresaC: _nacionalidades;
   telefonoEmpresaC: string;
   sectorDeEmpresaC: string;
-  actividadDeEmpresaC: string;
+  actividadEmpresaC1: string;
   porcentajeEmpresaC: string;
   esConsejero: string;
   razonSocialC: string;
@@ -558,7 +559,7 @@ export class _clientes {
   nacionalidadDEmpresaC: _nacionalidades;
   telefonoDEmpresaC: string;
   sectorDLEmpresaC: string;
-  actividadDEEmpresaC: string;
+  actividadEmpresaC2: string;
   porcentajeEmpresaPertenece: string;
   consejeroEmpresaC: string;
   institucionesCargosPublicosRelacion: string;
@@ -566,10 +567,12 @@ export class _clientes {
   relacionPersonaNacionalExtranjeraC: string;
 
   // procedencia de recursos
+  idProcedencia: number;
   procedenciaRecurso: string;
   detalleRecurso: string;
 
   // proveedor de recursos
+  idProveedor: number;
   proveedorrecursoNombre: string;
   apellidoPaternoP: string;
   apellidoMaternoP: string;
@@ -605,6 +608,7 @@ export class _clientes {
   paisPR: _paises;
 
   // propietario real
+  idPropietario:number;
   propietarioRealNombre: string;
   apellidoPaternoPRE: string;
   apellidoMaternoPRE: string;
@@ -634,5 +638,266 @@ export class _clientes {
   paisPRE: _paises;
   codigo: string;
 
+  //Uso y movimientos de la cuenta
+  idUso: number;
+  tipoCliente: _tipoCliente;
+  uso: string;
+  montoDepositoInicial: number;
+  numeroAproxDepoMensualesMin: number;
+  numeroAproxDepoMensualesMax: number;
+  porccentajePromedioMensualDepositosMin: number;
+  porccentajePromedioMensualDepositosMax: number;
+  numeroAproxRetirosMensualesMin: number;
+  numeroAproxRetirosMensualesMax: number;
+  montoAproxMensualRetirosMin: number;
+  montoAproxMensualRetirosMax: number;
+  fechaBaja: Date;
+  liqVSsaldo: boolean;
+  manejaCust: boolean;
+  cortoEfectivo: boolean;
+
+  //Generales
+  idGenerales: number;
+  nacionalidadG: _nacionalidades;
+  paisG: _paises;
+  calleG: string;
+  noExteriorG: string;
+  noInteriorG: string;
+  coloniaG: string;
+  alcaldia: _municipios;
+  ciudadG: _ciudades;
+  estadosG: _estados;
+  cpG: string;
+  telefonoParticularG: string;
+  telefonoCelularG: string;
+  email: string;
+  rfcG: string;
+  curpG: string;
+  fiel: string;
+
 }
 
+export class _tipoCliente {
+  id: number;
+  cveTipoDeCliente: number;
+  descripcion: string;
+}
+
+
+export class _cliente{
+  id: number;
+  titular: _titular;
+  cotitular: _cotitular;
+  procedenciaRecursos: _procedenciaRecursos;
+  proveedorRecursos: _proveedorRecursos;
+  propietarioReal: _propietarioReal;
+  usoCuenta: _usoCuenta;
+  generales: _generales;
+}
+
+export class _titular{
+  id: number;
+  titularNombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  grupoFamilia: _grupoFamilia;
+  promotor: _promotor;
+  tipoInversionista: _tipoInversionista;
+  excentoIsr: boolean;
+  excentoIva: boolean;
+  fechaNacimiento: Date;
+  entidadFederativaNacimiento: _estados;
+  fechaInicioOperaciones: Date;
+  estadoCivil: string;
+  profesion: _profesiones;
+  nombreEmpresaPrestaServicios: string;
+  nombrePuesto: string;
+  funcionesGeneralesDirectivas: string;
+  nivelJerarquico: string;
+  antiguedadEmpleo: string;
+  sectorEmpresa: string;
+  giroEmpresa: string;
+  tipoIngreso: string;
+  ingresoAdicional: string;
+  sectorPrestaServicio: string;
+  giroEspecificoServicios: _actVulnerable;
+  sectorEmpresa2: string;
+  razonSocialEmpresa: string;
+  actividadEmpresa: string;
+  ingresoAdicional2: string;
+  ocupacionActual: string;
+  fuenteIngresos: string;
+  sociedadesAsociacionesRFCEmpresa: string;
+  nacionalidadEmpresa: _nacionalidades;
+  telefonoEmpresa: string;
+  sectorEmpresa3: string;
+  actividadGiroEspecificoEmpresa: string;
+  porcentajeCapitalSocial: string;
+  consejeroEmpresaRFCEmpresa: string;
+  nacionalidadEmpresa2: _nacionalidades;
+  telefonoEmpresa2: string;
+  sectorEmpresa4: string;
+  actividadGiroEmpresa3: string;
+  vinculoPatrimonial: string;
+  consejeroEmpresa: string;
+  cargoDesempeno: string;
+  nombreInstitucion: string;
+  institucionCargoExtranjero: string;
+  pais: _paises;
+  cargo: string;
+  relacionPersonaNacionalExtranjera: string;
+  cargo2: string;
+  institucionDesempenaCargo: string;
+}
+export class _cotitular{
+  id: number;
+  nombreCotitular: string;
+  apellidoPaternoC: string;
+  apellidoMaternoC: string;
+  estadoCivilC: string;
+  lugarPrestaServicios: string;
+  nombrePuestoC: string;
+  funcionesGeneralesDirectivasC: string;
+  nivelJerarquicoC: string;
+  antiguedadEmpleoC: string;
+  sectorEmpresaC: string;
+  tipoIngresoC: string;
+  ingresoAdicionalC: string;
+  formasProporcionaServicios: string;
+  sectorPrestaServicios: string;
+  actividadGiroEEmpresaC: string;
+  rfcEmpresa: string;
+  sectorDEmpresaC: string;
+  actividadGiroEmpresaC: string;
+  cingresoAdicionalC: string;
+  ocupacionActualC: string;
+  fuenteIngresoC: string;
+  razonSocialEmpresaC: string;
+  rfc: string;
+  nacionalidadEmpresaC: _nacionalidades;
+  telefonoEmpresaC: string;
+  sectorDeEmpresaC: string;
+  actividadEmpresaC1: string;
+  porcentajeEmpresaC: string;
+  esConsejero: string;
+  razonSocialC: string;
+  rfcC: string;
+  nacionalidadDEmpresaC: _nacionalidades;
+  telefonoDEmpresaC: string;
+  sectorDLEmpresaC: string;
+  actividadEmpresaC2: string;
+  porcentajeEmpresaPertenece: string;
+  consejeroEmpresaC: string;
+  institucionesCargosPublicosRelacion: string;
+  institucionDesempenaCargoC: string;
+  relacionPersonaNacionalExtranjeraC: string;
+}
+export class _procedenciaRecursos{
+  id: number;
+  procedenciaRecurso: string;
+  detalleRecurso: string;
+}
+export class _proveedorRecursos{
+  id: number;
+  proveedorrecursoNombre: string;
+  apellidoPaternoP: string;
+  apellidoMaternoP: string;
+  nacionalidadP: _nacionalidades;
+  fechaNacimientoP: Date;
+  curp: string;
+  rfcP: string;
+  firmaElectronica: string;
+  tipoVialidad: string;
+  nombreVialidad: string;
+  noExterior: string;
+  noInterior: string;
+  colonia: string;
+  municipio: _municipios;
+  ciudad: _ciudades;
+  estado: _estados;
+  cp: string;
+  paisP: _paises;
+  personaMoralRazonSocial: string;
+  nacionalidad: _nacionalidades;
+  rfcPR: string;
+  firmaElectronicaP: string;
+  domicilio: string;
+  tipoVialidadP: string;
+  nombreVialidadP: string;
+  noExteriorP: string;
+  noInteriorP: string;
+  coloniaP: string;
+  delegacion: _municipios;
+  ciudadP: _ciudades;
+  estadoP: _estados;
+  codigoPostal: string;
+  paisPR: _paises;
+}
+export class _propietarioReal{
+  id: number;
+  propietarioRealNombre: string;
+  apellidoPaternoPRE: string;
+  apellidoMaternoPRE: string;
+  genero: string;
+  fechaNacimientoPRE: Date;
+  curpPRE: string;
+  paisNacimiento: _paises;
+  estadoNacimiento: _estados;
+  nacionalidadPRE: _nacionalidades
+  calidadMigratoria: string;
+  paisResidencia: _paises;
+  regimenFiscal: string;
+  rfcPRE: string;
+  firmaElectronicaAvanzada: string;
+  telefonoParticular: string;
+  telefonoCelular: string;
+  correoElectronico: string;
+  domicilioPropietario: string;
+  tipoVialidadPRE: string;
+  nombreVialidadPRE: string;
+  noExteriorPRE: string;
+  noInteriorPRE: string;
+  coloniaPRE: string;
+  delegacionPRE: _municipios;
+  ciudadPRE: _ciudades;
+  estadoPRE: _estados;
+  paisPRE: _paises;
+  codigo: string;
+}
+export class _usoCuenta{
+  id: number;
+  tipoCliente: _tipoCliente;
+  uso: string;
+  montoDepositoInicial: number;
+  numeroAproxDepoMensualesMin: number;
+  numeroAproxDepoMensualesMax: number;
+  porccentajePromedioMensualDepositosMin: number;
+  porccentajePromedioMensualDepositosMax: number;
+  numeroAproxRetirosMensualesMin: number;
+  numeroAproxRetirosMensualesMax: number;
+  montoAproxMensualRetirosMin: number;
+  montoAproxMensualRetirosMax: number;
+  fechaBaja: Date;
+  liqVSsaldo: boolean;
+  manejaCust: boolean;
+  cortoEfectivo: boolean;
+}
+export class _generales{
+  id: number;
+  nacionalidadG: _nacionalidades;
+  paisG: _paises;
+  calleG: string;
+  noExteriorG: string;
+  noInteriorG: string;
+  coloniaG: string;
+  alcaldia: _municipios;
+  ciudadG: _ciudades;
+  estadosG: _estados;
+  cpG: string;
+  telefonoParticularG: string;
+  telefonoCelularG: string;
+  email: string;
+  rfcG: string;
+  curpG: string;
+  fiel: string;
+}
