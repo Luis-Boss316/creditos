@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioRoutingModule } from './usuario-routing.module';
+import { PersonasRoutingModule } from './personas-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
@@ -23,24 +23,22 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {OwlDateTimeModule} from "ng-pick-datetime";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {UsuarioComponent} from "./usuario/usuario.component";
-import {UsuarioFormComponent} from "./usuario/usuario-form/usuario-form.component";
-import {UsuarioDeleteComponent} from "./usuario/usuario-delete/usuario-delete.component";
-import {KycFormComponent} from "./usuario/kyc-form/kyc-form.component";
-import { ArchivosComponent } from './archivos/archivos.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import {FileUploadModule} from "ng2-file-upload";
+import { PersonaComponent } from './persona/persona.component';
+import { PersonaFormComponent } from './persona/persona-form/persona-form.component';
+import { PersonaDeleteComponent } from './persona/persona-delete/persona-delete.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
-  declarations: [UsuarioComponent, UsuarioFormComponent, UsuarioDeleteComponent, KycFormComponent, ArchivosComponent],
+  declarations: [PersonaComponent, PersonaFormComponent, PersonaDeleteComponent],
     imports: [
         CommonModule,
-        UsuarioRoutingModule,
+        PersonasRoutingModule,
         FormsModule, ReactiveFormsModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule,
         MatFormFieldModule, MatInputModule, MatSnackBarModule, MatButtonModule, MatIconModule, MatRadioModule,
         MatSelectModule, MatCheckboxModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatSortModule,
-        MatToolbarModule, MaterialFileInputModule, MatMenuModule, MatTooltipModule, OwlDateTimeModule, MatSlideToggleModule, MatTabsModule, FileUploadModule
+        MatToolbarModule, MaterialFileInputModule, MatMenuModule, MatTooltipModule, OwlDateTimeModule, MatSlideToggleModule, MatTabsModule, MatStepperModule
     ]
 })
-export class UsuarioModule { }
+export class PersonasModule { }

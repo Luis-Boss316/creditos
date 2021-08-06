@@ -85,6 +85,9 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
+        upload:
+            maxFileSize: 26214400
+            maxRequestSize: 26214400
     converters:
         encoding: UTF-8
     views:
@@ -106,6 +109,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: "com.mysql.jdbc.Driver"
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 environments:
     development:
@@ -129,10 +133,5 @@ jasper:
         reports: 'reports'
     images: 'images/'
 
----
-grails:
-    controllers:
-        upload:
-            maxFileSize: 2000000
-            maxRequestSize: 2000000
+
 

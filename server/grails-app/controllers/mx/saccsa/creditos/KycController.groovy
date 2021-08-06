@@ -1,6 +1,7 @@
 package mx.saccsa.creditos
 
 import grails.rest.RestfulController
+import net.coobird.thumbnailator.Thumbnails
 import mx.saccsa.security.Usuario
 import org.springframework.dao.DuplicateKeyException
 
@@ -15,10 +16,11 @@ class KycController extends RestfulController<Kyc> {
         respond Kyc.list().collect {
             [
                     id         : it?.id,
+                    nombre     : it?.nombre,
+                    contentType: it?.contentType,
                     ruta       : it?.ruta,
-                    tipoArchivo: it?.tipoArchivo,
-                    nombre     : it?.nombre.descLabel,
                     fecha      : it?.fecha,
+                    tipoArchivo: it.tipoArchivo,
             ]
         }
     }
@@ -81,12 +83,14 @@ class KycController extends RestfulController<Kyc> {
         respond instance
     }
 
-    def imagen() {
-        String ruta = 'C:/Archivos/ComprobanteDomicilio/' + params.tipoArchivo + '.png'
-        String fileContents = new File(ruta).encodeAsBase64()
-
-        log.error(fileContents)
-
-        respond(fileContents)
+    def thumbnail(Long id, Long pc){
+        Kyc imageFile = Kyc.findById(id)
+        def ruta = Parametros.valor("RUTA_ARCHIVO")
+        Double poc = pc? (pc/100) : 0.10d
+        response.contentType = imageFile.contentType
+        response.characterEncoding = "UTF-8"
+        Thumbnails.of(ruta+imageFile.ruta)
+                .scale(poc)
+                .toOutputStream(response.outputStream)
     }
 }

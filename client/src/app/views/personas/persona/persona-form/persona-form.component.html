@@ -1,0 +1,193 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_personasForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_personasForm.get('id').hasError('required')">
+              El campo ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Primer Nombre</mat-label>
+            <input matInput formControlName="primerNombre">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_personasForm.get('primerNombre').hasError('required')">
+              El campo Primer Nombre es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Segundo Nombre</mat-label>
+            <input matInput formControlName="segundoNombre">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_personasForm.get('segundoNombre').hasError('required')">
+              El campo Segundo Nombre es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput formControlName="apellidoPaterno">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_personasForm.get('apellidoPaterno').hasError('required')">
+              El campo Apellido Paterno es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput formControlName="apellidoMaterno">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_personasForm.get('apellidoMaterno').hasError('required')">
+              El campo Apellido Materno es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Genero</mat-label>
+            <mat-select formControlName="genero">
+              <mat-option value="Masculino">Masculino</mat-option>
+              <mat-option value="Femenino">Femenino</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('genero').hasError('required')">
+              Genero es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Estado Civil</mat-label>
+            <mat-select formControlName="estadoCivil">
+              <mat-option *ngFor="let item of estadoCivilCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('estadoCivil').hasError('required')">
+              Estado Civil es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nacionalidad</mat-label>
+            <mat-select formControlName="nacionalidad">
+              <mat-option *ngFor="let item of nacionalidadCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('nacionalidad').hasError('required')">
+              Nacionalidad es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="DatepickerInicial" name = "fechaNacimiento" formControlName="fechaNacimiento" >
+            <mat-datepicker-toggle matSuffix [for]="DatepickerInicial"></mat-datepicker-toggle>
+            <mat-datepicker #DatepickerInicial></mat-datepicker>
+            <mat-error *ngIf="_personasForm.get('fechaNacimiento').hasError('required')">
+              Fecha de Nacimiento es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Actividad</mat-label>
+            <input matInput formControlName="actividad">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_personasForm.get('actividad').hasError('required')">
+              El campo Actividad es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Giro</mat-label>
+            <mat-select formControlName="giro">
+              <mat-option *ngFor="let item of giroCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('giro').hasError('required')">
+              Giro es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Pais de Nacimiento</mat-label>
+            <mat-select formControlName="paisNacimiento">
+              <mat-option *ngFor="let item of paisCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('paisNacimiento').hasError('required')">
+              Pais de Nacimiento es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Estado de Nacimiento</mat-label>
+            <mat-select formControlName="estadoNacimiento">
+              <mat-option *ngFor="let item of estadoCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_personasForm.get('estadoNacimiento').hasError('required')">
+              Estado de Nacimiento es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_personasForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -14,6 +14,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern: '/**/css/**',      access: ['permitAll']],
 		[pattern: '/**/images/**',   access: ['permitAll']],
 		[pattern: '/**/favicon.ico', access: ['permitAll']],
+		[pattern: '/thumbnail/**', access: ['permitAll']],
 		[pattern: '/login',          access: ['permitAll']],
 		[pattern: '/login/**',       access: ['permitAll']],
 		[pattern: '/logout',         access: ['permitAll']],
@@ -28,6 +29,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 		[pattern: '/**/css/**',      filters: 'none'],
 		[pattern: '/**/images/**',   filters: 'none'],
 		[pattern: '/**/favicon.ico', filters: 'none'],
+		[pattern: '/thumbnail/**',   filters: 'none'],
 		[pattern: '/api/**', 		 filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'],
 		[pattern: '/**',			 filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter']
 ]
@@ -39,6 +41,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/index.gsp',      access: ['permitAll']],
 		[pattern: '/shutdown',       access: ['permitAll']],
 		[pattern: '/assets/**',      access: ['permitAll']],
+		[pattern: '/thumbnail/**',      access: ['permitAll']],
 		[pattern: '/**/js/**',       access: ['permitAll']],
 		[pattern: '/**/css/**',      access: ['permitAll']],
 		[pattern: '/**/images/**',   access: ['permitAll']],

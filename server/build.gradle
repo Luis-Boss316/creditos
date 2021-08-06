@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url "https://dl.bintray.com/ctoestreich/grails-plugins" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -64,6 +65,7 @@ dependencies {
     testCompile "io.micronaut:micronaut-http-client"
     testCompile "org.grails:grails-web-testing-support"
     runtime 'mysql:mysql-connector-java:5.1.29'
+    compile 'net.coobird:thumbnailator:0.4.14'
     compile("org.quartz-scheduler:quartz:2.2.3") {
         exclude group: 'slf4j-api', module: 'c3p0'
     }

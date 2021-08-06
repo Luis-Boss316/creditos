@@ -497,6 +497,26 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
+    title: 'Personas',
+    moduleName: 'Personas',
+    icon: 'fas fa-child',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Personas/Persona',
+        title: 'Personas',
+        moduleName: 'Personas',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+  },
+
+  {
+    path: '',
     title: 'Usuarios',
     moduleName: 'Usuario',
     icon: 'fas fa-address-card',

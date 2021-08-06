@@ -34,4 +34,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+logger('api.file.admin',DEBUG,["STDOUT"],false)
+logger('grails.plugin.springsecurity.rest',DEBUG,["STDOUT"],false)
+logger('mx.saccsa.security',DEBUG,["STDOUT"],false)
 root(ERROR, ['STDOUT'])

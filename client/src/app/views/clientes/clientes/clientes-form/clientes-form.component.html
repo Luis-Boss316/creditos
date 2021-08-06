@@ -15,7 +15,7 @@
   <div mat-dialog-content>
     <form class="register-form m-4" [formGroup]="_formulario" (ngSubmit)="submit">
       <div class="body">
-        <mat-horizontal-stepper [linear]="!isLinear" #stepper>
+        <mat-horizontal-stepper [linear]="!isLinear" #stepper ngClass="{{ 'last-edited-step-' + stepper.selectedIndex }}" labelPosition="bottom">
           <mat-step [stepControl]="_titularForm">
             <form [formGroup]="_titularForm">
               <ng-template matStepLabel>TITULAR</ng-template>

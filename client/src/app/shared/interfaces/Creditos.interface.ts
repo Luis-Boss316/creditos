@@ -428,10 +428,12 @@ export class _circuloCredito {
 }
 
 export class Kyc {
+  id: number;
+  nombre: string;
+  contentType: string;
   ruta: string;
-  tipoArchivo: string;
-  nombre: _usuario;
   fecha: Date;
+  tipoArchivo: string;
 }
 
 export class _grupoFamilia {
@@ -901,3 +903,21 @@ export class _generales{
   curpG: string;
   fiel: string;
 }
+
+export class _personas{
+  id: number;
+  primerNombre: string;
+  segundoNombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  genero: string;
+  estadoCivil: _estadoCivil;
+  nacionalidad: _nacionalidades;
+  fechaNacimiento: Date;
+  actividad: string;
+  giro: _giroEmpresarial;
+  paisNacimiento: _paises;
+  estadoNacimiento: _estados;
+}
+
+

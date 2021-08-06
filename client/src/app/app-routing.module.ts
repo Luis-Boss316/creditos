@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./views/parametros-credito/parametros-credito.module').then((m) => m.ParametrosCreditoModule)
       },
       {
+        path: 'Personas',
+        loadChildren: () => import('./views/personas/personas.module').then((m) => m.PersonasModule)
+      },
+      {
         path: 'Clientes',
         loadChildren: () => import('./views/clientes/clientes.module').then((m) => m.ClientesModule)
       },

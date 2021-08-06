@@ -3,6 +3,7 @@ import {FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AdvanceRestService} from "../../../../shared/services/advance-rest.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {FileUploader} from "ng2-file-upload";
 
 @Component({
   selector: 'app-kyc-form',
@@ -10,9 +11,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./kyc-form.component.sass']
 })
 export class KycFormComponent implements OnInit {
+  public uploader: FileUploader;
+  public hasBaseDropZoneOver: boolean = false;
   action: string;
   _archivosForm: FormGroup;
   dialogTitle: string;
+  public thumbnail: any;
+  public ruta: string;
 
   constructor(public dialogRef: MatDialogRef<KycFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -50,5 +55,9 @@ export class KycFormComponent implements OnInit {
     const reader = new FileReader();
     const [file] = event.target.files;
     this._archivosForm.patchValue({file: file});
+  }
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
   }
 }

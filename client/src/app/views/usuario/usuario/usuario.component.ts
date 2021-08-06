@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {_usuario, Kyc} from "../../../shared/interfaces/Creditos.interface";
-import {fromEvent, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -10,7 +10,6 @@ import {UsuarioDeleteComponent} from "./usuario-delete/usuario-delete.component"
 import {GlobalService} from "../../../shared/services/global.service";
 import {HttpClient} from "@angular/common/http";
 import {KycFormComponent} from "./kyc-form/kyc-form.component";
-import {DestinosCreditoDataSource} from "../../parametros-credito/destinos-credito/destinos-credito.component";
 
 @Component({
   selector: 'app-usuario',
