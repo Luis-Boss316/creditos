@@ -14,7 +14,6 @@ export class PersonaFormComponent implements OnInit {
   _personasForm: FormGroup;
   dialogTitle: string;
   advanceTable: _personas;
-  isLinear = false;
   public estadoCivilCombo: _combo[];
   public nacionalidadCombo: _combo[];
   public giroCombo: _combo[];
@@ -73,13 +72,13 @@ export class PersonaFormComponent implements OnInit {
         apellidoPaterno: [this.data.data.apellidoPaterno, Validators.required],
         apellidoMaterno: [this.data.data.apellidoMaterno, Validators.required],
         genero: [this.data.data.genero],
-        estadoCivil: [this.data.data.estadoCivil.id, Validators.required],
-        nacionalidad: [this.data.data.nacionalidad.id, Validators.required],
+        estadoCivil: [this.data.data.estadoCivil, Validators.required],
+        nacionalidad: [this.data.data.nacionalidad, Validators.required],
         fechaNacimiento: [this.data.data.fechaNacimiento, Validators.required],
         actividad: [this.data.data.actividad],
-        giro: [this.data.data.giro.id],
-        paisNacimiento: [this.data.data.paisNacimiento.id, Validators.required],
-        estadoNacimiento: [this.data.data.estadoNacimiento.id],
+        giro: [this.data.data.giro],
+        paisNacimiento: [this.data.data.paisNacimiento, Validators.required],
+        estadoNacimiento: [this.data.data.estadoNacimiento],
       });
     }
   }

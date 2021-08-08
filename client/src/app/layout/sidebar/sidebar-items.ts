@@ -517,6 +517,26 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
+    title: 'Negocios',
+    moduleName: 'Negocios',
+    icon: 'fas fa-warehouse',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Negocios/Negocio',
+        title: 'Negocios',
+        moduleName: 'Negocios',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+  },
+
+  {
+    path: '',
     title: 'Usuarios',
     moduleName: 'Usuario',
     icon: 'fas fa-address-card',

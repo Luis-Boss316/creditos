@@ -920,4 +920,19 @@ export class _personas{
   estadoNacimiento: _estados;
 }
 
+export class _negocios{
+  id: number;
+  nombre: string;
+  tipoPersona: string;
+  tipoSociedad: _tiposSociedad;
+  tipoOperacion: string;
+  fechaInicioOperaciones: Date;
+  fechaInicioRegistro: Date;
+  actividad: _ocupaciones;
+  giro: _giroEmpresarial;
+  establecimiento: string;
+  nacionalidad: _nacionalidades;
+  paginaWeb: string;
+}
+
 
