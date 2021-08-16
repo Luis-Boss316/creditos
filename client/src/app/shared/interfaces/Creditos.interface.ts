@@ -429,11 +429,10 @@ export class _circuloCredito {
 
 export class Kyc {
   id: number;
-  nombre: string;
-  contentType: string;
   ruta: string;
-  fecha: Date;
   tipoArchivo: string;
+  nombre: _usuario;
+  fecha: Date;
 }
 
 export class _grupoFamilia {
@@ -935,4 +934,49 @@ export class _negocios{
   paginaWeb: string;
 }
 
+export class _datosAlternos{
+  id: number;
+  nombre: _personas;
+  primerNombre: string;
+  segundoNombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+}
 
+export class _datosBancarios{
+  id: number;
+  nombre: _personas;
+  banco: string;
+  cuenta: string;
+  clabe: string;
+  noTarjeta: string;
+}
+
+export class _contactos{
+  id: number;
+  nombre: _personas;
+  relacion: _tiposRelaciones;
+  persona: string;
+}
+
+export class _correos{
+  id: number;
+  nombre: _personas;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  correo: string;
+}
+
+export class _telefonos{
+  id: number;
+  nombre: _personas;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  compania: string;
+  lada: string;
+  telefono: string;
+  extencion: string;
+  observaciones: string;
+}

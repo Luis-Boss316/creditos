@@ -18,3 +18,4 @@ class SectoresEconomicosController extends RestfulController<SectoresEconomicos>
         }
     }
 }
+

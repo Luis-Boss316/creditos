@@ -13,7 +13,6 @@ class Personas {
     GiroEmpresarial giro
     Paises paisNacimiento
     Estados estadoNacimiento
-
     static constraints = {
         primerNombre nullable: false, blank: false
         segundoNombre nullable: true, blank: true
@@ -28,7 +27,6 @@ class Personas {
         paisNacimiento nullable: false, blank: false
         estadoNacimiento nullable: true, blank: true
     }
-
     static mapping = {
         table('PERSONAS')
         version(false)
@@ -46,7 +44,6 @@ class Personas {
         paisNacimiento name:"paisNacimiento", column:"paisNacimiento"
         estadoNacimiento name:"estadoNacimiento", column:"estadoNacimiento"
     }
-
     static transients = ['descLabel']
     String getDescLabel(){ primerNombre + apellidoPaterno }
 }

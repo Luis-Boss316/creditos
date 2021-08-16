@@ -32,10 +32,10 @@ const routes: Routes = [
         path: 'Negocios',
         loadChildren: () => import('./views/negocios/negocios.module').then((m) => m.NegociosModule)
       },
-      {
-        path: 'Clientes',
-        loadChildren: () => import('./views/clientes/clientes.module').then((m) => m.ClientesModule)
-      },
+      // {
+      //   path: 'Clientes',
+      //   loadChildren: () => import('./views/clientes/clientes.module').then((m) => m.ClientesModule)
+      // },
       {
         path: 'Usuario',
         loadChildren: () => import('./views/usuario/usuario.module').then((m) => m.UsuarioModule)

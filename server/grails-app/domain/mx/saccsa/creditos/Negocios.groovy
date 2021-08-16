@@ -12,7 +12,6 @@ class Negocios {
     String establecimiento
     Nacionalidades nacionalidad
     String paginaWeb
-
     static constraints = {
         nombre nullable: false, blank: false
         tipoPersona nullable: true, blank: true
@@ -26,7 +25,6 @@ class Negocios {
         nacionalidad nullable: false, blank: false
         paginaWeb nullable: true, blank: true
     }
-
     static mapping = {
         table('NEGOCIOS')
         version(false)
@@ -43,7 +41,6 @@ class Negocios {
         nacionalidad name:"nacionalidad", column:"nacionalidad"
         paginaWeb name:"paginaWeb", column:"paginaWeb"
     }
-
     static transients = ['descLabel']
     String getDescLabel(){ nombre + tipoSociedad }
 }

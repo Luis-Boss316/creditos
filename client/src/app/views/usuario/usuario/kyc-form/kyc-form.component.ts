@@ -11,13 +11,9 @@ import {FileUploader} from "ng2-file-upload";
   styleUrls: ['./kyc-form.component.sass']
 })
 export class KycFormComponent implements OnInit {
-  public uploader: FileUploader;
-  public hasBaseDropZoneOver: boolean = false;
   action: string;
   _archivosForm: FormGroup;
   dialogTitle: string;
-  public thumbnail: any;
-  public ruta: string;
 
   constructor(public dialogRef: MatDialogRef<KycFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -57,7 +53,4 @@ export class KycFormComponent implements OnInit {
     this._archivosForm.patchValue({file: file});
   }
 
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
 }

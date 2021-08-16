@@ -23,3 +23,4 @@ class TiposCredito {
     static transients = ['descLabel']
     String getDescLabel(){ descripcion }
 }
+

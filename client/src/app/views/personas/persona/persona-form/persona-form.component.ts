@@ -82,4 +82,32 @@ export class PersonaFormComponent implements OnInit {
       });
     }
   }
+
+  extra() {
+
+  }
+
+  idetificaciones() {
+
+  }
+
+  domicilio() {
+
+  }
+
+  telefono() {
+
+  }
+
+  correo() {
+
+  }
+
+  contacto() {
+
+  }
+
+  cuentas() {
+
+  }
 }

@@ -1,6 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
-import {_aseguradoras, _personas} from "../../../shared/interfaces/Creditos.interface";
+import {
+  _aseguradoras,
+  _contactos, _correos,
+  _datosAlternos,
+  _datosBancarios,
+  _personas, _telefonos
+} from "../../../shared/interfaces/Creditos.interface";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
 import {AseguradorasDataSource} from "../../catalogos/aseguradoras/aseguradoras.component";
@@ -17,6 +23,12 @@ import {PersonaFormComponent} from "./persona-form/persona-form.component";
 import {AseguradorasDeleteComponent} from "../../catalogos/aseguradoras/aseguradoras-delete/aseguradoras-delete.component";
 import {PersonaDeleteComponent} from "./persona-delete/persona-delete.component";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
+import {DatosFormComponent} from "./datos-form/datos-form.component";
+import {DatosBancariosFormComponent} from "./datos-bancarios-form/datos-bancarios-form.component";
+import {ContactosFormComponent} from "./contactos-form/contactos-form.component";
+import {CorreosFormComponent} from "./correos-form/correos-form.component";
+import {TelefonosFormComponent} from "./telefonos-form/telefonos-form.component";
 
 @Component({
   selector: 'app-persona',
@@ -25,6 +37,7 @@ import {map} from "rxjs/operators";
 })
 export class PersonaComponent implements OnInit {
   public _datos = { _title: 'Personas', _modulo: 'Personas', _icono: 'fas fa-child', _dominio: 'Personas', _componente: 'Persona'}
+  // public _alterno = {_title: 'Datos Alternos', _dominio: 'DatosAlternos'}
 
   displayedColumns = [ 'select',
     'primerNombre',
@@ -49,7 +62,7 @@ export class PersonaComponent implements OnInit {
   db: AdvanceRestService;
   dataSource: PersonasDataSource | null;
 
-  constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog,
+  constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog, private router: Router,
               public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -61,6 +74,7 @@ export class PersonaComponent implements OnInit {
 
   ngOnInit(): void {
     this.advanceTableService.initService(this._datos._dominio);
+    // this.ats.initService(this._alterno._dominio);
     this.loadData();
   }
 
@@ -113,6 +127,7 @@ export class PersonaComponent implements OnInit {
             }})
         this.refreshTable();
       });
+      // this.router.navigate(['/Personas/Datos/5']);
     });
   }
 
@@ -173,6 +188,131 @@ export class PersonaComponent implements OnInit {
     this.contextMenu.menuData = { item: item };
     this.contextMenu.menu.focusFirstItem('mouse');
     this.contextMenu.openMenu();
+  }
+
+  more(row) {
+    let data: any;
+    this.advanceTableService.initService('DatosAlternos')
+    this.advanceTableService.create<_datosAlternos>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(DatosFormComponent, {
+        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('DatosAlternos')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success', 'Datos Alternos Agregados', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('Personas')
+    });
+  }
+
+  bancario(row) {
+    let data: any;
+    this.advanceTableService.initService('DatosBancarios')
+    this.advanceTableService.create<_datosBancarios>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(DatosBancariosFormComponent, {
+        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('DatosBancarios')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success', 'Cuenta Bancaria Agregada', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('Personas')
+    });
+  }
+
+  contacto(row) {
+    let data: any;
+    this.advanceTableService.initService('Contactos')
+    this.advanceTableService.create<_contactos>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(ContactosFormComponent, {
+        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('Contactos')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('Personas')
+    });
+  }
+
+  correo(row) {
+    let data: any;
+    this.advanceTableService.initService('Correos')
+    this.advanceTableService.create<_correos>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(CorreosFormComponent, {
+        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('Correos')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('Personas')
+    });
+  }
+
+  telefono(row) {
+    let data: any;
+    this.advanceTableService.initService('Telefonos')
+    this.advanceTableService.create<_telefonos>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(TelefonosFormComponent, {
+        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('Telefonos')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('Personas')
+    });
   }
 }
 

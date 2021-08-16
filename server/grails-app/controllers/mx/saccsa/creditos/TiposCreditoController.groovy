@@ -19,3 +19,5 @@ class TiposCreditoController extends RestfulController<TiposCredito>{
         }
     }
 }
+
+

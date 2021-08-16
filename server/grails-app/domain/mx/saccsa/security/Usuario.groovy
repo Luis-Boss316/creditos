@@ -7,13 +7,11 @@ import groovy.transform.ToString
 @GrailsCompileStatic
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
+
 class Usuario implements Serializable {
-
     private static final long serialVersionUID = 1
-
     String username
     String password
-
     String nombre
     String apellidoPaterno
     String apellidoMaterno
@@ -21,17 +19,13 @@ class Usuario implements Serializable {
     String avatar = "Avatar"
     Date desde
     Boolean nuevo = true
-
-
     boolean enabled = true
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
-
     Set<Role> getAuthorities() {
         (UsuarioRole.findAllByUsuario(this) as List<UsuarioRole>)*.role as Set<Role>
     }
-
     static constraints = {
         password blank: false, password: true
         username blank: false, unique: true
@@ -43,14 +37,12 @@ class Usuario implements Serializable {
         desde nullable: true, blank:true
         nuevo nullable: true, blank:true
     }
-
     static mapping = {
         table "USUARIO"
         version false
         id generator : "identity"
         password column: '`password`'
     }
-
     static transients = ['descLabel']
     String getDescLabel() { nombre + ' ' + apellidoPaterno + ' ' + apellidoMaterno}
 }

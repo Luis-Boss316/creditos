@@ -20,3 +20,5 @@ class SectoresEconomicos {
     static transients = ['descLabel']
     String getDescLabel(){ descripcion }
 }
+
+

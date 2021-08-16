@@ -28,10 +28,15 @@ import { PersonaComponent } from './persona/persona.component';
 import { PersonaFormComponent } from './persona/persona-form/persona-form.component';
 import { PersonaDeleteComponent } from './persona/persona-delete/persona-delete.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import { DatosFormComponent } from './persona/datos-form/datos-form.component';
+import { DatosBancariosFormComponent } from './persona/datos-bancarios-form/datos-bancarios-form.component';
+import { ContactosFormComponent } from './persona/contactos-form/contactos-form.component';
+import { CorreosFormComponent } from './persona/correos-form/correos-form.component';
+import { TelefonosFormComponent } from './persona/telefonos-form/telefonos-form.component';
 
 
 @NgModule({
-  declarations: [PersonaComponent, PersonaFormComponent, PersonaDeleteComponent],
+  declarations: [PersonaComponent, PersonaFormComponent, PersonaDeleteComponent, DatosFormComponent, DatosBancariosFormComponent, ContactosFormComponent, CorreosFormComponent, TelefonosFormComponent],
     imports: [
         CommonModule,
         PersonasRoutingModule,

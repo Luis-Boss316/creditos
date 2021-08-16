@@ -475,25 +475,25 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
 
-  {
-    path: '',
-    title: 'Clientes',
-    moduleName: 'Clientes',
-    icon: 'fas fa-address-card',
-    class: 'menu-toggle',
-    groupTitle: false,
-    submenu: [
-      {
-        path: 'Clientes/Clientes',
-        title: 'Clientes',
-        moduleName: 'Clientes',
-        icon: '',
-        class: 'ml-menu',
-        groupTitle: false,
-        submenu: []
-      },
-    ]
-  },
+  // {
+  //   path: '',
+  //   title: 'Clientes',
+  //   moduleName: 'Clientes',
+  //   icon: 'fas fa-address-card',
+  //   class: 'menu-toggle',
+  //   groupTitle: false,
+  //   submenu: [
+  //     {
+  //       path: 'Clientes/Clientes',
+  //       title: 'Clientes',
+  //       moduleName: 'Clientes',
+  //       icon: '',
+  //       class: 'ml-menu',
+  //       groupTitle: false,
+  //       submenu: []
+  //     },
+  //   ]
+  // },
 
   {
     path: '',
