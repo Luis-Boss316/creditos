@@ -1,46 +1,34 @@
 package mx.saccsa.creditos
 
 class Negocios {
-    String nombre
-    String tipoPersona
-    TiposSociedad tipoSociedad
-    String tipoOperacion
-    Date fechaInicioOperaciones
-    Date fechaInicioRegistro
-    Ocupaciones actividad
-    GiroEmpresarial giro
-    String establecimiento
-    Nacionalidades nacionalidad
-    String paginaWeb
+    DatosGeneralesNegocios negocios
+    TelefonosNegocios telefonosNegocios
+    CorreosNegocios correosNegocios
+    Participantes participantes
+    ContactosNegocios contactosNegocios
+    CuentasBancariasNegocios cuentasBancarias
+
     static constraints = {
-        nombre nullable: false, blank: false
-        tipoPersona nullable: true, blank: true
-        tipoSociedad nullable: true, blank: true
-        tipoOperacion nullable: true, blank: true
-        fechaInicioOperaciones nullable: false, blank: false
-        fechaInicioRegistro nullable: false, blank: false
-        actividad nullable: true, blank: true
-        giro nullable: true, blank: true
-        establecimiento nullable: false, blank: false
-        nacionalidad nullable: false, blank: false
-        paginaWeb nullable: true, blank: true
+        negocios nullable: true
+        telefonosNegocios nullable: true
+        correosNegocios nullable: true
+        participantes nullable: true
+        contactosNegocios nullable: true
+        cuentasBancarias nullable: true
     }
+
     static mapping = {
         table('NEGOCIOS')
         version(false)
-        id generator: "identity"
-        nombre name:"nombre", column:"nombre"
-        tipoPersona name:"tipoPersona", column:"tipoPersona"
-        tipoSociedad name:"tipoSociedad", column:"tipoSociedad"
-        tipoOperacion name:"tipoOperacion", column:"tipoOperacion"
-        fechaInicioOperaciones name:"fechaInicioOperaciones", column:"fechaInicioOperaciones"
-        fechaInicioRegistro name:"fechaInicioRegistro", column:"fechaInicioRegistro"
-        actividad name:"actividad", column:"actividad"
-        giro name:"giro", column:"giro"
-        establecimiento name:"establecimiento", column:"establecimiento"
-        nacionalidad name:"nacionalidad", column:"nacionalidad"
-        paginaWeb name:"paginaWeb", column:"paginaWeb"
+        id generator:"identity"
+        negocios name:"negocios", column:"negocios"
+        telefonosNegocios name:"telefonosNegocios", column:"telefonosNegocios"
+        correosNegocios name:"correosNegocios", column:"correosNegocios"
+        participantes name:"participantes", column:"participantes"
+        contactosNegocios name:"contactosNegocios", column:"contactosNegocios"
+        cuentasBancarias name:"cuentasBancarias", column:"cuentasBancarias"
     }
+
     static transients = ['descLabel']
-    String getDescLabel(){ nombre + tipoSociedad }
+    String getDescLabel(){ negocios }
 }

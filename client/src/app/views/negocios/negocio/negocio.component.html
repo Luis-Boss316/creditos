@@ -81,12 +81,6 @@
                     {{row.nombre}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="tipoPersona">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Persona</mat-header-cell>
-                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.tipoPersona}}</mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="tipoSociedad">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Sociedad</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">

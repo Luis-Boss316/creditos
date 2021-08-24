@@ -1,10 +1,9 @@
 package mx.saccsa.creditos
 
 class Telefonos {
-    Personas nombre
-    Boolean activo
-    Boolean principal
-    String tipo
+    Boolean activo1
+    Boolean principal1
+    String tipo1
     String compania
     String lada
     String telefono
@@ -12,25 +11,23 @@ class Telefonos {
     String observaciones
 
     static constraints = {
-        nombre nullable: false, blank: false
-        activo nullable: false, blank: false
-        principal nullable: false, blank: false
-        tipo nullable: false, blank: false
-        compania nullable: false, blank: false
-        lada nullable: false, blank: false
-        telefono nullable: false, blank: false
-        extencion nullable: true, blank: true
-        observaciones  nullable: true, blank: true
+        activo1 nullable: true
+        principal1 nullable: true
+        tipo1 nullable: true
+        compania nullable: true
+        lada nullable: true
+        telefono nullable: true
+        extencion nullable: true
+        observaciones  nullable: true
     }
 
     static mapping = {
         table('TELEFONOS')
         version(false)
         id generator: "identity"
-        nombre name:"nombre", column:"nombre"
-        activo name:"activo", column:"activo"
-        principal name:"principal", column:"principal"
-        tipo name:"tipo", column:"tipo"
+        activo1 name:"activo", column:"activo"
+        principal1 name:"principal", column:"principal"
+        tipo1 name:"tipo", column:"tipo"
         compania name:"compania", column:"compania"
         lada name:"lada", column:"lada"
         telefono name:"telefono", column:"telefono"

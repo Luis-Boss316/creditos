@@ -1,6 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
-import {_negocios} from "../../../shared/interfaces/Creditos.interface";
+import {
+  _correosNegocios, _cuentasBancariasNegocios, _negocio,
+  _negocios, _participantes, _personas,
+  _telefonos,
+  _telefonosNegocios
+} from "../../../shared/interfaces/Creditos.interface";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
 import {HttpClient} from "@angular/common/http";
@@ -14,6 +19,14 @@ import {MatMenuTrigger} from "@angular/material/menu";
 import {NegocioFormComponent} from "./negocio-form/negocio-form.component";
 import {NegocioDeleteComponent} from "./negocio-delete/negocio-delete.component";
 import {map} from "rxjs/operators";
+import {TelefonosFormComponent} from "../../personas/persona/telefonos-form/telefonos-form.component";
+import {TelefonosNegociosFormComponent} from "./telefonos-negocios-form/telefonos-negocios-form.component";
+import {CorreosNegociosFormComponent} from "./correos-negocios-form/correos-negocios-form.component";
+import {ParticipantesFormComponent} from "./participantes-form/participantes-form.component";
+import {ContactosNegociosFormComponent} from "./contactos-negocios-form/contactos-negocios-form.component";
+import {CuentasBancariasFormComponent} from "./cuentas-bancarias-form/cuentas-bancarias-form.component";
+import {PersonaFormComponent} from "../../personas/persona/persona-form/persona-form.component";
+import {PersonaDeleteComponent} from "../../personas/persona/persona-delete/persona-delete.component";
 
 @Component({
   selector: 'app-negocio',
@@ -21,18 +34,12 @@ import {map} from "rxjs/operators";
   styleUrls: ['./negocio.component.sass']
 })
 export class NegocioComponent implements OnInit {
-  public _datos = { _title: 'Negocios', _modulo: 'Negocios', _icono: 'fas fa-warehouse', _dominio: 'Negocios', _componente: 'Negocio'}
+  public _datos = { _title: 'Negocios', _modulo: 'Negocios', _icono: 'fas fa-warehouse', _dominio: 'Negocios', _componente: 'Negocios'}
 
   displayedColumns = [ 'select',
     'nombre',
-    'tipoPersona',
     'tipoSociedad',
-    // 'tipoOperacion',
-    // 'fechaInicioOperaciones',
-    // 'fechaInicioRegistro',
-    // 'actividad',
     'giro',
-    // 'establecimiento',
     'nacionalidad',
     'paginaWeb',
     'actions' ];
@@ -41,6 +48,8 @@ export class NegocioComponent implements OnInit {
   advanceTable: _negocios | null;
 
   id: number;
+  resultadoo: _negocio;
+  data: _negocios;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
   dataSource: NegociosDataSource | null;
@@ -71,7 +80,9 @@ export class NegocioComponent implements OnInit {
         data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
+        if (!result) {
+          return
+        }
 
         this.advanceTableService.save<string>(result).subscribe(data => {
           this.showNotification( 'snackbar-success', this._datos._title + 'Agregada!!', 'bottom', 'center' );
@@ -89,32 +100,36 @@ export class NegocioComponent implements OnInit {
 
   editCall(row) {
     this.id = row.id;
-    let data: any;
     this.advanceTableService.edit<_negocios>(this.id).subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
+      this.data = result
+
       const dialogRef = this.dialog.open(NegocioFormComponent, {
-        data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
+        data: {title: row.descripcionCorta, disableClose: true, data: this.data, action: 'Editar'}
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
+        if (!result) {
+          return
+        }
         this.advanceTableService.update<string>(this.id, result)
-          .subscribe(data => {
-            this.showNotification( 'snackbar-success','¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center' );
+          .subscribe(d => {
+            this.showNotification('snackbar-success', '¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center');
             this.refresh();
           }, error => {
             if (error._embedded !== undefined) {
-              this.showNotification( 'snackbar-danger', 'Error al guardar', 'bottom', 'center' );
-              Object.entries(error._embedded.errors).forEach(([key, value]) => {});
-            }})
+              this.showNotification('snackbar-danger', 'Error al guardar', 'bottom', 'center');
+              Object.entries(error._embedded.errors).forEach(([key, value]) => {
+              });
+            }
+          })
         this.refreshTable();
       });
+
     });
   }
 
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(NegocioDeleteComponent, { data: row });
+    const dialogRef = this.dialog.open(NegocioFormComponent, { data: row });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.advanceTableService.delete<string>(row.id)
@@ -189,7 +204,7 @@ export class NegociosDataSource extends DataSource<_negocios> {
     this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
     return merge(...displayDataChanges).pipe( map(() => {
         this.filteredData = this._dataSource.data.slice().filter((advanceTable: _negocios) => {
-          const searchStr = ( advanceTable.id + advanceTable.nombre + advanceTable.tipoPersona + advanceTable.paginaWeb ).toLowerCase();
+          const searchStr = ( advanceTable.id + advanceTable.nombre + advanceTable.tipoSociedad + advanceTable.paginaWeb ).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());

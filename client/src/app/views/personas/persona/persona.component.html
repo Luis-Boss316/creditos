@@ -99,10 +99,10 @@
                     {{row.apellidoMaterno}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="nacionalidad">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Nacionalidad</mat-header-cell>
+                <ng-container matColumnDef="fechaNacimiento">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>FechaNacimiento</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.nacionalidad}}</mat-cell>
+                    {{row.fechaNacimiento}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="paisNacimiento">
@@ -142,12 +142,10 @@
 
               <mat-menu #contextMenu="matMenu">
                 <ng-template matMenuContent let-item="item">
-                  <button mat-menu-item (click)="more(item)"><mat-icon>note_add</mat-icon><span>Agregar Datos Alternos</span></button>
-                  <button mat-menu-item (click)="telefono(item)"><mat-icon>phone</mat-icon><span>Agregar Telefono</span></button>
-                  <button mat-menu-item (click)="correo(item)"><mat-icon>mail</mat-icon><span>Agregar Correo</span></button>
-                  <button mat-menu-item (click)="contacto(item)"><mat-icon>account_box</mat-icon><span>Agregar Contactos</span></button>
-                  <button mat-menu-item (click)="bancario(item)"><mat-icon>credit_card</mat-icon><span>Agregar Datos Bancarios</span></button>
-
+                  <button mat-menu-item (click)="addNew()"><mat-icon>add_box</mat-icon><span>Agregar {{_datos._title}}</span></button>
+                  <button mat-menu-item (click)="editCall(item)"><mat-icon>create</mat-icon><span>Editar {{_datos._title}}</span></button>
+                  <button mat-menu-item (click)="deleteItem(item)"><mat-icon>delete</mat-icon><span>Eliminar {{_datos._title}}</span></button>
+                  <button mat-menu-item (click)="refresh()"><mat-icon>refresh</mat-icon><span>Actualizar {{_datos._componente}}</span></button>
                 </ng-template>
               </mat-menu>
               <!-- context menu end -->

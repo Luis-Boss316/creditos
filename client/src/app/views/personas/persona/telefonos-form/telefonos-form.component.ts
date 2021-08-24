@@ -37,7 +37,7 @@ export class TelefonosFormComponent implements OnInit {
     if (this.action === 'Editar') {
       this.dialogTitle = this.data.data.descripcionCorta;
       this._telefonosForm = this.advanceTableService.buildForm({
-        id: [this.data.data.nombre, Validators.required],
+        id: [this.data.data.id, Validators.required],
         nombre: [this.data.data.nombre.id, Validators.required],
         activo: [this.data.data.activo],
         principal: [this.data.data.principal],

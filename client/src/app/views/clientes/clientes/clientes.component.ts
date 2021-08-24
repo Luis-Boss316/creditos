@@ -24,7 +24,7 @@ import {map} from "rxjs/operators";
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.sass']
+  styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
   public _datos = {

@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormGroup, Validators} from "@angular/forms";
-import {_combo, _datosAlternos} from "../../../../shared/interfaces/Creditos.interface";
+import {_combo, _correos, _datosAlternos} from "../../../../shared/interfaces/Creditos.interface";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AdvanceRestService} from "../../../../shared/services/advance-rest.service";
 
@@ -13,7 +13,7 @@ export class CorreosFormComponent implements OnInit {
   action: string;
   _correosForm: FormGroup;
   dialogTitle: string;
-  advanceTable: _datosAlternos;
+  advanceTable: _correos;
   public nombreCombo: _combo[];
 
   constructor(public dialogRef: MatDialogRef<CorreosFormComponent>,

@@ -28,10 +28,15 @@ import {MatStepperModule} from "@angular/material/stepper";
 import { NegocioComponent } from './negocio/negocio.component';
 import { NegocioFormComponent } from './negocio/negocio-form/negocio-form.component';
 import { NegocioDeleteComponent } from './negocio/negocio-delete/negocio-delete.component';
+import { TelefonosNegociosFormComponent } from './negocio/telefonos-negocios-form/telefonos-negocios-form.component';
+import { CorreosNegociosFormComponent } from './negocio/correos-negocios-form/correos-negocios-form.component';
+import { ParticipantesFormComponent } from './negocio/participantes-form/participantes-form.component';
+import { ContactosNegociosFormComponent } from './negocio/contactos-negocios-form/contactos-negocios-form.component';
+import { CuentasBancariasFormComponent } from './negocio/cuentas-bancarias-form/cuentas-bancarias-form.component';
 
 
 @NgModule({
-  declarations: [NegocioComponent, NegocioFormComponent, NegocioDeleteComponent],
+  declarations: [NegocioComponent, NegocioFormComponent, NegocioDeleteComponent, TelefonosNegociosFormComponent, CorreosNegociosFormComponent, ParticipantesFormComponent, ContactosNegociosFormComponent, CuentasBancariasFormComponent],
   imports: [
     CommonModule,
     NegociosRoutingModule,

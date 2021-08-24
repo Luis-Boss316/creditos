@@ -1,10 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
 import {
-  _aseguradoras,
+  _aseguradoras, _clientes,
   _contactos, _correos,
   _datosAlternos,
-  _datosBancarios,
+  _datosBancarios, _persona,
   _personas, _telefonos
 } from "../../../shared/interfaces/Creditos.interface";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
@@ -29,35 +29,31 @@ import {DatosBancariosFormComponent} from "./datos-bancarios-form/datos-bancario
 import {ContactosFormComponent} from "./contactos-form/contactos-form.component";
 import {CorreosFormComponent} from "./correos-form/correos-form.component";
 import {TelefonosFormComponent} from "./telefonos-form/telefonos-form.component";
+import {ClientesFormComponent} from "../../clientes/clientes/clientes-form/clientes-form.component";
 
 @Component({
   selector: 'app-persona',
   templateUrl: './persona.component.html',
-  styleUrls: ['./persona.component.sass']
+  styleUrls: ['./persona.component.scss']
 })
 export class PersonaComponent implements OnInit {
-  public _datos = { _title: 'Personas', _modulo: 'Personas', _icono: 'fas fa-child', _dominio: 'Personas', _componente: 'Persona'}
-  // public _alterno = {_title: 'Datos Alternos', _dominio: 'DatosAlternos'}
+  public _datos = { _title: 'Personas', _modulo: 'Personas', _icono: 'fas fa-child', _dominio: 'Personas', _componente: 'Personas'}
 
   displayedColumns = [ 'select',
     'primerNombre',
     'segundoNombre',
     'apellidoPaterno',
     'apellidoMaterno',
-    // 'genero',
-    // 'estadoCivil',
-    'nacionalidad',
-    // 'fechaNacimiento',
-    // 'actividad',
-    // 'giro',
+    'fechaNacimiento',
     'paisNacimiento',
-    // 'estadoNacimiento',
     'actions' ];
 
   selection = new SelectionModel<_personas>(true, []);
   advanceTable: _personas | null;
 
   id: number;
+  resultadoo: _persona;
+  data: _personas;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
   dataSource: PersonasDataSource | null;
@@ -74,7 +70,6 @@ export class PersonaComponent implements OnInit {
 
   ngOnInit(): void {
     this.advanceTableService.initService(this._datos._dominio);
-    // this.ats.initService(this._alterno._dominio);
     this.loadData();
   }
 
@@ -89,7 +84,9 @@ export class PersonaComponent implements OnInit {
         data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
+        if (!result) {
+          return
+        }
 
         this.advanceTableService.save<string>(result).subscribe(data => {
           this.showNotification( 'snackbar-success', this._datos._title + 'Agregada!!', 'bottom', 'center' );
@@ -107,27 +104,30 @@ export class PersonaComponent implements OnInit {
 
   editCall(row) {
     this.id = row.id;
-    let data: any;
     this.advanceTableService.edit<_personas>(this.id).subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
+      this.data = result
+
       const dialogRef = this.dialog.open(PersonaFormComponent, {
-        data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
+        data: {title: row.descripcionCorta, disableClose: true, data: this.data, action: 'Editar'}
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
+        if (!result) {
+          return
+        }
         this.advanceTableService.update<string>(this.id, result)
-          .subscribe(data => {
-            this.showNotification( 'snackbar-success','¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center' );
+          .subscribe(d => {
+            this.showNotification('snackbar-success', '¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center');
             this.refresh();
           }, error => {
             if (error._embedded !== undefined) {
-              this.showNotification( 'snackbar-danger', 'Error al guardar', 'bottom', 'center' );
-              Object.entries(error._embedded.errors).forEach(([key, value]) => {});
-            }})
+              this.showNotification('snackbar-danger', 'Error al guardar', 'bottom', 'center');
+              Object.entries(error._embedded.errors).forEach(([key, value]) => {
+              });
+            }
+          })
         this.refreshTable();
       });
-      // this.router.navigate(['/Personas/Datos/5']);
+
     });
   }
 
@@ -189,131 +189,6 @@ export class PersonaComponent implements OnInit {
     this.contextMenu.menu.focusFirstItem('mouse');
     this.contextMenu.openMenu();
   }
-
-  more(row) {
-    let data: any;
-    this.advanceTableService.initService('DatosAlternos')
-    this.advanceTableService.create<_datosAlternos>().subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(DatosFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.initService('DatosAlternos')
-        this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success', 'Datos Alternos Agregados', 'bottom', 'center' );
-        }, error => {
-          if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
-          }
-        })
-      });
-      this.advanceTableService.initService('Personas')
-    });
-  }
-
-  bancario(row) {
-    let data: any;
-    this.advanceTableService.initService('DatosBancarios')
-    this.advanceTableService.create<_datosBancarios>().subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(DatosBancariosFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.initService('DatosBancarios')
-        this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success', 'Cuenta Bancaria Agregada', 'bottom', 'center' );
-        }, error => {
-          if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
-          }
-        })
-      });
-      this.advanceTableService.initService('Personas')
-    });
-  }
-
-  contacto(row) {
-    let data: any;
-    this.advanceTableService.initService('Contactos')
-    this.advanceTableService.create<_contactos>().subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(ContactosFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.initService('Contactos')
-        this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
-        }, error => {
-          if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
-          }
-        })
-      });
-      this.advanceTableService.initService('Personas')
-    });
-  }
-
-  correo(row) {
-    let data: any;
-    this.advanceTableService.initService('Correos')
-    this.advanceTableService.create<_correos>().subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(CorreosFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.initService('Correos')
-        this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
-        }, error => {
-          if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
-          }
-        })
-      });
-      this.advanceTableService.initService('Personas')
-    });
-  }
-
-  telefono(row) {
-    let data: any;
-    this.advanceTableService.initService('Telefonos')
-    this.advanceTableService.create<_telefonos>().subscribe(result => {
-      data = result;
-      console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(TelefonosFormComponent, {
-        data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (!result) { return }
-        this.advanceTableService.initService('Telefonos')
-        this.advanceTableService.save<string>(result).subscribe(data => {
-          this.showNotification( 'snackbar-success',  'Contacto Agregado', 'bottom', 'center' );
-        }, error => {
-          if (error._embedded !== undefined) {
-            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
-            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
-          }
-        })
-      });
-      this.advanceTableService.initService('Personas')
-    });
-  }
 }
 
 export class PersonasDataSource extends DataSource<_personas> {
@@ -333,7 +208,9 @@ export class PersonasDataSource extends DataSource<_personas> {
     this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
     return merge(...displayDataChanges).pipe( map(() => {
         this.filteredData = this._dataSource.data.slice().filter((advanceTable: _personas) => {
-          const searchStr = ( advanceTable.id + advanceTable.primerNombre + advanceTable.apellidoPaterno + advanceTable.genero ).toLowerCase();
+          const searchStr = (
+            advanceTable.primerNombre +
+            advanceTable.apellidoPaterno ).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());
@@ -360,9 +237,6 @@ export class PersonasDataSource extends DataSource<_personas> {
           break;
         case 'apellidoPaterno':
           [propertyA, propertyB] = [a.apellidoPaterno, b.apellidoPaterno];
-          break;
-        case 'genero':
-          [propertyA, propertyB] = [a.genero, b.genero];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

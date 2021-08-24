@@ -1,0 +1,126 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            CREAR PARTICIPANTES</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_participantesForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('id').hasError('required')">
+              El campo ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nombre Negocio</mat-label>
+            <mat-select formControlName="nombre">
+              <mat-option *ngFor="let item of nombreCombo" [value]="item.id">{{item.descripcion}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_participantesForm.get('nombre').hasError('required')">
+              Nombre Negocio es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Participante</mat-label>
+            <input matInput formControlName="participante">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('participante').hasError('required')">
+              El campo Participante es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Puesto</mat-label>
+            <input matInput formControlName="puesto">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('puesto').hasError('required')">
+              El campo Puesto es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Porcentaje de Participacion</mat-label>
+            <input matInput formControlName="porcentajeParticipacion">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('porcentajeParticipacion').hasError('required')">
+              El campo Porcentaje de Participacion es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apoderado</mat-label>
+            <input matInput formControlName="apoderado">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('apoderado').hasError('required')">
+              El campo Apoderado es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Poder</mat-label>
+            <input matInput formControlName="poder">
+            <mat-icon matSuffix>library_books</mat-icon>
+            <mat-error *ngIf="_participantesForm.get('poder').hasError('required')">
+              El campo Poder es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-slide-toggle formControlName="firma">Firma</mat-slide-toggle>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_participantesForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

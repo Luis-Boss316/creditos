@@ -2,17 +2,17 @@ package mx.saccsa.creditos
 
 import grails.gorm.services.Service
 
-@Service(Personas)
+@Service(DatosGeneralesPersonas)
 interface PersonasService {
 
-    Personas get(Serializable id)
+    DatosGeneralesPersonas get(Serializable id)
 
-    List<Personas> list(Map args)
+    List<DatosGeneralesPersonas> list(Map args)
 
     Long count()
 
     void delete(Serializable id)
 
-    Personas save(Personas personas)
+    DatosGeneralesPersonas save(DatosGeneralesPersonas personas)
 
 }

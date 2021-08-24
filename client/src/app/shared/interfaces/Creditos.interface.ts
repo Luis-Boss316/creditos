@@ -905,6 +905,67 @@ export class _generales{
 
 export class _personas{
   id: number;
+
+  idDatosGenerales: number;
+  primerNombre: string;
+  segundoNombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  genero: string;
+  estadoCivil: _estadoCivil;
+  nacionalidad: _nacionalidades;
+  fechaNacimiento: Date;
+  actividad: string;
+  giro: _giroEmpresarial;
+  paisNacimiento: _paises;
+  estadoNacimiento: _estados;
+
+  idDatosAlternos: number;
+  primerNombreA: string;
+  segundoNombreA: string;
+  apellidoPaternoA: string;
+  apellidoMaternoA: string;
+
+  idDatosBancarios: number;
+  banco: string;
+  cuenta: string;
+  clabe: string;
+  noTarjeta: string;
+
+  idCorreos: number;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  correo: string;
+
+  idContactos: number;
+  relacion: _tiposRelaciones;
+  persona: string;
+
+  idTelefonos: number;
+  activo1: boolean;
+  principal1: boolean;
+  tipo1: string;
+  compania: string;
+  lada: string;
+  telefono: string;
+  extencion: string;
+  observaciones: string;
+}
+
+
+export class _persona{
+  id: number;
+  persona: _datosGenerales;
+  datos: _datosAlternos;
+  bancarios: _datosBancarios;
+  correo: _correos;
+  contacto: _contactos;
+  telefono: _telefonos;
+}
+
+export class _datosGenerales{
+  id: number;
   primerNombre: string;
   segundoNombre: string;
   apellidoPaterno: string;
@@ -919,7 +980,110 @@ export class _personas{
   estadoNacimiento: _estados;
 }
 
+export class _datosAlternos{
+  id: number;
+  primerNombreA: string;
+  segundoNombreA: string;
+  apellidoPaternoA: string;
+  apellidoMaternoA: string;
+}
+
+export class _datosBancarios{
+  id: number;
+  banco: string;
+  cuenta: string;
+  clabe: string;
+  noTarjeta: string;
+}
+
+export class _contactos{
+  id: number;
+  relacion: _tiposRelaciones;
+  persona: string;
+}
+
+export class _correos{
+  id: number;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  correo: string;
+}
+
+export class _telefonos{
+  id: number;
+  activo1: boolean;
+  principal1: boolean;
+  tipo1: string;
+  compania: string;
+  lada: string;
+  telefono: string;
+  extencion: string;
+  observaciones: string;
+}
+
 export class _negocios{
+  id: number;
+
+  idDatosGenerales:number;
+  nombre:string;
+  tipoPersona:string;
+  tipoSociedad:_tiposSociedad;
+  tipoOperacion: string;
+  fechaInicioOperaciones: Date;
+  fechaInicioRegistro: Date;
+  actividad: _ocupaciones;
+  giro: _giroEmpresarial;
+  establecimiento: string;
+  nacionalidad: _nacionalidades;
+  paginaWeb: string;
+
+  idTelefonos: number;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  compania: string;
+  lada: string;
+  telefono: string;
+  extencion: string;
+  observaciones: string;
+
+  idCorreos: number;
+  activo1: boolean;
+  principal1: boolean;
+  tipo1: string;
+  correo: string;
+
+  idParticipantes: number;
+  participante: string;
+  puesto: string;
+  porcentajeParticipacion: string;
+  apoderado: string;
+  poder: string;
+  firma: boolean;
+
+  idContactos: number;
+  relacion: string;
+  persona: string;
+
+  idCuentas: number;
+  banco: string;
+  cuenta: string;
+  clabe: string;
+  noTarjeta: string;
+}
+
+export class _negocio{
+  id: number;
+  negocios: _datosGeneralesNegocios;
+  telefonosNegocios: _telefonosNegocios;
+  correosNegocios: _correosNegocios;
+  participantes: _participantes;
+  contactosNegocios: _contactosNegocios;
+  cuentasBancarias: _cuentasBancariasNegocios;
+}
+
+export class _datosGeneralesNegocios{
   id: number;
   nombre: string;
   tipoPersona: string;
@@ -934,43 +1098,8 @@ export class _negocios{
   paginaWeb: string;
 }
 
-export class _datosAlternos{
+export class _telefonosNegocios {
   id: number;
-  nombre: _personas;
-  primerNombre: string;
-  segundoNombre: string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
-}
-
-export class _datosBancarios{
-  id: number;
-  nombre: _personas;
-  banco: string;
-  cuenta: string;
-  clabe: string;
-  noTarjeta: string;
-}
-
-export class _contactos{
-  id: number;
-  nombre: _personas;
-  relacion: _tiposRelaciones;
-  persona: string;
-}
-
-export class _correos{
-  id: number;
-  nombre: _personas;
-  activo: boolean;
-  principal: boolean;
-  tipo: string;
-  correo: string;
-}
-
-export class _telefonos{
-  id: number;
-  nombre: _personas;
   activo: boolean;
   principal: boolean;
   tipo: string;
@@ -979,4 +1108,36 @@ export class _telefonos{
   telefono: string;
   extencion: string;
   observaciones: string;
+}
+
+export class _correosNegocios{
+  id: number;
+  activo: boolean;
+  principal: boolean;
+  tipo: string;
+  correo: string;
+}
+
+export class _participantes{
+  id: number;
+  participante: string;
+  puesto: string;
+  porcentajeParticipacion: string;
+  apoderado: string;
+  poder: string;
+  firma: boolean;
+}
+
+export class _contactosNegocios{
+  id: number;
+  relacion: string;
+  persona: string;
+}
+
+export class _cuentasBancariasNegocios{
+  id: number;
+  banco: string;
+  cuenta: string;
+  clabe: string;
+  noTarjeta: string;
 }
