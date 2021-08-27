@@ -31,6 +31,8 @@ import {TiposReferenciasComponent} from "./tipos-referencias/tipos-referencias.c
 import {TiposRelacionesComponent} from "./tipos-relaciones/tipos-relaciones.component";
 import {TiposSociedadComponent} from "./tipos-sociedad/tipos-sociedad.component";
 import {TitulosComponent} from "./titulos/titulos.component";
+import {ModoContactoComponent} from "./modo-contacto/modo-contacto.component";
+import {SucursalesComponent} from "./sucursales/sucursales.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'Aseguradoras', pathMatch: 'full' },
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'Estados', component: EstadosComponent},
   { path: 'Giro-Empresarial', component: GiroEmpresarialComponent},
   { path: 'Monedas', component: MonedasComponent},
+  { path: 'Modo-Contacto', component: ModoContactoComponent},
   { path: 'Municipios', component: MunicipiosComponent},
   { path: 'Nacionalidades', component: NacionalidadesComponent},
   { path: 'Ocupaciones', component: OcupacionesComponent},
@@ -52,6 +55,7 @@ const routes: Routes = [
   { path: 'Profesiones', component: ProfesionesComponent},
   { path: 'Puestos-Empleos', component: PuestosEmpleosComponent},
   { path: 'Regimen-Matrimonial', component: RegimenMatrimonialComponent},
+  { path: 'Sucursales', component: SucursalesComponent},
   { path: 'Tipo-Impuestos', component: TipoImpuestosComponent},
   { path: 'Tipo-Persona', component: TipoPersonaComponent},
   { path: 'Tipos-Asentamientos', component: TipoAsentamientosComponent},

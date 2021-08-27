@@ -73,6 +73,15 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: 'Catalogos/Modo-Contacto',
+        title: 'Modo de Contacto',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
         path: 'Catalogos/Municipios',
         title: 'Municipios',
         moduleName: 'Catalogos',
@@ -172,8 +181,17 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: 'Catalogos/Tipo-Impuestos',
-        title: 'Tipo Impuestos',
+        path: 'Catalogos/Regimen-Matrimonial',
+        title: 'Regimen Matrimonial',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
+        path: 'Catalogos/Sucursales',
+        title: 'Sucursales',
         moduleName: 'Catalogos',
         icon: '',
         class: 'ml-menu',
@@ -537,6 +555,27 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
+    title: 'Prospectos',
+    moduleName: 'Prospectos',
+    icon: 'fas fa-address-card',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Prospectos/Prospecto',
+        title: 'Prospectos',
+        moduleName: 'Prospectos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+  },
+
+
+  {
+    path: '',
     title: 'Usuarios',
     moduleName: 'Usuario',
     icon: 'fas fa-address-card',
@@ -563,7 +602,6 @@ export const ROUTES: RouteInfo[] = [
       },
     ]
   },
-
 
 ];
 

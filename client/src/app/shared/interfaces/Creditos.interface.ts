@@ -1141,3 +1141,41 @@ export class _cuentasBancariasNegocios{
   clabe: string;
   noTarjeta: string;
 }
+
+export class _prospectos {
+  id: number;
+  tipo: string;
+  nombre: string;
+  modoDeContacto: string;
+  comoSeEntero: string;
+  sucursal: string;
+  ejecutivo: string;
+  promotor: string;
+  producto: string;
+  monto: string;
+}
+
+export class _modoContacto {
+  id: number;
+  valor: number;
+  descripcion: string;
+  financieraNacional: string;
+}
+
+export class _sucursales {
+  id: number;
+  sucursal: string;
+  responsable: string;
+  puesto: string;
+  domicilio: string;
+  telefono: string;
+  correo: string;
+}
+
+export class _empleados {
+  id: number;
+  numeroEmpleado: number;
+  nombre: string;
+  puesto: string;
+  sucursal: _sucursales;
+}

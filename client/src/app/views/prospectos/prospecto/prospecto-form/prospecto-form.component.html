@@ -1,0 +1,171 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_prospectosForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_prospectosForm.get('id').hasError('required')">
+              El campo ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo">
+              <mat-option value="Persona">Persona</mat-option>
+              <mat-option value="Negocio">Negocio</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('tipo').hasError('required')">
+              Tipo es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre">
+            <mat-icon matSuffix>keyboard</mat-icon>
+            <mat-error *ngIf="_prospectosForm.get('nombre').hasError('required')">
+              El campo Nombre es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Modo de Contacto</mat-label>
+            <mat-select formControlName="modoDeContacto">
+              <mat-option value="Modo1">Modo1</mat-option>
+              <mat-option value="Modo2">Modo2</mat-option>
+              <mat-option value="Modo3">Modo3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('modoDeContacto').hasError('required')">
+              Modo de Contacto es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>¿Como se entero?</mat-label>
+            <mat-select formControlName="comoSeEntero">
+              <mat-option value="Modo1">Modo1</mat-option>
+              <mat-option value="Modo2">Modo2</mat-option>
+              <mat-option value="Modo3">Modo3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('comoSeEntero').hasError('required')">
+              ¿Como se entero? es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Sucursal</mat-label>
+            <mat-select formControlName="sucursal">
+              <mat-option value="Sucursal1">Sucursal1</mat-option>
+              <mat-option value="Sucursal2">Sucursal2</mat-option>
+              <mat-option value="Sucursal3">Sucursal3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('sucursal').hasError('required')">
+              Sucursal es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ejecutivo</mat-label>
+            <mat-select formControlName="ejecutivo">
+              <mat-option value="Modo1">Modo1</mat-option>
+              <mat-option value="Modo2">Modo2</mat-option>
+              <mat-option value="Modo3">Modo3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('ejecutivo').hasError('required')">
+              Ejecutivo es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Promotor</mat-label>
+            <mat-select formControlName="promotor">
+              <mat-option value="Promotor1">Promotor1</mat-option>
+              <mat-option value="Promotor2">Promotor2</mat-option>
+              <mat-option value="Promotor3">Promotor3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('promotor').hasError('required')">
+              Promotor es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Producto</mat-label>
+            <mat-select formControlName="producto">
+              <mat-option value="Producto1">Producto1</mat-option>
+              <mat-option value="Producto2">Producto2</mat-option>
+              <mat-option value="Producto3">Producto3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_prospectosForm.get('producto').hasError('required')">
+              Producto es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Monto</mat-label>
+            <input matInput formControlName="monto">
+            <mat-icon matSuffix>keyboard</mat-icon>
+            <mat-error *ngIf="_prospectosForm.get('monto').hasError('required')">
+              El campo Monto es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_prospectosForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
