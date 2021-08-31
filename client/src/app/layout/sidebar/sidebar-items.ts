@@ -37,6 +37,15 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: 'Catalogos/Empleados',
+        title: 'Empleados',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
         path: 'Catalogos/Estado-Civil',
         title: 'Estado Civil',
         moduleName: 'Catalogos',
@@ -147,6 +156,15 @@ export const ROUTES: RouteInfo[] = [
       {
         path: 'Catalogos/Periodicidades',
         title: 'Periodicidades',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
+        path: 'Catalogos/Producto-Financiero',
+        title: 'Producto Financiero',
         moduleName: 'Catalogos',
         icon: '',
         class: 'ml-menu',

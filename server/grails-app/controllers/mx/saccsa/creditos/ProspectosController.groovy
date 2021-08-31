@@ -14,12 +14,12 @@ class ProspectosController extends RestfulController<Prospectos>{
                     id: it?.id,
                     tipo: it?.tipo,
                     nombre: it?.nombre,
-                    modoDeContacto: it?.modoDeContacto,
-                    comoSeEntero: it?.comoSeEntero,
-                    sucursal: it?.sucursal,
-                    ejecutivo: it?.ejecutivo,
-                    promotor: it?.promotor,
-                    producto: it?.producto,
+                    modoDeContacto: it?.modoDeContacto.descLabel,
+                    comoSeEntero: it?.comoSeEntero.descLabel,
+                    sucursal: it?.sucursal.descLabel,
+                    ejecutivo: it?.ejecutivo.descLabel,
+                    promotor: it?.promotor.descLabel,
+                    producto: it?.producto.descLabel,
                     monto: it?.monto,
             ]
         })

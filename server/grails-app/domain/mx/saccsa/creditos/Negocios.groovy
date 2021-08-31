@@ -30,5 +30,5 @@ class Negocios {
     }
 
     static transients = ['descLabel']
-    String getDescLabel(){ negocios }
+    String getDescLabel(){ negocios.descLabel }
 }

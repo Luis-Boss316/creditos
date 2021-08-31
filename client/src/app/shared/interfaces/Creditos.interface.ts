@@ -1146,11 +1146,11 @@ export class _prospectos {
   id: number;
   tipo: string;
   nombre: string;
-  modoDeContacto: string;
-  comoSeEntero: string;
-  sucursal: string;
-  ejecutivo: string;
-  promotor: string;
+  modoDeContacto: _modoContacto;
+  comoSeEntero: _modoContacto;
+  sucursal: _sucursales;
+  ejecutivo: _empleados;
+  promotor: _empleados;
   producto: string;
   monto: string;
 }
@@ -1178,4 +1178,15 @@ export class _empleados {
   nombre: string;
   puesto: string;
   sucursal: _sucursales;
+}
+
+export class _productoFinanciero {
+  id: number;
+  producto: string;
+  montoMinimo: number;
+  montoMaximo: number;
+  tipo: string;
+  clasificacionBancaria: string;
+  moneda: _monedas;
+  activo: boolean;
 }

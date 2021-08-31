@@ -33,12 +33,15 @@ import {TiposSociedadComponent} from "./tipos-sociedad/tipos-sociedad.component"
 import {TitulosComponent} from "./titulos/titulos.component";
 import {ModoContactoComponent} from "./modo-contacto/modo-contacto.component";
 import {SucursalesComponent} from "./sucursales/sucursales.component";
+import {EmpleadosComponent} from "./empleados/empleados.component";
+import {ProductoFinancieroComponent} from "./producto-financiero/producto-financiero.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'Aseguradoras', pathMatch: 'full' },
   { path: 'Aseguradoras', component: AseguradorasComponent },
   { path: 'Ciudades', component: CiudadesComponent},
   { path: 'Coberturas-Geograficas', component: CoberturasGeograficasComponent},
+  { path: 'Empleados', component: EmpleadosComponent},
   { path: 'Estado-Civil', component: EstadoCivilComponent},
   { path: 'Estados', component: EstadosComponent},
   { path: 'Giro-Empresarial', component: GiroEmpresarialComponent},
@@ -52,6 +55,7 @@ const routes: Routes = [
   { path: 'Paises', component: PaisesComponent},
   { path: 'Participes', component: ParticipesComponent},
   { path: 'Periodicidades', component: PeriodicidadesComponent},
+  { path: 'Producto-Financiero', component: ProductoFinancieroComponent},
   { path: 'Profesiones', component: ProfesionesComponent},
   { path: 'Puestos-Empleos', component: PuestosEmpleosComponent},
   { path: 'Regimen-Matrimonial', component: RegimenMatrimonialComponent},

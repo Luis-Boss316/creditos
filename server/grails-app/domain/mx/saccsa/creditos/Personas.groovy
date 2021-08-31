@@ -30,5 +30,5 @@ class Personas {
     }
 
     static transients = ['descLabel']
-    String getDescLabel(){ persona }
+    String getDescLabel(){ persona.descLabel }
 }

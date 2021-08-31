@@ -13,7 +13,7 @@ class ComboController {
         Class c = Class.forName(groupId + "." + id.capitalize())
         def data = c.list().collect {
             [
-                    id         : it.ident(),
+                    id         : it.id,
                     descripcion: it.descLabel
             ]
         }

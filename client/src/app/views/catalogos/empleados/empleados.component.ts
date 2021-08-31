@@ -1,53 +1,52 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
-import {_prospectos} from "../../../shared/interfaces/Creditos.interface";
+import {_empleados, _sucursales} from "../../../shared/interfaces/Creditos.interface";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
+import {SucursalesDataSource} from "../sucursales/sucursales.component";
 import {HttpClient} from "@angular/common/http";
 import {GlobalService} from "../../../shared/services/global.service";
 import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormBuilder} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatMenuTrigger} from "@angular/material/menu";
-import {ProspectoFormComponent} from "./prospecto-form/prospecto-form.component";
-import {ProspectoDeleteComponent} from "./prospecto-delete/prospecto-delete.component";
+import {SucursalesFormComponent} from "../sucursales/sucursales-form/sucursales-form.component";
+import {EmpleadosFormComponent} from "./empleados-form/empleados-form.component";
+import {SucursalesDeleteComponent} from "../sucursales/sucursales-delete/sucursales-delete.component";
+import {EmpleadosDeleteComponent} from "./empleados-delete/empleados-delete.component";
 import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'app-prospecto',
-  templateUrl: './prospecto.component.html',
-  styleUrls: ['./prospecto.component.sass']
+  selector: 'app-empleados',
+  templateUrl: './empleados.component.html',
+  styleUrls: ['./empleados.component.sass']
 })
-export class ProspectoComponent implements OnInit {
-  public _datos = { _title: 'Prospectos',
-    _modulo: 'Prospectos',
-    _icono: 'fas fa-child',
-    _dominio: 'Prospectos',
-    _componente: 'Prospectos'}
+export class EmpleadosComponent implements OnInit {
+  public _datos = { _title: 'Empleados',
+    _modulo: 'Catalogos',
+    _icono: 'fas fa-folder-open',
+    _dominio: 'Empleados',
+    _componente: 'Empleados'}
 
   displayedColumns = [ 'select',
+    'numeroEmpleado',
     'nombre',
+    'puesto',
     'sucursal',
-    'producto',
-    'monto',
     'actions' ];
 
+  selection = new SelectionModel<_empleados>(true, []);
+  advanceTable: _empleados | null;
+
   id: number;
-  data: _prospectos;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
-  dataSource: ProspectosDataSource | null;
+  dataSource: EmpleadosDataSource | null;
 
-  selection = new SelectionModel<_prospectos>(true, []);
-  advanceTable: _prospectos | null;
-
-  constructor(public httpClient: HttpClient, private globalService: GlobalService,
-              public dialog: MatDialog, private router: Router,
-              public advanceTableService: AdvanceRestService,
-              private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
+  constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog,
+              public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -65,16 +64,14 @@ export class ProspectoComponent implements OnInit {
 
   addNew() {
     let data: any;
-    this.advanceTableService.create<_prospectos>().subscribe(result => {
+    this.advanceTableService.create<_empleados>().subscribe(result => {
       data = result;
       console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(ProspectoFormComponent, {
+      const dialogRef = this.dialog.open(EmpleadosFormComponent, {
         data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) {
-          return
-        }
+        if (!result) { return }
 
         this.advanceTableService.save<string>(result).subscribe(data => {
           this.showNotification( 'snackbar-success', this._datos._title + 'Agregada!!', 'bottom', 'center' );
@@ -92,36 +89,32 @@ export class ProspectoComponent implements OnInit {
 
   editCall(row) {
     this.id = row.id;
-    this.advanceTableService.edit<_prospectos>(this.id).subscribe(result => {
-      this.data = result
-
-      const dialogRef = this.dialog.open(ProspectoFormComponent, {
-        data: {title: row.descripcionCorta, disableClose: true, data: this.data, action: 'Editar'}
+    let data: any;
+    this.advanceTableService.edit<_empleados>(this.id).subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(EmpleadosFormComponent, {
+        data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
-        if (!result) {
-          return
-        }
+        if (!result) { return }
         this.advanceTableService.update<string>(this.id, result)
-          .subscribe(d => {
-            this.showNotification('snackbar-success', '¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center');
+          .subscribe(data => {
+            this.showNotification( 'snackbar-success','¡¡ ' + this._datos._title + ' Editada!!', 'bottom', 'center' );
             this.refresh();
           }, error => {
             if (error._embedded !== undefined) {
-              this.showNotification('snackbar-danger', 'Error al guardar', 'bottom', 'center');
-              Object.entries(error._embedded.errors).forEach(([key, value]) => {
-              });
-            }
-          })
+              this.showNotification( 'snackbar-danger', 'Error al guardar', 'bottom', 'center' );
+              Object.entries(error._embedded.errors).forEach(([key, value]) => {});
+            }})
         this.refreshTable();
       });
-
     });
   }
 
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(ProspectoDeleteComponent, { data: row });
+    const dialogRef = this.dialog.open(EmpleadosDeleteComponent, { data: row });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.advanceTableService.delete<string>(row.id)
@@ -144,14 +137,13 @@ export class ProspectoComponent implements OnInit {
     return numSelected === numRows;
   }
 
-  masterToggle() { this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) =>
-    this.selection.select(row))}
+  masterToggle() { this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) => this.selection.select(row))}
 
   removeSelectedRows() {
     const totalSelect = this.selection.selected.length;
     this.selection.selected.forEach((item) => {
       this.advanceTableService.delete<string>(item.id).subscribe()
-      this.selection = new SelectionModel<_prospectos>(true, []);
+      this.selection = new SelectionModel<_empleados>(true, []);
     });
     this.loadData();
     this.showNotification( 'snackbar-danger', totalSelect + '¡¡Registros Eliminados!!', 'bottom', 'center'  );
@@ -159,7 +151,7 @@ export class ProspectoComponent implements OnInit {
 
   public loadData() {
     this.db = new AdvanceRestService(this.httpClient, this.globalService, this.fBuilder);
-    this.dataSource = new ProspectosDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
+    this.dataSource = new EmpleadosDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
     fromEvent(this.filter.nativeElement, 'keyup').subscribe(() => {
       if (!this.dataSource) { return; }
       this.dataSource.filter = this.filter.nativeElement.value;
@@ -167,11 +159,10 @@ export class ProspectoComponent implements OnInit {
   }
 
   showNotification(colorName, text, placementFrom, placementAlign) {
-    this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom,
-      horizontalPosition: placementAlign, panelClass: colorName });
+    this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom, horizontalPosition: placementAlign, panelClass: colorName });
   }
 
-  onContextMenu(event: MouseEvent, item: _prospectos) {
+  onContextMenu(event: MouseEvent, item: _empleados) {
     event.preventDefault();
     this.contextMenuPosition.x = event.clientX + 'px';
     this.contextMenuPosition.y = event.clientY + 'px';
@@ -181,28 +172,24 @@ export class ProspectoComponent implements OnInit {
   }
 }
 
-export class ProspectosDataSource extends DataSource<_prospectos> {
+export class EmpleadosDataSource extends DataSource<_empleados> {
   _filterChange = new BehaviorSubject('');
   get filter(): string { return this._filterChange.value; }
   set filter(filter: string) { this._filterChange.next(filter); }
-  filteredData: _prospectos[] = [];
-  renderedData: _prospectos[] = [];
+  filteredData: _empleados[] = [];
+  renderedData: _empleados[] = [];
 
-  constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort,
-              private _dominio: string ) {
+  constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort, private _dominio: string ) {
     super();
     this._filterChange.subscribe(() => (this._paginator.pageIndex = 0));
   }
 
-  connect(): Observable<_prospectos[]> {
+  connect(): Observable<_empleados[]> {
     const displayDataChanges = [ this._dataSource.dataChange, this._sort.sortChange, this._filterChange, this._paginator.page ];
     this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
     return merge(...displayDataChanges).pipe( map(() => {
-        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _prospectos) => {
-          const searchStr = (
-            advanceTable.nombre +
-            advanceTable.sucursal +
-          advanceTable.producto).toLowerCase();
+        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _empleados) => {
+          const searchStr = ( advanceTable.id + advanceTable.numeroEmpleado + advanceTable.nombre + advanceTable.puesto ).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());
@@ -215,7 +202,7 @@ export class ProspectosDataSource extends DataSource<_prospectos> {
 
   disconnect() {}
 
-  sortData(data: _prospectos[]): _prospectos[] {
+  sortData(data: _empleados[]): _empleados[] {
     if (!this._sort.active || this._sort.direction === '') { return data; }
     return data.sort((a, b) => {
       let propertyA: number | string = '';
@@ -224,11 +211,11 @@ export class ProspectosDataSource extends DataSource<_prospectos> {
         case 'id':
           [propertyA, propertyB] = [a.id, b.id];
           break;
+        case 'numeroEmpleado':
+          [propertyA, propertyB] = [a.numeroEmpleado, b.numeroEmpleado];
+          break;
         case 'nombre':
           [propertyA, propertyB] = [a.nombre, b.nombre];
-          break;
-        case 'producto':
-          [propertyA, propertyB] = [a.producto, b.producto];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

@@ -31,9 +31,9 @@
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Tipo</mat-label>
-            <mat-select formControlName="tipo">
-              <mat-option value="Persona">Persona</mat-option>
-              <mat-option value="Negocio">Negocio</mat-option>
+            <mat-select formControlName="tipo" (selectionChange)="cargarCombo($event.value)">
+              <mat-option value="Personas">Persona</mat-option>
+              <mat-option value="Negocios">Negocio</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('tipo').hasError('required')">
               Tipo es requerido
@@ -44,7 +44,9 @@
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre">
+            <mat-select formControlName="nombre">
+              <mat-option *ngFor="let n of nombreCombo" [value]="n.id">{{n.descripcion}}</mat-option>
+            </mat-select>
             <mat-icon matSuffix>keyboard</mat-icon>
             <mat-error *ngIf="_prospectosForm.get('nombre').hasError('required')">
               El campo Nombre es requerido
@@ -58,12 +60,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Modo de Contacto</mat-label>
             <mat-select formControlName="modoDeContacto">
-              <mat-option value="Modo1">Modo1</mat-option>
-              <mat-option value="Modo2">Modo2</mat-option>
-              <mat-option value="Modo3">Modo3</mat-option>
+              <mat-option *ngFor="let item of modoContactoCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('modoDeContacto').hasError('required')">
-              Modo de Contacto es requerido
+              Modo de Contacto es requerida
             </mat-error>
           </mat-form-field>
         </div>
@@ -72,12 +72,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>¿Como se entero?</mat-label>
             <mat-select formControlName="comoSeEntero">
-              <mat-option value="Modo1">Modo1</mat-option>
-              <mat-option value="Modo2">Modo2</mat-option>
-              <mat-option value="Modo3">Modo3</mat-option>
+              <mat-option *ngFor="let item of comoEnteroCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('comoSeEntero').hasError('required')">
-              ¿Como se entero? es requerido
+              ¿Como se entero? es requerida
             </mat-error>
           </mat-form-field>
         </div>
@@ -88,12 +86,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Sucursal</mat-label>
             <mat-select formControlName="sucursal">
-              <mat-option value="Sucursal1">Sucursal1</mat-option>
-              <mat-option value="Sucursal2">Sucursal2</mat-option>
-              <mat-option value="Sucursal3">Sucursal3</mat-option>
+              <mat-option *ngFor="let item of sucursalCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('sucursal').hasError('required')">
-              Sucursal es requerido
+              Sucursal es requerida
             </mat-error>
           </mat-form-field>
         </div>
@@ -102,12 +98,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Ejecutivo</mat-label>
             <mat-select formControlName="ejecutivo">
-              <mat-option value="Modo1">Modo1</mat-option>
-              <mat-option value="Modo2">Modo2</mat-option>
-              <mat-option value="Modo3">Modo3</mat-option>
+              <mat-option *ngFor="let item of ejecutivoCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('ejecutivo').hasError('required')">
-              Ejecutivo es requerido
+              Ejecutivo es requerida
             </mat-error>
           </mat-form-field>
         </div>
@@ -118,12 +112,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Promotor</mat-label>
             <mat-select formControlName="promotor">
-              <mat-option value="Promotor1">Promotor1</mat-option>
-              <mat-option value="Promotor2">Promotor2</mat-option>
-              <mat-option value="Promotor3">Promotor3</mat-option>
+              <mat-option *ngFor="let item of promotorCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('promotor').hasError('required')">
-              Promotor es requerido
+              Promotor es requerida
             </mat-error>
           </mat-form-field>
         </div>
@@ -132,12 +124,10 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Producto</mat-label>
             <mat-select formControlName="producto">
-              <mat-option value="Producto1">Producto1</mat-option>
-              <mat-option value="Producto2">Producto2</mat-option>
-              <mat-option value="Producto3">Producto3</mat-option>
+              <mat-option *ngFor="let item of productoCombo" [value]="item.id">{{item.descripcion}}</mat-option>
             </mat-select>
             <mat-error *ngIf="_prospectosForm.get('producto').hasError('required')">
-              Producto es requerido
+              Producto es requerida
             </mat-error>
           </mat-form-field>
         </div>

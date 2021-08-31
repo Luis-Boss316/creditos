@@ -3,12 +3,12 @@ package mx.saccsa.creditos
 class Prospectos {
     String tipo
     String nombre
-    String modoDeContacto
-    String comoSeEntero
-    String sucursal
-    String ejecutivo
-    String promotor
-    String producto
+    ModoContacto modoDeContacto
+    ModoContacto comoSeEntero
+    Sucursales sucursal
+    Empleados ejecutivo
+    Empleados promotor
+    ProductoFinanciero producto
     String monto
 
 
