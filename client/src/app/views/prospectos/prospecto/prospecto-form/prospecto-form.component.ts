@@ -1,8 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {_ciudades, _combo, _prospectos} from "../../../../shared/interfaces/Creditos.interface";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AdvanceRestService} from "../../../../shared/services/advance-rest.service";
+import {SimuladorFormComponent} from "../simulador-form/simulador-form.component";
 
 @Component({
   selector: 'app-prospecto-form',
@@ -24,6 +25,7 @@ export class ProspectoFormComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ProspectoFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialog: MatDialog,
               public advanceTableService: AdvanceRestService,) { }
 
   submit() {}
@@ -51,6 +53,8 @@ export class ProspectoFormComponent implements OnInit {
 
 
     this.dialogTitle = this.data.data.alias;
+
+
     this._prospectosForm = this.advanceTableService.buildForm({
       id: [this.data.data.id ? this.data.data.id: ''],
       tipo: [this.data.data.tipo ? this.data.data.tipo: ''],
@@ -63,10 +67,23 @@ export class ProspectoFormComponent implements OnInit {
       producto: [this.data.data.producto ? this.data.data.producto.id: ''],
       monto: [this.data.data.monto ? this.data.data.monto: ''],
     });
+
+
+    if (this.data.data.tipo != undefined){
+      this.cargarCombo(this.data.data.tipo)
+      this._prospectosForm.patchValue({nombre: Number(this.data.data.nombre)})
+    }
   }
 
   cargarCombo(value: any) {
     this.advanceTableService.combo<_combo[]>({id: value}, 'comboController').subscribe(result =>
       this.nombreCombo = result);
+  }
+
+  simulador() {
+    const dialogRef = this.dialog.open(SimuladorFormComponent, {
+      width:'60%', height:'100%',
+      data: { title: 'Simulador', disableClose: true, action: 'Agregar' }
+    });
   }
 }

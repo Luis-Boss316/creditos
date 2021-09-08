@@ -4,16 +4,23 @@
       <div class="modalHeader clearfix">
         <div class="modal-about">
           <div class="font-weight-bold p-t-5 p-l-10 font-17">
-            {{dialogTitle}}</div>
+            Prospectos</div>
         </div>
       </div>
     </div>
+
+    <button mat-icon-button (click)="simulador()">
+      <mat-icon>tablet_mac</mat-icon>
+    </button>
+
     <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
       <mat-icon>close</mat-icon>
     </button>
+
   </div>
   <div mat-dialog-content>
     <form class="register-form m-4" [formGroup]="_prospectosForm" (ngSubmit)="submit">
+
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
@@ -25,9 +32,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Tipo</mat-label>
@@ -40,7 +45,9 @@
             </mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Nombre</mat-label>
@@ -53,9 +60,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Modo de Contacto</mat-label>
@@ -67,7 +72,9 @@
             </mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>¿Como se entero?</mat-label>
@@ -79,9 +86,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Sucursal</mat-label>
@@ -93,7 +98,9 @@
             </mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Ejecutivo</mat-label>
@@ -105,9 +112,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Promotor</mat-label>
@@ -119,7 +124,9 @@
             </mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Producto</mat-label>
@@ -131,9 +138,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Monto</mat-label>

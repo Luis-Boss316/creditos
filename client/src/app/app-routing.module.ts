@@ -36,6 +36,10 @@ const routes: Routes = [
         path: 'Prospectos',
         loadChildren: () => import('./views/prospectos/prospectos.module').then((m) => m.ProspectosModule)
       },
+      {
+        path: 'ProductosFinancieros',
+        loadChildren: () => import('./views/producto-financiero/producto-financiero.module').then((m) => m.ProductoFinancieroModule)
+      },
       // {
       //   path: 'Clientes',
       //   loadChildren: () => import('./views/clientes/clientes.module').then((m) => m.ClientesModule)

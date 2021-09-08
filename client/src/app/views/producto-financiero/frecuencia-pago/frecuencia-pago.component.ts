@@ -1,8 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataSource, SelectionModel} from "@angular/cdk/collections";
-import {_productoFinanciero} from "../../../shared/interfaces/Creditos.interface";
+import {_ciudades, _frecuenciaPago} from "../../../shared/interfaces/Creditos.interface";
 import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from "rxjs";
 import {AdvanceRestService} from "../../../shared/services/advance-rest.service";
+import {CiudadesDataSource} from "../../catalogos/ciudades/ciudades.component";
 import {HttpClient} from "@angular/common/http";
 import {GlobalService} from "../../../shared/services/global.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -11,37 +12,35 @@ import {FormBuilder} from "@angular/forms";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatMenuTrigger} from "@angular/material/menu";
-import {ProductoFinancieroFormComponent} from "./producto-financiero-form/producto-financiero-form.component";
-import {ProductoFinancieroDeleteComponent} from "./producto-financiero-delete/producto-financiero-delete.component";
+import {CiudadesFormComponent} from "../../catalogos/ciudades/ciudades-form/ciudades-form.component";
+import {FrecuenciaPagoFormComponent} from "./frecuencia-pago-form/frecuencia-pago-form.component";
+import {CiudadesDeleteComponent} from "../../catalogos/ciudades/ciudades-delete/ciudades-delete.component";
+import {FrecuenciaPagoDeleteComponent} from "./frecuencia-pago-delete/frecuencia-pago-delete.component";
 import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'app-producto-financiero',
-  templateUrl: './producto-financiero.component.html',
-  styleUrls: ['./producto-financiero.component.sass']
+  selector: 'app-frecuencia-pago',
+  templateUrl: './frecuencia-pago.component.html',
+  styleUrls: ['./frecuencia-pago.component.sass']
 })
-export class ProductoFinancieroComponent implements OnInit {
-  public _datos = { _title: 'Productos Financieros',
-    _modulo: 'Catalogos',
-    _icono: 'fas fa-folder-open',
-    _dominio: 'ProductoFinanciero',
-    _componente: 'Producto Financiero'}
+export class FrecuenciaPagoComponent implements OnInit {
+  public _datos = { _title: 'Frecuencia de Pago', _modulo: 'Producto Financiero', _icono: 'fas fa-folder-open', _dominio: 'FrecuenciaPago', _componente: 'Frecuencia Pago'}
 
   displayedColumns = [ 'select',
-    'producto',
-    'montoMinimo',
-    'montoMaximo',
-    'tipo',
-    'activo',
+    'dias',
+    'frecuenciaPago',
+    'cnbv',
+    'bc',
+    'cc',
     'actions' ];
 
-  selection = new SelectionModel<_productoFinanciero>(true, []);
-  advanceTable: _productoFinanciero | null;
+  selection = new SelectionModel<_frecuenciaPago>(true, []);
+  advanceTable: _frecuenciaPago | null;
 
   id: number;
   public getRowsSub: Subscription;
   db: AdvanceRestService;
-  dataSource: ProductoFinancieroDataSource | null;
+  dataSource: FrecuenciaDataSource | null;
 
   constructor(public httpClient: HttpClient, private globalService: GlobalService, public dialog: MatDialog,
               public advanceTableService: AdvanceRestService, private snackBar: MatSnackBar, private fBuilder: FormBuilder) { }
@@ -62,10 +61,10 @@ export class ProductoFinancieroComponent implements OnInit {
 
   addNew() {
     let data: any;
-    this.advanceTableService.create<_productoFinanciero>().subscribe(result => {
+    this.advanceTableService.create<_frecuenciaPago>().subscribe(result => {
       data = result;
       console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(ProductoFinancieroFormComponent, {
+      const dialogRef = this.dialog.open(FrecuenciaPagoFormComponent, {
         data: { title: this._datos._title, disableClose: true, data: data, action: 'Agregar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
@@ -88,10 +87,10 @@ export class ProductoFinancieroComponent implements OnInit {
   editCall(row) {
     this.id = row.id;
     let data: any;
-    this.advanceTableService.edit<_productoFinanciero>(this.id).subscribe(result => {
+    this.advanceTableService.edit<_frecuenciaPago>(this.id).subscribe(result => {
       data = result;
       console.log(this.advanceTable)
-      const dialogRef = this.dialog.open(ProductoFinancieroFormComponent, {
+      const dialogRef = this.dialog.open(FrecuenciaPagoFormComponent, {
         data: { title: row.descripcionCorta , disableClose: true, data: data, action: 'Editar' }
       });
       dialogRef.afterClosed().subscribe((result) => {
@@ -112,7 +111,7 @@ export class ProductoFinancieroComponent implements OnInit {
 
   deleteItem(row) {
     this.id = row.id;
-    const dialogRef = this.dialog.open(ProductoFinancieroDeleteComponent, { data: row });
+    const dialogRef = this.dialog.open(FrecuenciaPagoDeleteComponent, { data: row });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.advanceTableService.delete<string>(row.id)
@@ -135,14 +134,13 @@ export class ProductoFinancieroComponent implements OnInit {
     return numSelected === numRows;
   }
 
-  masterToggle() { this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) =>
-    this.selection.select(row))}
+  masterToggle() { this.isAllSelected() ? this.selection.clear() : this.dataSource.renderedData.forEach((row) => this.selection.select(row))}
 
   removeSelectedRows() {
     const totalSelect = this.selection.selected.length;
     this.selection.selected.forEach((item) => {
       this.advanceTableService.delete<string>(item.id).subscribe()
-      this.selection = new SelectionModel<_productoFinanciero>(true, []);
+      this.selection = new SelectionModel<_frecuenciaPago>(true, []);
     });
     this.loadData();
     this.showNotification( 'snackbar-danger', totalSelect + '¡¡Registros Eliminados!!', 'bottom', 'center'  );
@@ -150,7 +148,7 @@ export class ProductoFinancieroComponent implements OnInit {
 
   public loadData() {
     this.db = new AdvanceRestService(this.httpClient, this.globalService, this.fBuilder);
-    this.dataSource = new ProductoFinancieroDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
+    this.dataSource = new FrecuenciaDataSource( this.db, this.paginator, this.sort, this._datos._dominio );
     fromEvent(this.filter.nativeElement, 'keyup').subscribe(() => {
       if (!this.dataSource) { return; }
       this.dataSource.filter = this.filter.nativeElement.value;
@@ -161,7 +159,7 @@ export class ProductoFinancieroComponent implements OnInit {
     this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom, horizontalPosition: placementAlign, panelClass: colorName });
   }
 
-  onContextMenu(event: MouseEvent, item: _productoFinanciero) {
+  onContextMenu(event: MouseEvent, item: _frecuenciaPago) {
     event.preventDefault();
     this.contextMenuPosition.x = event.clientX + 'px';
     this.contextMenuPosition.y = event.clientY + 'px';
@@ -171,24 +169,24 @@ export class ProductoFinancieroComponent implements OnInit {
   }
 }
 
-export class ProductoFinancieroDataSource extends DataSource<_productoFinanciero> {
+export class FrecuenciaDataSource extends DataSource<_frecuenciaPago> {
   _filterChange = new BehaviorSubject('');
   get filter(): string { return this._filterChange.value; }
   set filter(filter: string) { this._filterChange.next(filter); }
-  filteredData: _productoFinanciero[] = [];
-  renderedData: _productoFinanciero[] = [];
+  filteredData: _frecuenciaPago[] = [];
+  renderedData: _frecuenciaPago[] = [];
 
   constructor(public _dataSource: AdvanceRestService, public _paginator: MatPaginator, public _sort: MatSort, private _dominio: string ) {
     super();
     this._filterChange.subscribe(() => (this._paginator.pageIndex = 0));
   }
 
-  connect(): Observable<_productoFinanciero[]> {
+  connect(): Observable<_frecuenciaPago[]> {
     const displayDataChanges = [ this._dataSource.dataChange, this._sort.sortChange, this._filterChange, this._paginator.page ];
     this._dataSource.getAdvancedTable<any>(this._dominio,{'max': 100});
     return merge(...displayDataChanges).pipe( map(() => {
-        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _productoFinanciero) => {
-          const searchStr = ( advanceTable.id + advanceTable.producto + advanceTable.tipo + advanceTable.clasificacionBancaria ).toLowerCase();
+        this.filteredData = this._dataSource.data.slice().filter((advanceTable: _frecuenciaPago) => {
+          const searchStr = ( advanceTable.id + advanceTable.dias + advanceTable.frecuenciaPago ).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
         const sortedData = this.sortData(this.filteredData.slice());
@@ -201,7 +199,7 @@ export class ProductoFinancieroDataSource extends DataSource<_productoFinanciero
 
   disconnect() {}
 
-  sortData(data: _productoFinanciero[]): _productoFinanciero[] {
+  sortData(data: _frecuenciaPago[]): _frecuenciaPago[] {
     if (!this._sort.active || this._sort.direction === '') { return data; }
     return data.sort((a, b) => {
       let propertyA: number | string = '';
@@ -210,14 +208,11 @@ export class ProductoFinancieroDataSource extends DataSource<_productoFinanciero
         case 'id':
           [propertyA, propertyB] = [a.id, b.id];
           break;
-        case 'producto':
-          [propertyA, propertyB] = [a.producto, b.producto];
+        case 'dias':
+          [propertyA, propertyB] = [a.dias, b.dias];
           break;
-        case 'tipo':
-          [propertyA, propertyB] = [a.tipo, b.tipo];
-          break;
-        case 'clasificacionBancaria':
-          [propertyA, propertyB] = [a.clasificacionBancaria, b.clasificacionBancaria];
+        case 'frecuenciaPago':
+          [propertyA, propertyB] = [a.frecuenciaPago, b.frecuenciaPago];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

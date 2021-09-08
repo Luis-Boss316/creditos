@@ -1,8 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormGroup, Validators} from "@angular/forms";
 import {_combo, _productoFinanciero} from "../../../../shared/interfaces/Creditos.interface";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AdvanceRestService} from "../../../../shared/services/advance-rest.service";
+import {SimuladorFormComponent} from "../../../prospectos/prospecto/simulador-form/simulador-form.component";
+import {ParametrosFormComponent} from "../parametros-form/parametros-form.component";
 
 @Component({
   selector: 'app-producto-financiero-form',
@@ -17,6 +19,7 @@ export class ProductoFinancieroFormComponent implements OnInit {
   public monedaCombo: _combo[];
 
   constructor(public dialogRef: MatDialogRef<ProductoFinancieroFormComponent>,
+              public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public advanceTableService: AdvanceRestService,) { }
 
@@ -59,5 +62,12 @@ export class ProductoFinancieroFormComponent implements OnInit {
         activo: [this.data.data.activo],
       });
     }
+  }
+
+  parametros() {
+    const dialogRef = this.dialog.open(ParametrosFormComponent, {
+      width:'60%', height:'100%',
+      data: { title: 'Simulador', disableClose: true, action: 'Agregar' }
+    });
   }
 }

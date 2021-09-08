@@ -163,15 +163,6 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: 'Catalogos/Producto-Financiero',
-        title: 'Producto Financiero',
-        moduleName: 'Catalogos',
-        icon: '',
-        class: 'ml-menu',
-        groupTitle: false,
-        submenu: []
-      },
-      {
         path: 'Catalogos/Profesiones',
         title: 'Profesiones',
         moduleName: 'Catalogos',
@@ -591,6 +582,35 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
 
+  {
+    path: '',
+    title: 'Productos Financieros',
+    moduleName: 'ProductosFinancieros',
+    icon: 'fas fa-donate',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'ProductosFinancieros/FrecuenciaPago',
+        title: 'Frecuencia de Pago',
+        moduleName: 'ProductosFinancieros',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
+        path: 'ProductosFinancieros/Producto-Financiero',
+        title: 'Producto Financiero',
+        moduleName: 'ProductosFinancieros',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+
+  },
 
   {
     path: '',

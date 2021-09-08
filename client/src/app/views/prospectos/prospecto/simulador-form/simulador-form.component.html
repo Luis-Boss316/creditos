@@ -1,0 +1,187 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            Simulador Credito</div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_simuladorForm" (ngSubmit)="submit">
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha de Entrega</mat-label>
+            <input matInput [matDatepicker]="DatepickerInicial" name = "fechaEntrega" formControlName="fechaEntrega" >
+            <mat-datepicker-toggle matSuffix [for]="DatepickerInicial"></mat-datepicker-toggle>
+            <mat-datepicker #DatepickerInicial></mat-datepicker>
+            <mat-error *ngIf="_simuladorForm.get('fechaEntrega').hasError('required')">
+              Fecha de Entrega es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha Primer Pago</mat-label>
+            <input matInput [matDatepicker]="DatepickerFinal" name = "fechaPrimerPago" formControlName="fechaPrimerPago" >
+            <mat-datepicker-toggle matSuffix [for]="DatepickerFinal"></mat-datepicker-toggle>
+            <mat-datepicker #DatepickerFinal></mat-datepicker>
+            <mat-error *ngIf="_simuladorForm.get('fechaPrimerPago').hasError('required')">
+              Fecha Primer Pago es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Frecuencia Pago</mat-label>
+            <mat-select formControlName="frecuenciaPago">
+              <mat-option value="Semanal">Semanal</mat-option>
+              <mat-option value="Quincenal">Quincenal</mat-option>
+              <mat-option value="Mensual">Mensual</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_simuladorForm.get('frecuenciaPago').hasError('required')">
+              Frecuencia Pago es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Numero Pagos</mat-label>
+            <input matInput formControlName="numeroPagos">
+            <mat-error *ngIf="_simuladorForm.get('numeroPagos').hasError('required')">
+              Numero Pagos es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tipo de Tasa</mat-label>
+            <mat-select formControlName="tipoTasa">
+              <mat-option value="Fija">Fija</mat-option>
+              <mat-option value="Variable">Variable</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_simuladorForm.get('tipoTasa').hasError('required')">
+              Tipo de Tasa es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tasa</mat-label>
+            <input matInput formControlName="tasa">
+            <mat-error *ngIf="_simuladorForm.get('tasa').hasError('required')">
+              Tasa es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Retenciones</mat-label>
+            <input matInput formControlName="retenciones" readonly>
+            <mat-error *ngIf="_simuladorForm.get('retenciones').hasError('required')">
+              Retenciones es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Retenciones Financiadas</mat-label>
+            <input matInput formControlName="retencionesFinanciadas" readonly>
+            <mat-error *ngIf="_simuladorForm.get('retencionesFinanciadas').hasError('required')">
+              Retenciones Financiadas es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Monto Solicitado</mat-label>
+            <input matInput formControlName="montoSolicitado" readonly>
+            <mat-error *ngIf="_simuladorForm.get('montoSolicitado').hasError('required')">
+              Monto Solicitado es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Monto Credito</mat-label>
+            <input matInput formControlName="montoCredito" readonly>
+            <mat-error *ngIf="_simuladorForm.get('montoCredito').hasError('required')">
+              Monto Credito es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Monto a Entregar</mat-label>
+            <input matInput formControlName="montoEntregar" readonly>
+            <mat-error *ngIf="_simuladorForm.get('montoEntregar').hasError('required')">
+              Monto a Entregar es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+        <button mat-raised-button color="primary" (click)="simular()" aria-label="Close dialog">SIMULAR</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<br>
+
+<div class="card">
+  <div class="tableBody">
+    <div class="table-responsive">
+      <table class="table table-hover dashboard-task-infos align-right">
+        <thead>
+        <tr>
+          <th>Numero</th>
+          <th>Fecha</th>
+          <th>Capital</th>
+          <th>Intereses</th>
+          <th>Aportaciones</th>
+          <th>Impuestos</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+        <button mat-mini-fab color="primary" matTooltip="Descargar excel" (click)="descargar()" aria-label="Close dialog"><mat-icon class="col-white">file_download</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</div>

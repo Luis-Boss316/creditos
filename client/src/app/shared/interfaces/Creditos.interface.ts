@@ -1190,3 +1190,26 @@ export class _productoFinanciero {
   moneda: _monedas;
   activo: boolean;
 }
+
+export class _frecuenciaPago {
+  id: number;
+  dias: string;
+  frecuenciaPago: string;
+  cnbv: string;
+  bc: string;
+  cc: string;
+}
+
+export class _simulador {
+  fechaEntrega: Date;
+  fechaPrimerPago: Date;
+  frecuenciaPago: _frecuenciaPago;
+  numeroPagos: number;
+  tipoTasa
+  tasa: string;
+  retenciones: number;
+  retencionesFinanciadas: number;
+  montoSolicitado: _prospectos;
+  montoCredito: number;
+  montoEntregar: number;
+}

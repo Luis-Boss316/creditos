@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProspectosRoutingModule } from './prospectos-routing.module';
-import { ProspectoComponent } from './prospecto/prospecto.component';
+import { ProductoFinancieroRoutingModule } from './producto-financiero-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
@@ -26,16 +25,14 @@ import {OwlDateTimeModule} from "ng-pick-datetime";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatStepperModule} from "@angular/material/stepper";
-import { ProspectoFormComponent } from './prospecto/prospecto-form/prospecto-form.component';
-import { ProspectoDeleteComponent } from './prospecto/prospecto-delete/prospecto-delete.component';
-import { SimuladorFormComponent } from './prospecto/simulador-form/simulador-form.component';
+import { ParametrosFormComponent } from './producto-financiero/parametros-form/parametros-form.component';
 
 
 @NgModule({
-  declarations: [ProspectoComponent, ProspectoFormComponent, ProspectoDeleteComponent, SimuladorFormComponent],
+  declarations: [ParametrosFormComponent],
   imports: [
     CommonModule,
-    ProspectosRoutingModule,
+    ProductoFinancieroRoutingModule,
     FormsModule, ReactiveFormsModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule,
     MatFormFieldModule, MatInputModule, MatSnackBarModule, MatButtonModule, MatIconModule, MatRadioModule,
     MatSelectModule, MatCheckboxModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatSortModule,
@@ -43,4 +40,4 @@ import { SimuladorFormComponent } from './prospecto/simulador-form/simulador-for
     MatTabsModule, MatStepperModule
   ]
 })
-export class ProspectosModule { }
+export class ProductoFinancieroModule { }

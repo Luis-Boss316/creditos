@@ -75,28 +75,34 @@
                     {{row.id}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="nombre">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+                <ng-container matColumnDef="dias">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Dias</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.nombre}}</mat-cell>
+                    {{row.dias}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="sucursal">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Sucursal</mat-header-cell>
+                <ng-container matColumnDef="frecuenciaPago">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >Frecuencia de Pago</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.sucursal}}</mat-cell>
+                    {{row.frecuenciaPago}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="producto">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
+                <ng-container matColumnDef="cnbv">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >CNBV</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.producto}}</mat-cell>
+                    {{row.cnbv}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="monto">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>
+                <ng-container matColumnDef="bc">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >BC</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.monto|currency: 'USD'}}</mat-cell>
+                    {{row.bc}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="cc">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header >CC</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.cc}}</mat-cell>
                 </ng-container>
 
                 <!-- actions -->
