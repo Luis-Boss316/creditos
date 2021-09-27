@@ -1,0 +1,87 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            Coacreditado</div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="_coacreditadosForm" (ngSubmit)="submit">
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly>
+            <mat-icon matSuffix>turned_in_not</mat-icon>
+            <mat-error *ngIf="_coacreditadosForm.get('id').hasError('required')">
+              El campo ID es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo" (selectionChange)="cargarCombo($event.value)">
+              <mat-option value="Personas">Persona</mat-option>
+              <mat-option value="Negocios">Negocio</mat-option>
+            </mat-select>
+            <mat-error *ngIf="_coacreditadosForm.get('tipo').hasError('required')">
+              Tipo es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <mat-select formControlName="nombre">
+              <mat-option *ngFor="let n of nombreCombo" [value]="n.id">{{n.descripcion}}</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>keyboard</mat-icon>
+            <mat-error *ngIf="_coacreditadosForm.get('nombre').hasError('required')">
+              El campo Nombre es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Relacion</mat-label>
+            <input matInput formControlName="relacion">
+            <mat-icon matSuffix>keyboard</mat-icon>
+            <mat-error *ngIf="_coacreditadosForm.get('relacion').hasError('required')">
+              El campo Relacion es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!_coacreditadosForm.valid"
+                    [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

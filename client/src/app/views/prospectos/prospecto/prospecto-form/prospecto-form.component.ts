@@ -82,7 +82,7 @@ export class ProspectoFormComponent implements OnInit {
 
   simulador() {
     const dialogRef = this.dialog.open(SimuladorFormComponent, {
-      width:'60%', height:'100%',
+      width:'60%', height:'90%',
       data: { title: 'Simulador', disableClose: true, action: 'Agregar' }
     });
   }

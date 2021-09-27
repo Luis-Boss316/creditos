@@ -36,15 +36,19 @@ import {SucursalesComponent} from "./sucursales/sucursales.component";
 import {EmpleadosComponent} from "./empleados/empleados.component";
 import {ProductoFinancieroComponent} from "../producto-financiero/producto-financiero/producto-financiero.component";
 import {FrecuenciaPagoComponent} from "../producto-financiero/frecuencia-pago/frecuencia-pago.component";
+import {DenominacionesComponent} from "./denominaciones/denominaciones.component";
+import {FormasPagoComponent} from "./formas-pago/formas-pago.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'Aseguradoras', pathMatch: 'full' },
   { path: 'Aseguradoras', component: AseguradorasComponent },
   { path: 'Ciudades', component: CiudadesComponent},
   { path: 'Coberturas-Geograficas', component: CoberturasGeograficasComponent},
+  { path: 'Denominaciones', component: DenominacionesComponent},
   { path: 'Empleados', component: EmpleadosComponent},
   { path: 'Estado-Civil', component: EstadoCivilComponent},
   { path: 'Estados', component: EstadosComponent},
+  { path: 'Formas-Pago', component: FormasPagoComponent},
   { path: 'Frecuencia-Pago', component: FrecuenciaPagoComponent},
   { path: 'Giro-Empresarial', component: GiroEmpresarialComponent},
   { path: 'Monedas', component: MonedasComponent},

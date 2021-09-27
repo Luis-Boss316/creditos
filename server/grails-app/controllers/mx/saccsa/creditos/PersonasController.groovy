@@ -167,8 +167,7 @@ class PersonasController extends RestfulController<Personas>{
                     segundoNombre: it.persona.segundoNombre?it.persona.segundoNombre:'N/A',
                     apellidoPaterno: it.persona.apellidoPaterno?it.persona.apellidoPaterno:'N/A',
                     apellidoMaterno: it.persona.apellidoMaterno?it.persona.apellidoMaterno:'N/A',
-                    fechaNacimiento: it.persona.fechaNacimiento?it.persona.fechaNacimiento:'N/A',
-                    paisNacimiento: it.persona.paisNacimiento?it.persona.paisNacimiento:'N/A',
+                    paisNacimiento: it.persona.paisNacimiento?it.persona.paisNacimiento.descLabel:'N/A',
             ]
         })
 

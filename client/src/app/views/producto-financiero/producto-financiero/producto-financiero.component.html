@@ -84,13 +84,13 @@
                 <ng-container matColumnDef="montoMinimo">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Monto Minimo</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.montoMinimo}}</mat-cell>
+                    {{row.montoMinimo|currency: 'USD'}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="montoMaximo">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Monto Maximo</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.montoMaximo}}</mat-cell>
+                    {{row.montoMaximo|currency: 'USD'}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="tipo">

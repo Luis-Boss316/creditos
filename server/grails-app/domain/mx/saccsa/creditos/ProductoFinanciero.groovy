@@ -10,13 +10,13 @@ class ProductoFinanciero {
     Boolean activo = false
 
     static constraints = {
-        producto nullable: false, blank: false
-        montoMinimo nullable: false, blank: false
-        montoMaximo nullable: false, blank: false
-        tipo nullable: false, blank: false
-        clasificacionBancaria nullable: false, blank: false
-        moneda nullable: false, blank: false
-        activo nullable: true, blank: true
+        producto nullable:false, blank:false
+        montoMinimo nullable:false, blank:false
+        montoMaximo nullable:false, blank:false
+        tipo nullable:false, blank:false
+        clasificacionBancaria nullable:false, blank:false
+        moneda nullable:false, blank:false
+        activo nullable:false, blank:false
     }
 
     static mapping = {

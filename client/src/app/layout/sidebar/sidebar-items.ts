@@ -37,6 +37,15 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: 'Catalogos/Denominaciones',
+        title: 'Denominaciones',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
         path: 'Catalogos/Empleados',
         title: 'Empleados',
         moduleName: 'Catalogos',
@@ -57,6 +66,15 @@ export const ROUTES: RouteInfo[] = [
       {
         path: 'Catalogos/Estados',
         title: 'Estados',
+        moduleName: 'Catalogos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
+        path: 'Catalogos/Formas-Pago',
+        title: 'Formas de Pago',
         moduleName: 'Catalogos',
         icon: '',
         class: 'ml-menu',
@@ -564,26 +582,6 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
-    title: 'Prospectos',
-    moduleName: 'Prospectos',
-    icon: 'fas fa-address-card',
-    class: 'menu-toggle',
-    groupTitle: false,
-    submenu: [
-      {
-        path: 'Prospectos/Prospecto',
-        title: 'Prospectos',
-        moduleName: 'Prospectos',
-        icon: '',
-        class: 'ml-menu',
-        groupTitle: false,
-        submenu: []
-      },
-    ]
-  },
-
-  {
-    path: '',
     title: 'Productos Financieros',
     moduleName: 'ProductosFinancieros',
     icon: 'fas fa-donate',
@@ -610,6 +608,46 @@ export const ROUTES: RouteInfo[] = [
       },
     ]
 
+  },
+
+  {
+    path: '',
+    title: 'Prospectos',
+    moduleName: 'Prospectos',
+    icon: 'fas fa-address-card',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Prospectos/Prospecto',
+        title: 'Prospectos',
+        moduleName: 'Prospectos',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
+  },
+
+  {
+    path: '',
+    title: 'Solicitudes',
+    moduleName: 'Solicitud',
+    icon: 'fas fa-address-card',
+    class: 'menu-toggle',
+    groupTitle: false,
+    submenu: [
+      {
+        path: 'Solicitud/Solicitudes',
+        title: 'Solicitudes',
+        moduleName: 'Solicitud',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+    ]
   },
 
   {

@@ -33,12 +33,16 @@ const routes: Routes = [
         loadChildren: () => import('./views/negocios/negocios.module').then((m) => m.NegociosModule)
       },
       {
+        path: 'ProductosFinancieros',
+        loadChildren: () => import('./views/producto-financiero/producto-financiero.module').then((m) => m.ProductoFinancieroModule)
+      },
+      {
         path: 'Prospectos',
         loadChildren: () => import('./views/prospectos/prospectos.module').then((m) => m.ProspectosModule)
       },
       {
-        path: 'ProductosFinancieros',
-        loadChildren: () => import('./views/producto-financiero/producto-financiero.module').then((m) => m.ProductoFinancieroModule)
+        path: 'Solicitud',
+        loadChildren: () => import('./views/solicitud/solicitud.module').then((m) => m.SolicitudModule)
       },
       // {
       //   path: 'Clientes',

@@ -26,18 +26,19 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatStepperModule} from "@angular/material/stepper";
 import { ParametrosFormComponent } from './producto-financiero/parametros-form/parametros-form.component';
+import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
   declarations: [ParametrosFormComponent],
-  imports: [
-    CommonModule,
-    ProductoFinancieroRoutingModule,
-    FormsModule, ReactiveFormsModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule,
-    MatFormFieldModule, MatInputModule, MatSnackBarModule, MatButtonModule, MatIconModule, MatRadioModule,
-    MatSelectModule, MatCheckboxModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatSortModule,
-    MatToolbarModule, MaterialFileInputModule, MatMenuModule, MatTooltipModule, OwlDateTimeModule, MatSlideToggleModule,
-    MatTabsModule, MatStepperModule
-  ]
+    imports: [
+        CommonModule,
+        ProductoFinancieroRoutingModule,
+        FormsModule, ReactiveFormsModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule,
+        MatFormFieldModule, MatInputModule, MatSnackBarModule, MatButtonModule, MatIconModule, MatRadioModule,
+        MatSelectModule, MatCheckboxModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatSortModule,
+        MatToolbarModule, MaterialFileInputModule, MatMenuModule, MatTooltipModule, OwlDateTimeModule, MatSlideToggleModule,
+        MatTabsModule, MatStepperModule, NgbTooltipModule
+    ]
 })
 export class ProductoFinancieroModule { }

@@ -44,7 +44,6 @@ export class PersonaComponent implements OnInit {
     'segundoNombre',
     'apellidoPaterno',
     'apellidoMaterno',
-    'fechaNacimiento',
     'paisNacimiento',
     'actions' ];
 

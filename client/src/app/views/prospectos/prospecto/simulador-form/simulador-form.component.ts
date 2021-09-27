@@ -51,4 +51,8 @@ export class SimuladorFormComponent implements OnInit {
   descargar() {
 
   }
+
+  cargos() {
+
+  }
 }

@@ -1,10 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormGroup, Validators} from "@angular/forms";
-import {_combo, _productoFinanciero} from "../../../../shared/interfaces/Creditos.interface";
+import {
+  _beneficiarios,
+  _combo,
+  _parametros,
+  _productoFinanciero
+} from "../../../../shared/interfaces/Creditos.interface";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AdvanceRestService} from "../../../../shared/services/advance-rest.service";
-import {SimuladorFormComponent} from "../../../prospectos/prospecto/simulador-form/simulador-form.component";
 import {ParametrosFormComponent} from "../parametros-form/parametros-form.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {BeneficiariosFormComponent} from "../../../solicitud/solicitudes/beneficiarios-form/beneficiarios-form.component";
 
 @Component({
   selector: 'app-producto-financiero-form',
@@ -21,7 +27,8 @@ export class ProductoFinancieroFormComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ProductoFinancieroFormComponent>,
               public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              public advanceTableService: AdvanceRestService,) { }
+              public advanceTableService: AdvanceRestService,
+              private snackBar: MatSnackBar) { }
 
   submit() {}
 
@@ -65,9 +72,32 @@ export class ProductoFinancieroFormComponent implements OnInit {
   }
 
   parametros() {
-    const dialogRef = this.dialog.open(ParametrosFormComponent, {
-      width:'60%', height:'100%',
-      data: { title: 'Simulador', disableClose: true, action: 'Agregar' }
+    let data: any;
+    this.advanceTableService.initService('ParametrosProductos')
+    this.advanceTableService.create<_parametros>().subscribe(result => {
+      data = result;
+      console.log(this.advanceTable)
+      const dialogRef = this.dialog.open(ParametrosFormComponent, {
+        data: { title: 'Parametros', disableClose: true, data: data, action: 'Agregar' }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (!result) { return }
+        this.advanceTableService.initService('ParametrosProductos')
+        this.advanceTableService.save<string>(result).subscribe(data => {
+          this.showNotification( 'snackbar-success', 'Parametros Agregados', 'bottom', 'center' );
+        }, error => {
+          if (error._embedded !== undefined) {
+            this.showNotification( 'snackbar-danger', '¡¡Error al guardar!!', 'bottom', 'center' );
+            Object.entries(error._embedded.errors).forEach(([key, value]) => { });
+          }
+        })
+      });
+      this.advanceTableService.initService('ProductoFinanciero')
     });
+  }
+
+  showNotification(colorName, text, placementFrom, placementAlign) {
+    this.snackBar.open(text, '', { duration: 2000, verticalPosition: placementFrom,
+      horizontalPosition: placementAlign, panelClass: colorName });
   }
 }

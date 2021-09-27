@@ -99,12 +99,6 @@
                     {{row.apellidoMaterno}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="fechaNacimiento">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>FechaNacimiento</mat-header-cell>
-                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.fechaNacimiento}}</mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="paisNacimiento">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Pais de Nacimiento</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">

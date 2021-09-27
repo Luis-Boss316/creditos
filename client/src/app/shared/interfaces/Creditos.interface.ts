@@ -1213,3 +1213,125 @@ export class _simulador {
   montoCredito: number;
   montoEntregar: number;
 }
+
+export class _parametros {
+  id: number;
+  baseCapital: string;
+  plazoMinimo: string;
+  plazoMaximo: string;
+  proyectarIntereses: string;
+  diasGracia: string;
+  diasInhabiles: string;
+  tipoPeriodoGracia: string;
+  fechaCalculo: string;
+  diasMinistracion: string;
+  diaCorteEstadoCuenta: string;
+  obtenerCat: string;
+
+  numeroGracia: string;
+  decimales: string;
+  tipoCalculoDias: string;
+  capitalizarIntereses: string;
+  decimalesCalculo: string;
+  tipoCalculo: string;
+  capitalizarMoratorios: string;
+  tipoCalendario: string;
+  incluirImpuestos: string;
+  diasCalculo: string;
+  tipoTasaInteres: string;
+
+  conceptoComprobantes: string;
+  emitirComplementosComprobantes: string;
+  emitirComprobantesFiscales: string;
+  emitirComprobantesPor: string;
+
+  tipoFactoraje: string;
+
+  enviarInformacion: string;
+
+  cobrarDiasProrroga: string;
+  baseMoratorios: string;
+  valoresMora: string;
+  diasProrroga: string;
+  cobrarMoratorios: string;
+  tiposMoratorios: string;
+
+  valoresTomaraTasa: string;
+
+  llamadaMargen: string;
+  porcentajeAforo: string;
+  permiteRenovacion: string;
+
+  desembolsoPorParticipante: boolean;
+  permitirCapturaGrupo: boolean;
+
+  aplicacionPagoAnticipado: string;
+  prelacionAplicacionPago: string;
+
+  plazoMinimoLineaCredito: string;
+  montoMaximoDisposicion: string;
+  plazoMaximoDisposicion: string;
+  tasaEntregaRecursos: string;
+}
+
+export class _denominaciones {
+  id: number;
+  tipo: string;
+  valor: string;
+}
+
+export class _formasPago {
+  id: number;
+  valor: string;
+  descripcion: string;
+  operacion: string;
+}
+
+export class _solicitudes {
+  id: number;
+  tipo: string;
+  nombre: string;
+  fechaSolicitud: Date;
+  sucursal: _sucursales;
+  producto: _productoFinanciero;
+  ejecutivo: _empleados;
+  promotor: _empleados;
+  concetoInversion: string;
+  numeroAmortizaciones: string;
+  fechaEntrega: Date;
+  fechaPrimerAmortizacion: Date;
+  tasa: string;
+}
+
+export class _coacreditados {
+  id: number;
+  tipo: string;
+  nombre: string;
+  relacion: string;
+}
+
+export class _beneficiarios {
+  id: number;
+  tipo: string;
+  nombre: string;
+  relacion: _tiposRelaciones;
+}
+
+export class _informacionPLD  {
+  id: number;
+  montoMaximoPago: number;
+  montoMaximoAnticipo: number;
+  ingresosMensuales: number;
+  moneda: _monedas;
+  centroTrabajo: string;
+  proveedorRecursos: string;
+  canalPago: string;
+  formaPago: _formasPago;
+}
+
+export class _avales {
+  id: number;
+  tipo: string;
+  nombre: string;
+  relacion: string;
+}

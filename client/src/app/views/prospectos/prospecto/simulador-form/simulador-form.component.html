@@ -15,7 +15,7 @@
 
   </div>
 
-  <div mat-dialog-content>
+  <div>
     <form class="register-form m-4" [formGroup]="_simuladorForm" (ngSubmit)="submit">
 
       <div class="row">
@@ -148,13 +148,14 @@
           </mat-form-field>
         </div>
       </div>
-
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-        <button mat-raised-button color="primary" (click)="simular()" aria-label="Close dialog">SIMULAR</button>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [mat-dialog-close]="1" (click)="simular()">Simular</button>
+            <button mat-raised-button color="accent" (click)="cargos()" tabindex="-1">Cargos</button>
+          </div>
         </div>
       </div>
-
     </form>
   </div>
 </div>

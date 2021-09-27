@@ -4,12 +4,867 @@
       <div class="modalHeader clearfix">
         <div class="modal-about">
           <div class="font-weight-bold p-t-5 p-l-10 font-17">
-            Simulador Credito</div>
+            Parametros</div>
         </div>
       </div>
     </div>
     <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
       <mat-icon>close</mat-icon>
     </button>
+  </div>
+  <div>
+    <form class="register-form m-4" [formGroup]="_parametrosForm" (ngSubmit)="submit">
+      <div class="body">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper ngClass="{{ 'last-edited-step-' + stepper.selectedIndex }}" labelPosition="bottom">
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>PRINCIPAL</ng-template>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="id" readonly>
+                    <mat-icon matSuffix>turned_in_not</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('id').hasError('required')">
+                      El campo ID es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Base Capital</mat-label>
+                    <mat-select formControlName="baseCapital">
+                      <mat-option value="Saldo Total">Saldo Total</mat-option>
+                      <mat-option value="Saldo Insoluto">Saldo Insoluto</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('baseCapital').hasError('required')">
+                      Base Capital es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Para tipo Calculo sobre Saldos Insolutos; determina la base de capital para intereses ordinarios cuando la amortizacion esta vencida">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Plazo Minimo</mat-label>
+                    <input matInput formControlName="plazoMinimo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('plazoMinimo').hasError('required')">
+                      El campo Plazo Minimo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se refiere al numero minimo de meses que se puede dar para saldar el credito">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Plazo Maximo</mat-label>
+                    <input matInput formControlName="plazoMaximo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('plazoMaximo').hasError('required')">
+                      El campo Plazo Maximo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se refiere al numero maximo de meses que se dara para saldar el credito">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Proyectar Intereses</mat-label>
+                    <mat-select formControlName="proyectarIntereses">
+                      <mat-option value="Proyectar">Proyectar</mat-option>
+                      <mat-option value="No Proyectar">No Proyectar</mat-option>
+                      <mat-option value="Opcional">Opcional</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('proyectarIntereses').hasError('required')">
+                      Proyectar Intereses es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina como se realizara el calculo de intereses: (P) Proyecta intereses, se calcularan los intereses de todas las amortizaciones; (N) No proyectar, se calcularan unicamente los intereses devengados de la fecha de calculo; (O) Opcional, el sistema preguntara si se deben proyectar o no los intereses">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Dias de Gracia</mat-label>
+                    <input matInput formControlName="diasGracia">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('diasGracia').hasError('required')">
+                      El campo Dias de Gracia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Define el numero maximo de dias que se podra otorgar de gracia a cada credito, si el valor no esta definido no tendra limite de dias de gracia">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Desplazar dias inhabiles</mat-label>
+                    <mat-select formControlName="diasInhabiles">
+                      <mat-option value="Antes">Antes</mat-option>
+                      <mat-option value="Despues">Despues</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('diasInhabiles').hasError('required')">
+                      Desplazar dias inhabiles es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se utiliza al generar el calendario de pagos; si la fecha es un pago queda en dia inhabil, determina si se desplaza la fecha de pago un dia antes(A) o un dia despues(D) del dia inhabil">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo Periodo Gracia</mat-label>
+                    <mat-select formControlName="tipoPeriodoGracia">
+                      <mat-option value="Capital">Capital</mat-option>
+                      <mat-option value="Intereses">Intereses</mat-option>
+                      <mat-option value="Total">Total</mat-option>
+                      <mat-option value="No Gracia">No Gracia</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoPeriodoGracia').hasError('required')">
+                      Tipo Periodo Gracia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha Calculo</mat-label>
+                    <mat-select formControlName="fechaCalculo">
+                      <mat-option value="FechaPago">Capital</mat-option>
+                      <mat-option value="FechaAmortizacion">Intereses</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('fechaCalculo').hasError('required')">
+                      Fecha Calculo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Para tipo Calculo sobre Saldos Insolutos; determina tomara la fecha de la amortizacion (A) anterior, o la fecha del ultimo pago (P)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Dias de Ministracion</mat-label>
+                    <mat-select formControlName="diasMinistracion">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('diasMinistracion').hasError('required')">
+                      Dias de Ministracion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Define si se cobraran intereses desde el dia de la entrega de recursos (1) o un dia despues de la entrega de recursos (0)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Dias Corte Estado Cuenta</mat-label>
+                    <input matInput formControlName="diaCorteEstadoCuenta">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('diaCorteEstadoCuenta').hasError('required')">
+                      El campo Dias Corte Estado Cuenta es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Indica el dia en que se realizara el corte para generar el estado de cuenta">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Como se obtendra el CAT?</mat-label>
+                    <mat-select formControlName="obtenerCat">
+                      <mat-option value="Calculado">Calculado</mat-option>
+                      <mat-option value="Manual">Manual</mat-option>
+                      <mat-option value="No se lleva">No se lleva</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('obtenerCat').hasError('required')">
+                      Como se obtendra el CAT? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Como se obtendra el CAT?">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>CALCULO</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero Gracia</mat-label>
+                    <input matInput formControlName="numeroGracia">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('numeroGracia').hasError('required')">
+                      El campo Numero Gracia es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Indica el numero de amortizaciones que seran de gracia">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Decimales Couta Amortizacion</mat-label>
+                    <input matInput formControlName="decimales">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('decimales').hasError('required')">
+                      El campo Decimales Couta Amortizacion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina a cuantos decimales se va a redondear la amortizacion">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipos de Calculo en Dias</mat-label>
+                    <mat-select formControlName="tipoCalculoDias">
+                      <mat-option value="Plazo">Plazo</mat-option>
+                      <mat-option value="Dias">Dias</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoCalculoDias').hasError('required')">
+                      Tipos de Calculo en Dias es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Para el calculo de amortizaciones fijas; determina si el total de intereses se tomara por el numero de dias transcurridos(D) o por la frecuencia de las amortizaciones(P)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Capitalizar Intereses?</mat-label>
+                    <mat-select formControlName="capitalizarIntereses">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('capitalizarIntereses').hasError('required')">
+                      Capitalizar Intereses? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si se capitalizan los intereses ordinarios">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Decimales de Calculo</mat-label>
+                    <input matInput formControlName="decimalesCalculo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('decimalesCalculo').hasError('required')">
+                      El campo Decimales de Calculo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo Calculo</mat-label>
+                    <mat-select formControlName="tipoCalculo">
+                      <mat-option value="Saldos Insolutos">Saldos Insolutos</mat-option>
+                      <mat-option value="Amortizacion Fija">Amortizacion Fija</mat-option>
+                      <mat-option value="Combinacion">Combinacion</mat-option>
+                      <mat-option value="Formula Francesa Dias Naturales">Formula Francesa Dias Naturales</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoCalculo').hasError('required')">
+                      Tipo Calculo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina el tipo de calculo para las cuotas de las amortizaciones">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Capitalizar los Moratorios?</mat-label>
+                    <mat-select formControlName="capitalizarMoratorios">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('capitalizarMoratorios').hasError('required')">
+                      Capitalizar los Moratorios? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si se capitalizan los intereses moratorios">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo de Calendario a Utilizar</mat-label>
+                    <mat-select formControlName="tipoCalendario">
+                      <mat-option value="365">365</mat-option>
+                      <mat-option value="Financiero">Financiero</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoCalendario').hasError('required')">
+                      Tipo de Calendario a Utilizar es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si se usara un calendario financiero de 360 dias (opcion 2); o si se usara el calendario natural de 365 dias (opcion 1)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Incluir Impuestos?</mat-label>
+                    <mat-select formControlName="incluirImpuestos">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('incluirImpuestos').hasError('required')">
+                      Incluir Impuestos? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica para calculo de Formula Francesa; define si los impuestos se incluiran al momento de calcular la cuota de la amortizacion (Opcion 1); o si se cobraran despues de calculada la cuota (Opcion 0s)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Dias Calculo</mat-label>
+                    <input matInput formControlName="diasCalculo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('diasCalculo').hasError('required')">
+                      El campo Dias Calculo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Dias en los que esta basado la tasa de intereses">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo de Tasa de Interes</mat-label>
+                    <mat-select formControlName="tipoTasaInteres">
+                      <mat-option value="Fija">Fija</mat-option>
+                      <mat-option value="Variable">Variable</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoTasaInteres').hasError('required')">
+                      Tipo de Tasa de Interes es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si la tasa de intereses sera F(Fija) o V(Variable)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>FACTURACION</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Concepto a Comprobantes</mat-label>
+                    <mat-select formControlName="conceptoComprobantes">
+                      <mat-option value="Capital">Capital</mat-option>
+                      <mat-option value="Intereses">Intereses</mat-option>
+                      <mat-option value="Accesorios">Accesorios</mat-option>
+                      <mat-option value="Capital-Intereses">Capital-Intereses</mat-option>
+                      <mat-option value="Capital-Accesorios">Capital-Accesorios</mat-option>
+                      <mat-option value="Intereses-Accesorios">Intereses-Accesorios</mat-option>
+                      <mat-option value="Capital-Intereses-Accesorios">Capital-Intereses-Accesorios</mat-option>
+                      <mat-option value="Total General">Total General</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('conceptoComprobantes').hasError('required')">
+                      Concepto a Comprobantes es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina que conceptos del credito se facturaran">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Emitir Complementos a Comprobantes por:</mat-label>
+                    <mat-select formControlName="emitirComplementosComprobantes">
+                      <mat-option value="No Emitir">No Emitir</mat-option>
+                      <mat-option value="Diario">Diario</mat-option>
+                      <mat-option value="Semanal">Semanal</mat-option>
+                      <mat-option value="Fin de Mensual">Fin de Mensual</mat-option>
+                      <mat-option value="Inicio de Mes">Inicio de Mes</mat-option>
+                      <mat-option value="Por Accion">Por Accion</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('emitirComplementosComprobantes').hasError('required')">
+                      Emitir Complementos a Comprobantes por: es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina con que frecuencia se emitiran los complementos a los comprobantes fiscales para las operaciones">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Emitir Comprobantes Fiscales</mat-label>
+                    <mat-select formControlName="emitirComprobantesFiscales">
+                      <mat-option value="No Emitir">No Emitir</mat-option>
+                      <mat-option value="Pagos">Pagos</mat-option>
+                      <mat-option value="Credito y Pagos">Credito y Pagos</mat-option>
+                      <mat-option value="Entregas y Pagos">Entregas y Pagos</mat-option>
+                      <mat-option value="Pagares y Pagos">Pagares y Pagos</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('emitirComprobantesFiscales').hasError('required')">
+                      Emitir Comprobantes Fiscales es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si se emitiran comprobantes fiscales para las operaciones">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Emitir Comprobantes Por:</mat-label>
+                    <mat-select formControlName="emitirComprobantesPor">
+                      <mat-option value="Diario">Diario</mat-option>
+                      <mat-option value="Semanal">Semanal</mat-option>
+                      <mat-option value="Mensual">Mensual</mat-option>
+                      <mat-option value="Por accion">Por accion</mat-option>
+                      <mat-option value="Inicio de mes">Inicio de mes</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('emitirComprobantesPor').hasError('required')">
+                      Emitir Comprobantes Por: es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina con que frecuencia se emitiran comprobantes fiscales para las operaciones">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>FACTORAJE</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo Factoraje</mat-label>
+                    <mat-select formControlName="tipoFactoraje">
+                      <mat-option value="Monto Aforo">Monto Aforo</mat-option>
+                      <mat-option value="Monto Total">Monto Total</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tipoFactoraje').hasError('required')">
+                      Tipo Factoraje es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Indica si el monto de los pagares se generaran por el monto total de la factura o por el monto de aforo">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>SIC</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Enviar Informacion a SICC</mat-label>
+                    <mat-select formControlName="enviarInformacion">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('enviarInformacion').hasError('required')">
+                      Enviar Informacion a SICC es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si se enviara la informacion de los creditos a los Sistemas de Investigacion Crediticia">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>MORATORIO</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Cobrar dias de Prorroga?</mat-label>
+                    <mat-select formControlName="cobrarDiasProrroga">
+                      <mat-option value="Cobrar">Cobrar</mat-option>
+                      <mat-option value="No cobrar">No cobrar</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('cobrarDiasProrroga').hasError('required')">
+                      Cobrar dias de Prorroga? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se utiliza para determinar si se cobraran los dias de prorroga de intereses moratorios, una vez que ha terminado el plazo y la amortizacion sigue vigente; (C) Cobrar los dias de prorroga, (N) No cobrar los dias de prorroga y empezar a cobrar moratorios despues de terminado el plazo de prorroga">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Base para Moratorios</mat-label>
+                    <mat-select formControlName="baseMoratorios">
+                      <mat-option value="Vencido">Vencido</mat-option>
+                      <mat-option value="Saldo Insoluto">Saldo Insoluto</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('baseMoratorios').hasError('required')">
+                      Base para Moratorios es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina la base sobre la que se calcularan los moratorios (V: Capital Vencido); S: Saldo Insoluto">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Valores de la Mora</mat-label>
+                    <input matInput formControlName="valoresMora">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('valoresMora').hasError('required')">
+                      El campo Valores de la Mora es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se refiere al valor que se tomara para calcular los intereses moratorios (Se relaciona con el parametro Tipo-Moratorio)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Dias Prorroga</mat-label>
+                    <input matInput formControlName="diasProrroga">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('diasProrroga').hasError('required')">
+                      El campo Dias Prorroga es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Define el numero de dias que se daran de prorroga para cobrar los intereses moratorios, si el valor es 0 o esta vacio no se daran dias de prorroga">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Cobrar Moratorios</mat-label>
+                    <mat-select formControlName="cobrarMoratorios">
+                      <mat-option value="Si cobrar moratorios">Si cobrar moratorios</mat-option>
+                      <mat-option value="Cobrar moratorios al final del credito">Cobrar moratorios al final del credito</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('cobrarMoratorios').hasError('required')">
+                      Cobrar Moratorios es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Indica si los intereses moratorios se cobraran por cada amortizacion vencida (S), o quedaran pendientes de cobrar y se cobraran al final del credito(F)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipos de Moratorios</mat-label>
+                    <mat-select formControlName="tiposMoratorios">
+                      <mat-option value="Veces">Veces</mat-option>
+                      <mat-option value="Puntos Intermediacion">Puntos Intermediacion</mat-option>
+                      <mat-option value="Diario">Diario</mat-option>
+                      <mat-option value="Fijo">Fijo</mat-option>
+                      <mat-option value="Tasa">Tasa</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tiposMoratorios').hasError('required')">
+                      Tipos de Moratorios es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina el tipo de calculo para el interes moratorio, (V) Se aplica para la tasa ordinaria por un numero de veces; (P) Se suman un numero de puntos de intermediacion a la tasa ordinaria; (D) Determina un monto fijo por cada dia de atraso; (F) Determina un monto fijo para cada amortizacion vencida; (T) Determina una tasa especifica para moratorios">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>TASA VARIABLE</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Valores que tomara la tasa</mat-label>
+                    <mat-select formControlName="valoresTomaraTasa">
+                      <mat-option value="Diaria">Diaria</mat-option>
+                      <mat-option value="Mes Anterior">Mes Anterior</mat-option>
+                      <mat-option value="Mes Actual">Mes Actual</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('valoresTomaraTasa').hasError('required')">
+                      Valores que tomara la tasa es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica unicamente para tasas variables; define si el valor de la tasa se actualiza de namera (D) Diaria; (MP) El dia ultimo del mes anterior; (MA) Primer dia del mes actual ">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>REPORTO</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Llamada de Margen</mat-label>
+                    <input matInput formControlName="llamadaMargen">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('llamadaMargen').hasError('required')">
+                      El campo Llamada de Margen es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Indica el nivel de margen a utilizar en la evaluacion">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>% de Aforo</mat-label>
+                    <input matInput formControlName="porcentajeAforo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('porcentajeAforo').hasError('required')">
+                      El campo % de Aforo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="% de Aforo">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Permite Renovacion?</mat-label>
+                    <mat-select formControlName="permiteRenovacion">
+                      <mat-option value="SI">SI</mat-option>
+                      <mat-option value="NO">NO</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('permiteRenovacion').hasError('required')">
+                      Permite Renovacion? es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Se permite renovacion de la operacion">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>GRUPO</ng-template>
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-slide-toggle formControlName="desembolsoPorParticipante">Desembolso por Participante</mat-slide-toggle>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si las ministraciones de microcredito grupales se haran por el representante el total o por cada integrante">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-slide-toggle formControlName="permitirCapturaGrupo">Permitir Captura de Grupo</mat-slide-toggle>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Permitir captura de grupo solidario">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>PAGOS</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Aplicacion de pago Anticipado</mat-label>
+                    <mat-select formControlName="aplicacionPagoAnticipado">
+                      <mat-option value="Siguiente">Siguiente</mat-option>
+                      <mat-option value="Ultima">Ultima</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('aplicacionPagoAnticipado').hasError('required')">
+                      Aplicacion de pago Anticipado es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina la forma de aplicar un pago adelantado, (S) abona a la siguiente amortizacion, (U) abona a la ultima amortizacion vigente">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Prelacion de aplicacion de pago</mat-label>
+                    <mat-select formControlName="prelacionAplicacionPago">
+                      <mat-option value="Horizontal">Siguiente</mat-option>
+                      <mat-option value="Vertical">Ultima</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('prelacionAplicacionPago').hasError('required')">
+                      Prelacion de aplicacion de pago es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Determina si el pago adelantado se realizara en prelacion (H) Horizontal, es decir saldar toda la amortizacion; o en prelacion (V) Vertical, es decir saldar primero los conceptos de accesorios de todas las amortizaciones, despues intereses de todas las amortizaciones y por ultimo capital">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_parametrosForm">
+            <form [formGroup]="_parametrosForm">
+              <ng-template matStepLabel>LINEA</ng-template>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Plazo minimo Linea de Credito</mat-label>
+                    <input matInput formControlName="plazoMinimoLineaCredito">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('plazoMinimoLineaCredito').hasError('required')">
+                      El campo Plazo minimo Linea de Credito es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica para lineas de credito; define el numero de meses maximo para la linea de credito">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Monto Maximo por Disposicion</mat-label>
+                    <input matInput formControlName="montoMaximoDisposicion">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('montoMaximoDisposicion').hasError('required')">
+                      El campo Monto Maximo por Disposicion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica para lineas de credito define el monto que se puede otorgar por ministracion">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Plazo Maximo por Disposicion</mat-label>
+                    <input matInput formControlName="plazoMaximoDisposicion">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_parametrosForm.get('plazoMaximoDisposicion').hasError('required')">
+                      El campo Plazo Maximo por Disposicion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica para lineas de credito define el numero maximo de meses para liquidar una entrega de recursos">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tasa por Entrega Recursos</mat-label>
+                    <mat-select formControlName="tasaEntregaRecursos">
+                      <mat-option value="Entrega Recursos">Entrega Recursos</mat-option>
+                      <mat-option value="Credito">Credito</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_parametrosForm.get('tasaEntregaRecursos').hasError('required')">
+                      Tasa por Entrega Recursos es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <button mat-mini-fab color="primary" matTooltip="Aplica para lineas de credito; determina si usara una tasa a nivel de credito(C); o si usara un tasa para cada entrega de recursos(R)">
+                  <mat-icon class="col-white">help</mat-icon>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <div class="example-button-row">
+                    <button mat-raised-button color="primary" [type]="submit" [disabled]="!_parametrosForm.valid"
+                            [mat-dialog-close]="1" (click)="guardar()">Guardar</button>
+                    <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </form>
   </div>
 </div>
