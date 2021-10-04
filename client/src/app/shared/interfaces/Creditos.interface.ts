@@ -1301,6 +1301,7 @@ export class _solicitudes {
   fechaEntrega: Date;
   fechaPrimerAmortizacion: Date;
   tasa: string;
+  estatus: string;
 }
 
 export class _coacreditados {
@@ -1334,4 +1335,25 @@ export class _avales {
   tipo: string;
   nombre: string;
   relacion: string;
+}
+
+export class _creditoSimple {
+  id: number;
+  tipo: string;
+  nombre: string;
+  ocupacion: string;
+  sucursal: string;
+  producto: string;
+  conceptoInversion: string;
+  fechaContrato: Date;
+  numeroContrato: number;
+  ejecutivo: string;
+  promotor: string;
+  frecuenciaPago: string;
+  numeroAmortizacion: string;
+  fechaPrimerAmortizacion: Date;
+  cat: string;
+  montoNeto: string;
+  // estatus: string;
+  // etiquetas: string;
 }

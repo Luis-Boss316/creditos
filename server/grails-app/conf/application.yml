@@ -116,7 +116,7 @@ environments:
         dataSource:
             type: "com.zaxxer.hikari.HikariDataSource"
             dbCreate: update
-            url: "jdbc:mysql://127.0.0.1:3306/creditossaccsa?autoReconnect=true"
+            url: "jdbc:mysql://127.0.0.1:3306/creditos?autoReconnect=true"
             username: "root"
             password: ""
     test:

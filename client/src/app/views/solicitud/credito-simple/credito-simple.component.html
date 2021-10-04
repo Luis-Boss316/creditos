@@ -75,22 +75,22 @@
                     {{row.id}}</mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="numeroContrato">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Numero de Contrato</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.numeroContrato}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="tipo">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    {{row.tipo}}</mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="nombre">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
                     {{row.nombre}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="fechaSolicitud">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Solicitud</mat-header-cell>
-                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.fechaSolicitud}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="sucursal">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Sucursal</mat-header-cell>
-                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.sucursal}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="producto">
@@ -99,23 +99,29 @@
                     {{row.producto}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="concetoInversion">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Concepto de Inversion</mat-header-cell>
+                <ng-container matColumnDef="montoNeto">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.concetoInversion}}</mat-cell>
+                    {{row.montoNeto}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="fechaEntrega">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Entrega</mat-header-cell>
+                <ng-container matColumnDef="cat">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>CAT</mat-header-cell>
                   <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.fechaEntrega}}</mat-cell>
+                    {{row.cat}}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="estatus">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</mat-header-cell>
-                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
-                    {{row.estatus}}</mat-cell>
-                </ng-container>
+<!--                <ng-container matColumnDef="estatus">-->
+<!--                  <mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</mat-header-cell>-->
+<!--                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">-->
+<!--                    {{row.estatus}}</mat-cell>-->
+<!--                </ng-container>-->
+
+<!--                <ng-container matColumnDef="etiquetas">-->
+<!--                  <mat-header-cell *matHeaderCellDef mat-sort-header>Etiquetas</mat-header-cell>-->
+<!--                  <mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">-->
+<!--                    {{row.etiquetas}}</mat-cell>-->
+<!--                </ng-container>-->
 
                 <!-- actions -->
                 <ng-container matColumnDef="actions">
@@ -144,10 +150,10 @@
 
               <mat-menu #contextMenu="matMenu">
                 <ng-template matMenuContent let-item="item">
-                  <button mat-menu-item (click)="coacreditados(item)"><mat-icon>add_box</mat-icon><span>Agregar Coacreditado</span></button>
-                  <button mat-menu-item (click)="beneficiarios(item)"><mat-icon>add_box</mat-icon><span>Agregar Beneficiario</span></button>
-                  <button mat-menu-item (click)="informacionPLD(item)"><mat-icon>add_box</mat-icon><span>Agregar Informacion PLD</span></button>
-                  <button mat-menu-item (click)="avales(item)"><mat-icon>add_box</mat-icon><span>Agregar Aval</span></button>
+<!--                  <button mat-menu-item (click)="coacreditados(item)"><mat-icon>add_box</mat-icon><span>Agregar Coacreditado</span></button>-->
+<!--                  <button mat-menu-item (click)="beneficiarios(item)"><mat-icon>add_box</mat-icon><span>Agregar Beneficiario</span></button>-->
+<!--                  <button mat-menu-item (click)="informacionPLD(item)"><mat-icon>add_box</mat-icon><span>Agregar Informacion PLD</span></button>-->
+<!--                  <button mat-menu-item (click)="avales(item)"><mat-icon>add_box</mat-icon><span>Agregar Aval</span></button>-->
                 </ng-template>
               </mat-menu>
               <!-- context menu end -->

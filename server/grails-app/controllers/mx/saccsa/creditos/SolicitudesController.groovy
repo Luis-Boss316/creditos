@@ -24,6 +24,7 @@ class SolicitudesController extends RestfulController<Solicitudes>{
                     fechaEntrega: it?.fechaEntrega,
                     fechaPrimerAmortizacion: it?.fechaPrimerAmortizacion,
                     tasa: it?.tasa,
+                    estatus: it?.estatus,
             ]
         })
     }

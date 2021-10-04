@@ -32,10 +32,13 @@ import { CoacreditadosFormComponent } from './solicitudes/coacreditados-form/coa
 import { BeneficiariosFormComponent } from './solicitudes/beneficiarios-form/beneficiarios-form.component';
 import { InformacionFormComponent } from './solicitudes/informacion-form/informacion-form.component';
 import { AvalesFormComponent } from './solicitudes/avales-form/avales-form.component';
+import { CreditoSimpleComponent } from './credito-simple/credito-simple.component';
+import { CreditoSimpleFormComponent } from './credito-simple/credito-simple-form/credito-simple-form.component';
+import { CreditoSimpleDeleteComponent } from './credito-simple/credito-simple-delete/credito-simple-delete.component';
 
 
 @NgModule({
-  declarations: [SolicitudesComponent, SolicitudesFormComponent, SolicitudesDeleteComponent, CoacreditadosFormComponent, BeneficiariosFormComponent, InformacionFormComponent, AvalesFormComponent],
+  declarations: [SolicitudesComponent, SolicitudesFormComponent, SolicitudesDeleteComponent, CoacreditadosFormComponent, BeneficiariosFormComponent, InformacionFormComponent, AvalesFormComponent, CreditoSimpleComponent, CreditoSimpleFormComponent, CreditoSimpleDeleteComponent],
   imports: [
     CommonModule,
     SolicitudRoutingModule,

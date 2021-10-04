@@ -13,6 +13,7 @@ class Solicitudes {
     Date fechaEntrega
     Date fechaPrimerAmortizacion
     String tasa
+    String estatus
 
 
     static constraints = {
@@ -28,6 +29,7 @@ class Solicitudes {
         fechaEntrega nullable: false, blank:false
         fechaPrimerAmortizacion nullable: false, blank:false
         tasa nullable: false, blank:false
+        estatus nullable: true, blank: true
     }
 
     static mapping = {
@@ -46,5 +48,6 @@ class Solicitudes {
         fechaEntrega name:"fechaEntrega", column:"fechaEntrega"
         fechaPrimerAmortizacion name:"fechaPrimerAmortizacion", column:"fechaPrimerAmortizacion"
         tasa name:"tasa", column:"tasa"
+        estatus name:"estatus", column: "estatus"
     }
 }

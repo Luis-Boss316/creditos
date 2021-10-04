@@ -632,15 +632,24 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
-    title: 'Solicitudes',
+    title: 'Credito',
     moduleName: 'Solicitud',
-    icon: 'fas fa-address-card',
+    icon: 'fas fa-money-check-alt',
     class: 'menu-toggle',
     groupTitle: false,
     submenu: [
       {
         path: 'Solicitud/Solicitudes',
-        title: 'Solicitudes',
+        title: 'Solicitud Credito Simple',
+        moduleName: 'Solicitud',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        submenu: []
+      },
+      {
+        path: 'Solicitud/CreditoSimple',
+        title: 'Credito Simple',
         moduleName: 'Solicitud',
         icon: '',
         class: 'ml-menu',
