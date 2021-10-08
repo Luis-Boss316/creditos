@@ -37,8 +37,8 @@ export class CreditoSimpleComponent implements OnInit {
     'producto',
     'montoNeto',
     'cat',
-    // 'estatus',
-    // 'etiquetas',
+    'estatus',
+    'etiquetas',
     'actions' ];
 
   id: number;
@@ -121,7 +121,6 @@ export class CreditoSimpleComponent implements OnInit {
           })
         this.refreshTable();
       });
-
     });
   }
 

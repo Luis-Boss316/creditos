@@ -35,10 +35,12 @@ import { AvalesFormComponent } from './solicitudes/avales-form/avales-form.compo
 import { CreditoSimpleComponent } from './credito-simple/credito-simple.component';
 import { CreditoSimpleFormComponent } from './credito-simple/credito-simple-form/credito-simple-form.component';
 import { CreditoSimpleDeleteComponent } from './credito-simple/credito-simple-delete/credito-simple-delete.component';
+import { ReferenciasFormComponent } from './credito-simple/referencias-form/referencias-form.component';
+import { DatosAdicionalesComponent } from './credito-simple/datos-adicionales/datos-adicionales.component';
 
 
 @NgModule({
-  declarations: [SolicitudesComponent, SolicitudesFormComponent, SolicitudesDeleteComponent, CoacreditadosFormComponent, BeneficiariosFormComponent, InformacionFormComponent, AvalesFormComponent, CreditoSimpleComponent, CreditoSimpleFormComponent, CreditoSimpleDeleteComponent],
+  declarations: [SolicitudesComponent, SolicitudesFormComponent, SolicitudesDeleteComponent, CoacreditadosFormComponent, BeneficiariosFormComponent, InformacionFormComponent, AvalesFormComponent, CreditoSimpleComponent, CreditoSimpleFormComponent, CreditoSimpleDeleteComponent, ReferenciasFormComponent, DatosAdicionalesComponent],
   imports: [
     CommonModule,
     SolicitudRoutingModule,

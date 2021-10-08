@@ -1,0 +1,266 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 p-l-10 font-17">
+            Credito</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="referencias()">
+      <mat-icon>account_balance</mat-icon>
+    </button>
+    <button mat-icon-button (click)="datosAdicionales()">
+      <mat-icon>business</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div>
+
+    <form class="register-form m-4" [formGroup]="_creditoForm" (ngSubmit)="submit">
+      <div class="body">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper ngClass="{{ 'last-edited-step-' + stepper.selectedIndex }}" labelPosition="bottom">
+          <mat-step [stepControl]="_creditoForm">
+            <form [formGroup]="_creditoForm">
+              <ng-template matStepLabel>Datos del Cliente</ng-template>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="id" readonly>
+                    <mat-icon matSuffix>turned_in_not</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('id').hasError('required')">
+                      El campo ID es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select formControlName="tipo">
+                      <mat-option value="Persona">Persona</mat-option>
+                      <mat-option value="Negocio">Negocio</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_creditoForm.get('tipo').hasError('required')">
+                      Tipo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('nombre').hasError('required')">
+                      El campo Nombre es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ocupacion</mat-label>
+                    <input matInput formControlName="ocupacion">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('ocupacion').hasError('required')">
+                      El campo Ocupacion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Sucursal</mat-label>
+                    <input matInput formControlName="sucursal">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('sucursal').hasError('required')">
+                      El campo Sucursal es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Producto</mat-label>
+                    <input matInput formControlName="producto">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('producto').hasError('required')">
+                      El campo Producto es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Concepto de Inversion</mat-label>
+                    <input matInput formControlName="conceptoInversion">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('conceptoInversion').hasError('required')">
+                      El campo Concepto de Inversion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="_creditoForm">
+            <form [formGroup]="_creditoForm">
+              <ng-template matStepLabel>Datos de Credito</ng-template>
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha de Contrato</mat-label>
+                    <input matInput [matDatepicker]="DatepickerInicial" name = "fechaContrato" formControlName="fechaContrato" >
+                    <mat-datepicker-toggle matSuffix [for]="DatepickerInicial"></mat-datepicker-toggle>
+                    <mat-datepicker #DatepickerInicial></mat-datepicker>
+                    <mat-error *ngIf="_creditoForm.get('fechaContrato').hasError('required')">
+                      Fecha de Contrato es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero de Contrato</mat-label>
+                    <input matInput formControlName="numeroContrato">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('numeroContrato').hasError('required')">
+                      El campo Numero de Contrato es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Ejecutivo</mat-label>
+                    <input matInput formControlName="ejecutivo">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('ejecutivo').hasError('required')">
+                      El campo Ejecutivo es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Promotor</mat-label>
+                    <input matInput formControlName="promotor">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('promotor').hasError('required')">
+                      El campo Promotor es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Frecuencia de Pago</mat-label>
+                    <input matInput formControlName="frecuenciaPago">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('frecuenciaPago').hasError('required')">
+                      El campo Frecuencia de Pago es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Numero de Amortizacion</mat-label>
+                    <input matInput formControlName="numeroAmortizacion">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('numeroAmortizacion').hasError('required')">
+                      El campo Numero de Amortizacion es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha Primer Amortizacion</mat-label>
+                    <input matInput [matDatepicker]="DatepickerFinal" name = "fechaPrimerAmortizacion" formControlName="fechaPrimerAmortizacion" >
+                    <mat-datepicker-toggle matSuffix [for]="DatepickerFinal"></mat-datepicker-toggle>
+                    <mat-datepicker #DatepickerFinal></mat-datepicker>
+                    <mat-error *ngIf="_creditoForm.get('fechaPrimerAmortizacion').hasError('required')">
+                      Fecha Primer Amortizacion es requerida
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>CAT</mat-label>
+                    <input matInput formControlName="cat">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('cat').hasError('required')">
+                      El campo CAT es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Monto Neto</mat-label>
+                    <input matInput formControlName="montoNeto">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('montoNeto').hasError('required')">
+                      El campo Monto Neto es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estatus</mat-label>
+                    <input matInput formControlName="estatus">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('estatus').hasError('required')">
+                      El campo Estatus es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Etiquetas</mat-label>
+                    <input matInput formControlName="etiquetas">
+                    <mat-icon matSuffix>library_books</mat-icon>
+                    <mat-error *ngIf="_creditoForm.get('etiquetas').hasError('required')">
+                      El campo Etiquetas es requerido
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <div class="example-button-row">
+                    <button mat-raised-button color="primary" [type]="submit" [disabled]="!_creditoForm.valid"
+                            [mat-dialog-close]="1" (click)="guardar()">Guardar</button>
+                    <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+        </mat-horizontal-stepper>
+      </div>
+    </form>
+  </div>
+</div>

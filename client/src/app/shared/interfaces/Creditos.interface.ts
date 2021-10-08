@@ -1354,6 +1354,18 @@ export class _creditoSimple {
   fechaPrimerAmortizacion: Date;
   cat: string;
   montoNeto: string;
-  // estatus: string;
-  // etiquetas: string;
+  estatus: string;
+  etiquetas: string;
+}
+
+export class _referencias {
+  id: number;
+  tipo: string;
+  cuentaBancaria: string;
+  referencia: string;
+}
+
+export class _datosAdicionalesCompañias {
+  id: number;
+  compañiaRetenedora: string;
 }

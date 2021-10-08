@@ -15,6 +15,8 @@ class CreditoSimple {
     String numeroAmortizacion
     String cat
     String montoNeto
+    String estatus
+    String etiquetas
 
     static constraints = {
         tipo nullable: true, blank: true
@@ -31,6 +33,8 @@ class CreditoSimple {
         numeroAmortizacion nullable: true, blank: true
         cat nullable: true, blank: true
         montoNeto nullable: true, blank: true
+        estatus nullable: true, blank: true
+        etiquetas nullable: true, blank: true
     }
 
     static mapping = {
@@ -51,5 +55,7 @@ class CreditoSimple {
         numeroAmortizacion name:"numeroAmortizacion", column:"numeroAmortizacion"
         cat name:"cat", column:"cat"
         montoNeto name:"montoNeto", column:"montoNeto"
+        estatus name:"estatus", column:"estatus"
+        etiquetas name:"etiquetas", column:"etiquetas"
     }
 }

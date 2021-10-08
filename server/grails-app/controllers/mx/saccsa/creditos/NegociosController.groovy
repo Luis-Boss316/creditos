@@ -272,7 +272,7 @@ class NegociosController extends RestfulController<Negocios>{
         datosGenerales.establecimiento = request.JSON.establecimiento
         if(request.JSON.nacionalidad != null) {
             Nacionalidades nacionalidades = Nacionalidades.findById(request.JSON.nacionalidad as Long)
-            datosGenerales.nacionalidad = request.JSON.nacionalidad
+            datosGenerales.nacionalidad = nacionalidades
         }
         datosGenerales.paginaWeb = request.JSON.paginaWeb
         datosGenerales.save(flush: true, failOnError: true)
